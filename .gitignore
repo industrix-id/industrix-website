@@ -21,6 +21,9 @@ node_modules/
 *.sln
 *.sw?
 
+# Next.js build output
+.next/
+
 # OS specific
 .DS_Store
 .vercel
