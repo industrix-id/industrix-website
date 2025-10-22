@@ -618,6 +618,23 @@ body {
   transform: translateY(-2px) !important;
 }
 
+/* Theme Toggle Switch Styles */
+.ant-switch .ant-switch-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Light mode: make sun icon dark/black */
+.ant-switch:not(.ant-switch-checked) .ant-switch-inner .anticon {
+  color: #1f2937 !important;
+}
+
+/* Dark mode: keep moon icon white */
+.ant-switch.ant-switch-checked .ant-switch-inner .anticon {
+  color: #ffffff !important;
+}
+
 /* Mobile Optimizations */
 @media (max-width: 768px) {
   /* Prevent zoom completely */
@@ -738,5 +755,36 @@ body {
   .btn-outline {
     max-width: calc(100vw - 48px) !important;
     word-break: break-word !important;
+  }
+
+  /* Mobile project section adjustments */
+  .section-padding {
+    padding: 40px 0 !important;
+  }
+
+  /* Reduce gap between scrolling cards on mobile */
+  .projects-scroll-container > div {
+    gap: 16px !important;
+  }
+
+  /* Mobile hero section text spacing */
+  #home {
+    padding-top: 80px;
+  }
+
+  /* Mobile earth animation container */
+  svg {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Improve mobile card padding inside project cards */
+  .ant-card {
+    padding: 16px !important;
+  }
+
+  /* Mobile row gutters */
+  .ant-row {
+    row-gap: 24px !important;
   }
 }

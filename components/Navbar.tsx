@@ -17,8 +17,7 @@ export default function Navbar() {
     { key: 'home', label: 'Home', href: '/', isExternal: true },
     { key: 'about', label: 'About', href: '/#about', isExternal: true },
     { key: 'solutions', label: 'Solutions', href: '/#solutions', isExternal: true },
-    { key: 'case-studies', label: 'Case Studies', href: '/#case-studies', isExternal: true },
-    { key: 'team', label: 'Meet Our Team', href: '/team', isExternal: true },
+    { key: 'projects', label: 'Projects', href: '/#projects', isExternal: true },
     { key: 'careers', label: 'Careers', href: '/careers', isExternal: true },
   ]
 
@@ -104,8 +103,8 @@ export default function Navbar() {
             <Switch
               checked={isDarkMode}
               onChange={toggleTheme}
-              checkedChildren={<MoonOutlined />}
-              unCheckedChildren={<SunOutlined />}
+              checkedChildren={<MoonOutlined style={{ color: '#ffffff' }} />}
+              unCheckedChildren={<SunOutlined style={{ color: '#1f2937' }} />}
               style={{
                 background: isDarkMode ? '#1079FF' : '#f0f0f0',
               }}

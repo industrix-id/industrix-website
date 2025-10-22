@@ -63,7 +63,7 @@ export default function ContactSection() {
 • Company: ${values.company}
 • Industry: ${values.industry}`,
         message: values.message,
-        to_email: 'industrix.idn@gmail.com',
+        to_email: 'dustin@industrix.id',
         reply_to: values.email
       }
       
@@ -96,8 +96,8 @@ export default function ContactSection() {
             // Standard EmailJS parameters
             to_name: values.name,
             from_name: 'Industrix Team', 
-            from_email: 'industrix.idn@gmail.com',
-            reply_to: 'industrix.idn@gmail.com',
+            from_email: 'dustin@industrix.id',
+            reply_to: 'dustin@industrix.id',
             // Template variables
             name: values.name,
             subject: '✅ MESSAGE RECEIVED - Thank you for contacting Industrix',
@@ -109,7 +109,7 @@ export default function ContactSection() {
 • Company: ${values.company}
 • Industry: ${values.industry}
 • Message Type: Contact Form Inquiry`,
-            call_to_action: '📞 For urgent matters, you can also reach us directly at industrix.idn@gmail.com.',
+            call_to_action: '📞 For urgent matters, you can also reach us directly at dustin@industrix.id.',
             closing_message: 'We look forward to discussing how Industrix can help transform your industrial operations.',
             footer_note: 'This is an automated confirmation of your contact form submission.'
           }
@@ -191,8 +191,8 @@ export default function ContactSection() {
     {
       icon: <MailOutlined />,
       title: 'Email',
-      details: 'industrix.idn@gmail.com',
-      action: 'mailto:industrix.idn@gmail.com'
+      details: 'dustin@industrix.id',
+      action: 'mailto:dustin@industrix.id'
     },
     {
       icon: <EnvironmentOutlined />,
@@ -207,7 +207,7 @@ export default function ContactSection() {
       background: isDarkMode ? '#0f172a' : '#f8fafc',
       transition: 'background-color 0.3s ease'
     }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 clamp(16px, 4vw, 24px)' }}>
         <div style={{ textAlign: 'center', marginBottom: '80px' }} className="animate-fadeInUp">
           <Title level={2} className="section-title" style={{ 
             fontSize: 'clamp(2rem, 5vw, 3.5rem)',

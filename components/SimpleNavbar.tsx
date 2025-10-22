@@ -94,23 +94,12 @@ export default function SimpleNavbar() {
           <Switch
             checked={isDarkMode}
             onChange={toggleTheme}
-            checkedChildren={<MoonOutlined />}
-            unCheckedChildren={<SunOutlined />}
+            checkedChildren={<MoonOutlined style={{ color: '#ffffff' }} />}
+            unCheckedChildren={<SunOutlined style={{ color: '#1f2937' }} />}
             style={{
               background: isDarkMode ? '#1079FF' : '#f0f0f0',
             }}
           />
-          
-          {/* Careers Page Indicator */}
-          <span style={{
-            fontSize: '14px',
-            fontWeight: 600,
-            color: isDarkMode ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.7)',
-            textTransform: 'uppercase',
-            letterSpacing: '0.5px'
-          }}>
-            Careers
-          </span>
         </div>
       </div>
     </Header>

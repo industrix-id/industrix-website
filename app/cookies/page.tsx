@@ -162,7 +162,7 @@ export default function CookiePolicyPage() {
                   If you have any questions about our use of cookies, please contact us at:
                 </Paragraph>
                 <Paragraph>
-                  <strong>Email:</strong> industrix.idn@gmail.com<br />
+                  <strong>Email:</strong> dustin@industrix.id<br />
                   <strong>Address:</strong> Jakarta, Indonesia
                 </Paragraph>
 

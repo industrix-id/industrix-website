@@ -141,7 +141,7 @@ export default function Footer() {
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                 <MailOutlined style={{ color: '#1079FF', fontSize: '16px' }} />
                 <Text style={{ color: '#a1a1aa', fontSize: '14px' }}>
-                  industrix.idn@gmail.com
+                  dustin@industrix.id
                 </Text>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>

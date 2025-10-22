@@ -213,7 +213,7 @@ export default function CareersPage() {
 
 📎 Resume: ${selectedJob?.isInternship ? 'Will be requested via automated follow-up email' : 'Expected to be provided by candidate (professional role)'}`,
         message: values.coverLetter,
-        to_email: 'industrix.idn@gmail.com',
+        to_email: 'dustin@industrix.id',
         reply_to: values.email
       }
       
@@ -258,7 +258,7 @@ export default function CareersPage() {
             call_to_action: '💼 Please attach both your resume file (PDF, DOC, or DOCX format) and cover letter to your reply email.',
             closing_message: 'We look forward to reviewing your qualifications and will be in touch soon regarding next steps.',
             footer_note: 'This is an automated follow-up to your job application.',
-            reply_to: 'industrix.idn@gmail.com' // Company email as reply-to
+            reply_to: 'dustin@industrix.id' // Company email as reply-to
           }
 
           // Use the OUTBOUND template for all candidate follow-ups
@@ -349,7 +349,7 @@ export default function CareersPage() {
 
 📎 Resume: Will be requested via automated follow-up email`,
         message: values.contribution,
-        to_email: 'industrix.idn@gmail.com',
+        to_email: 'dustin@industrix.id',
         reply_to: values.email
       }
       
@@ -393,7 +393,7 @@ export default function CareersPage() {
               call_to_action: '💼 Please attach both your resume file (PDF, DOC, or DOCX format) and cover letter to your reply email so we can better understand your qualifications.',
               closing_message: 'We look forward to reviewing your qualifications and will reach out if there\'s a good fit for our team.',
               footer_note: 'This is an automated follow-up to your general application.',
-              reply_to: 'industrix.idn@gmail.com' // Company email as reply-to
+              reply_to: 'dustin@industrix.id' // Company email as reply-to
             }
 
           // Use the OUTBOUND template for all candidate follow-ups
