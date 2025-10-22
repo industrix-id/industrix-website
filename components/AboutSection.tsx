@@ -270,7 +270,7 @@ export default function AboutSection() {
             maxWidth: '800px',
             margin: '0 auto 16px'
           }}>
-            Most consultancies talk strategy. Most software shops don't understand hardware.
+            Most consultancies talk strategy. Most software shops don&apos;t understand hardware.
             Most integrators lack modern engineering practices.
           </Paragraph>
           <Paragraph style={{
@@ -474,7 +474,7 @@ export default function AboutSection() {
                 fontSize: '15px'
               }}
             >
-              Let's Talk
+              Let&apos;s Talk
             </Button>
           </Space>
         </Card>

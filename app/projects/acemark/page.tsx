@@ -97,7 +97,7 @@ export default function AcemarkPage() {
               maxWidth: '900px',
               marginBottom: '32px'
             }}>
-              Professional corporate website for Indonesia's leading intellectual property law firm,
+              Professional corporate website for Indonesia&apos;s leading intellectual property law firm,
               founded in 1951. Modern, bilingual platform showcasing legal services, team expertise,
               and client success stories.
             </Paragraph>
@@ -211,8 +211,8 @@ export default function AcemarkPage() {
               color: isDarkMode ? '#cbd5e1' : '#475569',
               marginBottom: '32px'
             }}>
-              We're building a modern, professional website that reflects AceMark's position as
-              Indonesia's premier IP law firm. The site features a clean design, bilingual content,
+              We&apos;re building a modern, professional website that reflects AceMark&apos;s position as
+              Indonesia&apos;s premier IP law firm. The site features a clean design, bilingual content,
               and optimized user experience for both potential clients and legal professionals.
             </Paragraph>
 
