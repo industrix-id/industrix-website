@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Layout, Typography, Card, Row, Col, Tag, Button, Space } from 'antd'
-import { ArrowLeftOutlined, EnvironmentOutlined, CheckCircleOutlined } from '@ant-design/icons'
+import { ArrowLeftOutlined, CheckCircleOutlined } from '@ant-design/icons'
 import { useRouter } from 'next/navigation'
 import { useTheme } from '@/app/theme/ThemeProvider'
 import SimpleNavbar from '@/components/SimpleNavbar'
