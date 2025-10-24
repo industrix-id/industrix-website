@@ -9,6 +9,82 @@ const { Title, Paragraph } = Typography
 
 const rotatingWords = ['Hardware', 'Software', 'IoT Systems', 'Web Portals', 'Mobile Apps']
 
+// Floating Particles Component - Clean geometric shapes
+function FloatingParticles({ isDarkMode }: { isDarkMode: boolean }) {
+  const particles = [
+    { x: 10, y: 15, size: 4, delay: 0, duration: 20, type: 'circle' },
+    { x: 85, y: 20, size: 6, delay: 2, duration: 25, type: 'square' },
+    { x: 15, y: 70, size: 5, delay: 4, duration: 22, type: 'circle' },
+    { x: 90, y: 65, size: 4, delay: 1, duration: 24, type: 'triangle' },
+    { x: 20, y: 40, size: 3, delay: 3, duration: 23, type: 'square' },
+    { x: 80, y: 45, size: 5, delay: 5, duration: 21, type: 'circle' },
+  ]
+
+  return (
+    <>
+      {particles.map((particle, index) => (
+        <div
+          key={index}
+          style={{
+            position: 'absolute',
+            left: `${particle.x}%`,
+            top: `${particle.y}%`,
+            width: `${particle.size}px`,
+            height: `${particle.size}px`,
+            opacity: isDarkMode ? 0.2 : 0.15,
+            animation: `floatParticle ${particle.duration}s ease-in-out infinite`,
+            animationDelay: `${particle.delay}s`,
+            zIndex: 0,
+            pointerEvents: 'none',
+            background: particle.type === 'circle' ?
+              (isDarkMode ? 'rgba(16, 121, 255, 0.5)' : 'rgba(16, 121, 255, 0.4)') :
+              (isDarkMode ? 'rgba(246, 42, 58, 0.5)' : 'rgba(246, 42, 58, 0.4)'),
+            borderRadius: particle.type === 'circle' ? '50%' : particle.type === 'square' ? '2px' : '0',
+            transform: particle.type === 'triangle' ? 'rotate(45deg)' : 'none',
+            boxShadow: `0 0 ${particle.size * 2}px ${isDarkMode ? 'rgba(16, 121, 255, 0.3)' : 'rgba(16, 121, 255, 0.2)'}`
+          }}
+        />
+      ))}
+    </>
+  )
+}
+
+// Grid Background with Data Flow - Industrial Tech Theme
+function GridBackground({ isDarkMode }: { isDarkMode: boolean }) {
+  return (
+    <svg
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: 0,
+        pointerEvents: 'none',
+        opacity: isDarkMode ? 0.15 : 0.1
+      }}
+    >
+      <defs>
+        <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+          <path
+            d="M 50 0 L 0 0 0 50"
+            fill="none"
+            stroke={isDarkMode ? '#1079FF' : '#3b82f6'}
+            strokeWidth="0.5"
+          />
+        </pattern>
+        <linearGradient id="fadeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopOpacity="0.3" />
+          <stop offset="50%" stopOpacity="0.1" />
+          <stop offset="100%" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)" opacity="0.3" />
+      <rect width="100%" height="100%" fill="url(#fadeGradient)" />
+    </svg>
+  )
+}
+
 // Animated counter component
 function AnimatedCounter({ target, suffix = '', duration = 1500 }: { target: number | string; suffix?: string; duration?: number }) {
   const [count, setCount] = useState(0)
@@ -124,18 +200,43 @@ export default function HeroSection() {
   const scale = 1 - scrollProgress * 0.05
 
   return (
-    <section
-      ref={heroRef}
-      style={{
-      minHeight: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      paddingTop: '80px',
-      paddingBottom: '40px',
-      position: 'relative',
-      overflow: 'hidden'
-    }}>
-      {/* Background Elements */}
+    <>
+      <style jsx>{`
+        @keyframes sunriseShift {
+          0%, 100% {
+            opacity: 1;
+            transform: translateX(0) translateY(0);
+          }
+          50% {
+            opacity: 0.7;
+            transform: translateX(-10px) translateY(-10px);
+          }
+        }
+
+        @keyframes floatParticle {
+          0%, 100% {
+            transform: translateY(0px) translateX(0px);
+            opacity: 0.2;
+          }
+          50% {
+            transform: translateY(-20px) translateX(10px);
+            opacity: 0.4;
+          }
+        }
+      `}</style>
+
+      <section
+        ref={heroRef}
+        style={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        paddingTop: '80px',
+        paddingBottom: '40px',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+      {/* Background Elements - Indonesian Industrial Theme */}
       <div style={{
         position: 'absolute',
         top: 0,
@@ -147,6 +248,27 @@ export default function HeroSection() {
           : 'radial-gradient(circle at 50% 50%, rgba(16, 121, 255, 0.08) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(246, 42, 58, 0.05) 0%, transparent 50%)',
         zIndex: 0
       }} />
+
+      {/* Animated Sunrise Gradient Overlay */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: `linear-gradient(135deg,
+          ${isDarkMode ? 'rgba(251, 146, 60, 0.12)' : 'rgba(251, 146, 60, 0.08)'} 0%,
+          transparent 40%,
+          ${isDarkMode ? 'rgba(59, 130, 246, 0.12)' : 'rgba(59, 130, 246, 0.08)'} 100%)`,
+        animation: 'sunriseShift 20s ease-in-out infinite',
+        zIndex: 0
+      }} />
+
+      {/* Floating Particles */}
+      <FloatingParticles isDarkMode={isDarkMode} />
+
+      {/* Grid Background */}
+      <GridBackground isDarkMode={isDarkMode} />
 
       <div style={{
         maxWidth: '1400px',
@@ -230,7 +352,7 @@ export default function HeroSection() {
             transform: subtextTransform,
             transition: 'transform 0.1s ease-out'
           }}>
-            We build enterprise grade digital solutions from IoT devices to web platforms —
+            We build enterprise grade digital solutions from IoT devices to web platforms
             transforming Indonesian industries with world-class technology.
           </Paragraph>
 
@@ -362,5 +484,6 @@ export default function HeroSection() {
         </div>
       </div>
     </section>
+    </>
   )
 }
