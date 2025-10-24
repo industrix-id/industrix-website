@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Button, Space, Typography, Tag } from 'antd'
 import { ArrowRightOutlined, ThunderboltOutlined } from '@ant-design/icons'
 import { useTheme } from '../app/theme/ThemeProvider'
@@ -9,11 +9,58 @@ const { Title, Paragraph } = Typography
 
 const rotatingWords = ['Hardware', 'Software', 'IoT Systems', 'Web Portals', 'Mobile Apps']
 
+// Animated counter component
+function AnimatedCounter({ target, suffix = '', duration = 1500 }: { target: number | string; suffix?: string; duration?: number }) {
+  const [count, setCount] = useState(0)
+  const [hasAnimated, setHasAnimated] = useState(false)
+
+  useEffect(() => {
+    if (hasAnimated) return
+
+    // For percentage or non-numeric targets
+    if (typeof target === 'string') {
+      setCount(target as any)
+      setHasAnimated(true)
+      return
+    }
+
+    setHasAnimated(true)
+    const startTime = Date.now()
+    const endValue = target
+
+    const animate = () => {
+      const elapsed = Date.now() - startTime
+      const progress = Math.min(elapsed / duration, 1)
+
+      // Easing function for smooth animation
+      const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4)
+      const currentCount = Math.floor(easeOutQuart(progress) * endValue)
+
+      setCount(currentCount)
+
+      if (progress < 1) {
+        requestAnimationFrame(animate)
+      } else {
+        setCount(endValue)
+      }
+    }
+
+    requestAnimationFrame(animate)
+  }, [target, duration, hasAnimated])
+
+  return <>{count}{suffix}</>
+}
+
 export default function HeroSection() {
   const { isDarkMode } = useTheme()
   const [currentWordIndex, setCurrentWordIndex] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
+  const [statsVisible, setStatsVisible] = useState(false)
+  const heroRef = useRef<HTMLDivElement>(null)
+  const statsRef = useRef<HTMLDivElement>(null)
 
+  // Rotating words animation
   useEffect(() => {
     const interval = setInterval(() => {
       setIsAnimating(true)
@@ -26,8 +73,60 @@ export default function HeroSection() {
     return () => clearInterval(interval)
   }, [])
 
+  // Scroll tracking for parallax and fade effects
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!heroRef.current) return
+
+      const heroRect = heroRef.current.getBoundingClientRect()
+      const heroHeight = heroRect.height
+      const scrolled = -heroRect.top
+
+      // Calculate scroll progress (0 = top of hero, 1 = hero scrolled past viewport)
+      const progress = Math.max(0, Math.min(1, scrolled / heroHeight))
+      setScrollProgress(progress)
+    }
+
+    handleScroll() // Initial calculation
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Intersection observer for stats counter animation
+  useEffect(() => {
+    if (!statsRef.current) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !statsVisible) {
+            setStatsVisible(true)
+          }
+        })
+      },
+      { threshold: 0.3 }
+    )
+
+    observer.observe(statsRef.current)
+
+    return () => observer.disconnect()
+  }, [statsVisible])
+
+  // Parallax calculations
+  const badgeTransform = `translateY(${scrollProgress * -50}px)`
+  const headingTransform = `translateY(${scrollProgress * -30}px)`
+  const subtextTransform = `translateY(${scrollProgress * -20}px)`
+  const buttonsTransform = `translateY(${scrollProgress * -10}px)`
+
+  // Fade and scale calculations
+  const opacity = 1 - scrollProgress * 0.8
+  const scale = 1 - scrollProgress * 0.05
+
   return (
-    <section style={{
+    <section
+      ref={heroRef}
+      style={{
       minHeight: '100vh',
       display: 'flex',
       alignItems: 'center',
@@ -62,10 +161,17 @@ export default function HeroSection() {
           textAlign: 'center',
           marginBottom: '48px',
           maxWidth: '900px',
-          margin: '0 auto 48px'
+          margin: '0 auto 48px',
+          opacity,
+          transform: `scale(${scale})`,
+          transition: 'opacity 0.1s ease-out, transform 0.1s ease-out'
         }}>
           {/* Badge */}
-          <div style={{ marginBottom: '24px' }}>
+          <div style={{
+            marginBottom: '24px',
+            transform: badgeTransform,
+            transition: 'transform 0.1s ease-out'
+          }}>
             <Tag style={{
               background: 'linear-gradient(135deg, rgba(16, 121, 255, 0.1), rgba(41, 197, 255, 0.1))',
               border: '1px solid rgba(16, 121, 255, 0.3)',
@@ -85,7 +191,9 @@ export default function HeroSection() {
             fontWeight: 900,
             marginBottom: '24px',
             lineHeight: 1.1,
-            color: isDarkMode ? '#ffffff' : '#0f172a'
+            color: isDarkMode ? '#ffffff' : '#0f172a',
+            transform: headingTransform,
+            transition: 'transform 0.1s ease-out'
           }}>
             Custom
             <br />
@@ -118,14 +226,20 @@ export default function HeroSection() {
             lineHeight: 1.7,
             color: isDarkMode ? '#94a3b8' : '#475569',
             maxWidth: '700px',
-            margin: '0 auto 40px'
+            margin: '0 auto 40px',
+            transform: subtextTransform,
+            transition: 'transform 0.1s ease-out'
           }}>
-            We build enterprise-grade digital solutions — from IoT devices to web platforms —
+            We build enterprise grade digital solutions from IoT devices to web platforms —
             transforming Indonesian industries with world-class technology.
           </Paragraph>
 
           {/* CTA Buttons */}
-          <Space size={16} wrap style={{ marginBottom: '32px' }}>
+          <Space size={16} wrap style={{
+            marginBottom: '32px',
+            transform: buttonsTransform,
+            transition: 'transform 0.1s ease-out'
+          }}>
             <Button
               type="primary"
               size="large"
@@ -168,14 +282,20 @@ export default function HeroSection() {
 
 
         {/* Trust Indicators - Bottom Center */}
-        <div style={{
-          display: 'flex',
-          gap: '48px',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-          maxWidth: '800px',
-          margin: '0 auto'
-        }}>
+        <div
+          ref={statsRef}
+          style={{
+            display: 'flex',
+            gap: '48px',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            maxWidth: '800px',
+            margin: '0 auto',
+            opacity: statsVisible ? 1 : 0,
+            transform: statsVisible ? 'translateY(0)' : 'translateY(20px)',
+            transition: 'opacity 0.8s ease-out, transform 0.8s ease-out'
+          }}
+        >
           <div style={{ textAlign: 'center' }}>
             <div style={{
               fontSize: '2.5rem',
@@ -186,7 +306,7 @@ export default function HeroSection() {
               backgroundClip: 'text',
               lineHeight: 1
             }}>
-              2
+              {statsVisible ? <AnimatedCounter target={2} duration={1200} /> : 0}
             </div>
             <div style={{
               fontSize: '15px',
@@ -207,7 +327,7 @@ export default function HeroSection() {
               backgroundClip: 'text',
               lineHeight: 1
             }}>
-              3
+              {statsVisible ? <AnimatedCounter target={3} duration={1400} /> : 0}
             </div>
             <div style={{
               fontSize: '15px',
@@ -228,7 +348,7 @@ export default function HeroSection() {
               backgroundClip: 'text',
               lineHeight: 1
             }}>
-              100%
+              {statsVisible ? <AnimatedCounter target={100} suffix="%" duration={1600} /> : '0%'}
             </div>
             <div style={{
               fontSize: '15px',

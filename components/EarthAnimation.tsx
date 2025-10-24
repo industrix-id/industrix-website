@@ -1,11 +1,15 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useTheme } from '../app/theme/ThemeProvider'
 
 export default function EarthAnimation() {
   const { isDarkMode } = useTheme()
   const [animationProgress, setAnimationProgress] = useState(isDarkMode ? 1 : 0)
+  const [scrollProgress, setScrollProgress] = useState(0)
+  const [smoothScrollProgress, setSmoothScrollProgress] = useState(0)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const rafRef = useRef<number | null>(null)
 
   // Animate sun/moon transformation when theme changes
   useEffect(() => {
@@ -36,25 +40,94 @@ export default function EarthAnimation() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isDarkMode])
 
-  // Calculate celestial body position based on animation progress
+  // Track scroll position for orbit and parallax effects
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return
+
+      const rect = containerRef.current.getBoundingClientRect()
+      const windowHeight = window.innerHeight
+
+      // Calculate how much of the component is visible
+      const componentCenter = rect.top + rect.height / 2
+      const viewportCenter = windowHeight / 2
+      const distanceFromCenter = componentCenter - viewportCenter
+
+      // Map to 0-1 range with extended range for smoother transitions
+      // Give it more breathing room (-0.2 to 1.2) then clamp
+      let progress = 0.5 - (distanceFromCenter / (windowHeight * 1.5))
+      progress = Math.max(0, Math.min(1, progress))
+
+      // Apply easing for even smoother feel
+      const easeInOutCubic = (t: number) =>
+        t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+
+      const easedProgress = easeInOutCubic(progress)
+
+      setScrollProgress(easedProgress)
+    }
+
+    handleScroll() // Initial calculation
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('resize', handleScroll, { passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
+    }
+  }, [])
+
+  // Smooth interpolation for buttery animations
+  useEffect(() => {
+    const smoothingFactor = 0.08 // Lower = smoother but slower response
+
+    const animate = () => {
+      setSmoothScrollProgress((prev) => {
+        const diff = scrollProgress - prev
+        // Smoothly interpolate towards target
+        return prev + diff * smoothingFactor
+      })
+
+      rafRef.current = requestAnimationFrame(animate)
+    }
+
+    rafRef.current = requestAnimationFrame(animate)
+
+    return () => {
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current)
+      }
+    }
+  }, [scrollProgress])
+
+  // Calculate celestial body position based on animation progress AND scroll
   const earthCenterX = 250
   const earthCenterY = 250
 
-  // Light mode: sun at top right (angle -45°, behind earth, z-order wise will be before earth elements)
-  // Dark mode: moon at center front (angle 0°, in front of earth)
-  const startAngle = -45 // Top right for sun
-  const endAngle = 180 // Front center for moon (180° puts it at the left, which we'll use to orbit around)
+  // 3D diagonal orbit - combination of Y-axis and Z-axis rotation
+  // Creates a tilted orbital plane for more dynamic movement
+  const scrollOrbitAngle = smoothScrollProgress * 270 // 3/4 rotation as you scroll down
+  const angleRad = (scrollOrbitAngle * Math.PI) / 180
 
-  // Orbit: sun goes from top-right, around the back, to the front
-  const currentAngle = startAngle + (endAngle + 180) * animationProgress // Add 180 to complete the orbit to front
+  // 3D position calculation on a tilted orbital plane
+  const orbitRadius = 160
+  const tiltAngle = 25 // Degrees of tilt from horizontal
+  const tiltRad = (tiltAngle * Math.PI) / 180
 
-  // Radius changes: starts further out, comes closer to front
-  const startRadius = 184
-  const endRadius = 80 // Closer to earth when it's the moon in front
-  const currentRadius = startRadius - (startRadius - endRadius) * animationProgress
+  // Elliptical orbit with tilt (more visually interesting)
+  const celestialX = earthCenterX + orbitRadius * Math.sin(angleRad) // Left-right movement
+  const celestialZ = orbitRadius * Math.cos(angleRad) // Depth (+ = towards viewer, - = away)
 
-  const celestialX = earthCenterX + currentRadius * Math.cos((currentAngle * Math.PI) / 180)
-  const celestialY = earthCenterY + currentRadius * Math.sin((currentAngle * Math.PI) / 180)
+  // Add vertical movement based on the orbit angle for diagonal effect
+  // This creates a tilted orbital plane
+  const celestialY = earthCenterY - (orbitRadius * 0.4) * Math.sin(angleRad) * Math.sin(tiltRad)
+
+  // Perspective scaling: objects farther away (negative Z) appear smaller
+  // More subtle scaling for smoother effect
+  const perspectiveScale = 1 + (celestialZ / 600) // Scale between ~0.73 and 1.27
+
+  // Check if celestial body is behind Earth (for rendering order)
+  const isBehindEarth = celestialZ < 0
 
   // Color transition from sun (yellow) to moon (gray)
   const sunColor = { r: 251, g: 191, b: 36 } // #fbbf24
@@ -68,11 +141,28 @@ export default function EarthAnimation() {
   // Size changes: sun is bigger, moon is smaller
   const sunSize = { outer: 80, middle: 60, inner: 45 }
   const moonSize = { outer: 50, middle: 40, inner: 35 }
-  const currentSize = {
+  const baseSize = {
     outer: sunSize.outer - (sunSize.outer - moonSize.outer) * animationProgress,
     middle: sunSize.middle - (sunSize.middle - moonSize.middle) * animationProgress,
     inner: sunSize.inner - (sunSize.inner - moonSize.inner) * animationProgress
   }
+
+  // Apply perspective scaling to size
+  const currentSize = {
+    outer: baseSize.outer * perspectiveScale,
+    middle: baseSize.middle * perspectiveScale,
+    inner: baseSize.inner * perspectiveScale
+  }
+
+  // Opacity based on depth (slightly fade when far away)
+  // Adjusted for new perspective scale range
+  const depthOpacity = 0.75 + (perspectiveScale - 0.73) / (1.27 - 0.73) * 0.25
+
+  // Parallax offsets (different layers move at different speeds)
+  // Reduced intensity and using smoothScrollProgress for silky movement
+  const parallaxCelestial = (smoothScrollProgress - 0.5) * -20 // Slowest (background)
+  const parallaxEarth = (smoothScrollProgress - 0.5) * -35 // Medium speed
+  const parallaxFlag = (smoothScrollProgress - 0.5) * -50 // Fastest (foreground)
 
   return (
     <>
@@ -82,27 +172,35 @@ export default function EarthAnimation() {
             transform: translateY(0px) translateZ(0);
           }
           50% {
-            transform: translateY(-15px) translateZ(0);
+            transform: translateY(-12px) translateZ(0);
           }
         }
         @keyframes pulse {
-          0%, 100% { opacity: 0.6; }
+          0%, 100% { opacity: 0.7; }
           50% { opacity: 1; }
+        }
+
+        /* Smooth all transformations */
+        svg * {
+          transition: opacity 0.3s ease-out;
         }
       `}</style>
 
-      <div style={{
-        position: 'relative',
-        width: '100%',
-        maxWidth: '500px',
-        height: 'auto',
-        aspectRatio: '1/1',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        willChange: 'transform',
-        margin: '0 auto'
-      }}>
+      <div
+        ref={containerRef}
+        style={{
+          position: 'relative',
+          width: '100%',
+          maxWidth: '500px',
+          height: 'auto',
+          aspectRatio: '1/1',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          willChange: 'transform',
+          margin: '0 auto'
+        }}
+      >
         <svg width="100%" height="100%" viewBox="0 0 500 500" style={{
           filter: 'drop-shadow(0 20px 60px rgba(16, 121, 255, 0.3))',
           maxWidth: '100%',
@@ -121,20 +219,31 @@ export default function EarthAnimation() {
             </radialGradient>
           </defs>
 
-          {/* Celestial body behind earth (when progress < 0.5) */}
-          {animationProgress < 0.5 && (
-            <>
-              <circle cx={celestialX} cy={celestialY} r={currentSize.outer} fill="url(#celestialGradient)" opacity="0.4" style={{ animation: 'pulse 4s ease-in-out infinite' }}/>
+          {/* Celestial body BEHIND earth - only render when behind */}
+          {isBehindEarth && (
+            <g transform={`translate(0, ${parallaxCelestial})`} opacity={depthOpacity}>
+              <circle cx={celestialX} cy={celestialY} r={currentSize.outer} fill="url(#celestialGradient)" opacity="0.4" style={{ animation: 'pulse 5s ease-in-out infinite' }}/>
               <circle cx={celestialX} cy={celestialY} r={currentSize.middle} fill="url(#celestialGradient)" opacity="0.6"/>
               <circle cx={celestialX} cy={celestialY} r={currentSize.inner} fill={currentColor} opacity="0.9"/>
-            </>
+
+              {/* Moon craters (visible when animation progress > 0.6) */}
+              {animationProgress > 0.6 && (
+                <>
+                  <circle cx={celestialX - 8 * perspectiveScale} cy={celestialY - 5 * perspectiveScale} r={6 * perspectiveScale} fill={isDarkMode ? '#94a3b8' : '#cbd5e1'} opacity={0.3 * animationProgress}/>
+                  <circle cx={celestialX + 10 * perspectiveScale} cy={celestialY + 8 * perspectiveScale} r={4 * perspectiveScale} fill={isDarkMode ? '#94a3b8' : '#cbd5e1'} opacity={0.3 * animationProgress}/>
+                  <circle cx={celestialX + 5 * perspectiveScale} cy={celestialY - 10 * perspectiveScale} r={3 * perspectiveScale} fill={isDarkMode ? '#94a3b8' : '#cbd5e1'} opacity={0.3 * animationProgress}/>
+                  <circle cx={celestialX - 12 * perspectiveScale} cy={celestialY + 12 * perspectiveScale} r={5 * perspectiveScale} fill={isDarkMode ? '#94a3b8' : '#cbd5e1'} opacity={0.3 * animationProgress}/>
+                </>
+              )}
+            </g>
           )}
 
-          {/* Earth Circle - large and prominent */}
-          <circle cx="250" cy="250" r="180" fill={isDarkMode ? '#1e40af' : '#3b82f6'} opacity="0.15"/>
-          <circle cx="250" cy="250" r="170" fill="url(#earthGradient)"/>
+          {/* Earth Circle - large and prominent - MIDDLE LAYER */}
+          <g transform={`translate(0, ${parallaxEarth})`}>
+            <circle cx="250" cy="250" r="180" fill={isDarkMode ? '#1e40af' : '#3b82f6'} opacity="0.15"/>
+            <circle cx="250" cy="250" r="170" fill="url(#earthGradient)"/>
 
-          {/* Indonesia Archipelago - puffy ellipse style, accurate locations */}
+            {/* Indonesia Archipelago - puffy ellipse style, accurate locations */}
 
           {/* Sumatra (western island) - long diagonal island */}
           <ellipse cx="188" cy="240" rx="18" ry="45" fill={isDarkMode ? '#15803d' : '#22c55e'} opacity="0.85" transform="rotate(-20 188 240)"/>
@@ -180,31 +289,32 @@ export default function EarthAnimation() {
           <path d="M 150 300 Q 170 310, 190 315" stroke={isDarkMode ? '#475569' : '#cbd5e1'} strokeWidth="3" fill="none" opacity="0.4"/>
           <path d="M 350 280 Q 360 290, 370 285" stroke={isDarkMode ? '#475569' : '#cbd5e1'} strokeWidth="3" fill="none" opacity="0.4"/>
 
-          {/* Orbit lines - more prominent */}
-          <ellipse cx="250" cy="250" rx="190" ry="60" fill="none" stroke={isDarkMode ? '#475569' : '#cbd5e1'} strokeWidth="2" opacity="0.4" transform="rotate(20 250 250)" strokeDasharray="5,5"/>
-          <ellipse cx="250" cy="250" rx="190" ry="60" fill="none" stroke={isDarkMode ? '#475569' : '#cbd5e1'} strokeWidth="2" opacity="0.4" transform="rotate(-20 250 250)" strokeDasharray="5,5"/>
+            {/* Orbit lines - more prominent */}
+            <ellipse cx="250" cy="250" rx="190" ry="60" fill="none" stroke={isDarkMode ? '#475569' : '#cbd5e1'} strokeWidth="2" opacity="0.4" transform="rotate(20 250 250)" strokeDasharray="5,5"/>
+            <ellipse cx="250" cy="250" rx="190" ry="60" fill="none" stroke={isDarkMode ? '#475569' : '#cbd5e1'} strokeWidth="2" opacity="0.4" transform="rotate(-20 250 250)" strokeDasharray="5,5"/>
+          </g>
 
-          {/* Celestial body in front of earth (when progress >= 0.5) */}
-          {animationProgress >= 0.5 && (
-            <>
-              <circle cx={celestialX} cy={celestialY} r={currentSize.outer} fill="url(#celestialGradient)" opacity="0.4" style={{ animation: 'pulse 4s ease-in-out infinite' }}/>
+          {/* Celestial body IN FRONT of earth - only render when in front */}
+          {!isBehindEarth && (
+            <g transform={`translate(0, ${parallaxCelestial})`} opacity={depthOpacity}>
+              <circle cx={celestialX} cy={celestialY} r={currentSize.outer} fill="url(#celestialGradient)" opacity="0.4" style={{ animation: 'pulse 5s ease-in-out infinite' }}/>
               <circle cx={celestialX} cy={celestialY} r={currentSize.middle} fill="url(#celestialGradient)" opacity="0.6"/>
               <circle cx={celestialX} cy={celestialY} r={currentSize.inner} fill={currentColor} opacity="0.9"/>
 
               {/* Moon craters (visible when animation progress > 0.6) */}
               {animationProgress > 0.6 && (
                 <>
-                  <circle cx={celestialX - 8} cy={celestialY - 5} r="6" fill={isDarkMode ? '#94a3b8' : '#cbd5e1'} opacity={0.3 * animationProgress}/>
-                  <circle cx={celestialX + 10} cy={celestialY + 8} r="4" fill={isDarkMode ? '#94a3b8' : '#cbd5e1'} opacity={0.3 * animationProgress}/>
-                  <circle cx={celestialX + 5} cy={celestialY - 10} r="3" fill={isDarkMode ? '#94a3b8' : '#cbd5e1'} opacity={0.3 * animationProgress}/>
-                  <circle cx={celestialX - 12} cy={celestialY + 12} r="5" fill={isDarkMode ? '#94a3b8' : '#cbd5e1'} opacity={0.3 * animationProgress}/>
+                  <circle cx={celestialX - 8 * perspectiveScale} cy={celestialY - 5 * perspectiveScale} r={6 * perspectiveScale} fill={isDarkMode ? '#94a3b8' : '#cbd5e1'} opacity={0.3 * animationProgress}/>
+                  <circle cx={celestialX + 10 * perspectiveScale} cy={celestialY + 8 * perspectiveScale} r={4 * perspectiveScale} fill={isDarkMode ? '#94a3b8' : '#cbd5e1'} opacity={0.3 * animationProgress}/>
+                  <circle cx={celestialX + 5 * perspectiveScale} cy={celestialY - 10 * perspectiveScale} r={3 * perspectiveScale} fill={isDarkMode ? '#94a3b8' : '#cbd5e1'} opacity={0.3 * animationProgress}/>
+                  <circle cx={celestialX - 12 * perspectiveScale} cy={celestialY + 12 * perspectiveScale} r={5 * perspectiveScale} fill={isDarkMode ? '#94a3b8' : '#cbd5e1'} opacity={0.3 * animationProgress}/>
                 </>
               )}
-            </>
+            </g>
           )}
         </svg>
 
-        {/* Indonesian Flag Pin on Jakarta (on Java island) - larger */}
+        {/* Indonesian Flag Pin on Jakarta (on Java island) - larger - FOREGROUND LAYER */}
         <div style={{
           position: 'absolute',
           top: '40.5%',
@@ -212,11 +322,12 @@ export default function EarthAnimation() {
           marginTop: '0px',
           marginLeft: '0px',
           zIndex: 10,
-          willChange: 'transform'
+          willChange: 'transform',
+          transform: `translateY(${parallaxFlag}px)`
         }}>
           <div style={{
             transform: 'translate(-50%, -50%)',
-            animation: 'float 4s ease-in-out infinite'
+            animation: 'float 5s ease-in-out infinite'
           }}>
             {/* Flag Pole */}
             <div style={{

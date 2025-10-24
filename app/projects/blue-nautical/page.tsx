@@ -44,56 +44,79 @@ export default function BlueNauticalPage() {
           background: isDarkMode
             ? 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)'
             : 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
-          padding: '80px 24px'
+          padding: '40px 24px 100px',
+          minHeight: '500px'
         }}>
           <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-            <Button
-              icon={<ArrowLeftOutlined />}
-              onClick={() => router.push('/')}
-              style={{
-                marginBottom: '32px',
-                borderRadius: '8px',
-                border: 'none',
-                background: isDarkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)',
-                color: isDarkMode ? '#fff' : '#000'
-              }}
-            >
-              Back to Home
-            </Button>
-
-            <div style={{
-              display: 'inline-block',
-              padding: '8px 20px',
-              borderRadius: '20px',
-              background: 'linear-gradient(135deg, #f59e0b, #d97706)',
-              color: 'white',
-              fontSize: '14px',
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px',
-              marginBottom: '24px'
-            }}>
-              In Production
+            {/* Back Button - Separated */}
+            <div style={{ marginBottom: '64px' }}>
+              <Button
+                icon={<ArrowLeftOutlined />}
+                onClick={() => router.push('/')}
+                size="large"
+                style={{
+                  height: '44px',
+                  paddingLeft: '24px',
+                  paddingRight: '24px',
+                  borderRadius: '10px',
+                  border: isDarkMode ? '1px solid rgba(255,255,255,0.2)' : '1px solid rgba(0,0,0,0.1)',
+                  background: isDarkMode ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.03)',
+                  color: isDarkMode ? '#e2e8f0' : '#1e293b',
+                  fontWeight: 500,
+                  transition: 'all 0.3s ease'
+                }}
+              >
+                Back to Home
+              </Button>
             </div>
 
+            {/* Badge */}
+            <div style={{ marginBottom: '24px' }}>
+              <div style={{
+                display: 'inline-block',
+                padding: '10px 24px',
+                borderRadius: '24px',
+                background: 'linear-gradient(135deg, #f59e0b, #d97706)',
+                color: 'white',
+                fontSize: '13px',
+                fontWeight: 700,
+                textTransform: 'uppercase',
+                letterSpacing: '1px',
+                boxShadow: '0 4px 16px rgba(245, 158, 11, 0.3)'
+              }}>
+                IN PRODUCTION
+              </div>
+            </div>
+
+            {/* Title */}
             <Title level={1} style={{
-              fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+              fontSize: 'clamp(2.25rem, 5vw, 4rem)',
               fontWeight: 900,
-              marginBottom: '24px',
-              background: 'var(--industrix-gradient-red)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
+              marginBottom: '32px',
+              lineHeight: 1.15,
+              color: isDarkMode ? '#ffffff' : '#0f172a'
             }}>
-              Blue Nautical Cold Storage Logistics App
+              <span style={{
+                background: 'var(--industrix-gradient-red)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                display: 'inline-block'
+              }}>
+                Blue Nautical
+              </span>
+              <br />
+              Cold Storage Logistics App
             </Title>
 
+            {/* Description */}
             <Paragraph style={{
-              fontSize: 'clamp(1.1rem, 2vw, 1.3rem)',
-              lineHeight: 1.6,
-              color: isDarkMode ? '#94a3b8' : '#64748b',
-              maxWidth: '900px',
-              marginBottom: '32px'
+              fontSize: 'clamp(1.125rem, 2vw, 1.375rem)',
+              lineHeight: 1.8,
+              color: isDarkMode ? '#cbd5e1' : '#475569',
+              maxWidth: '850px',
+              marginBottom: '48px',
+              fontWeight: 400
             }}>
               Mobile-first web application for tracking seafood logistics operations between
               Jakarta and Bali warehouses with anti-fraud GPS security features and photo
@@ -101,31 +124,32 @@ export default function BlueNauticalPage() {
             </Paragraph>
 
             {/* Technologies */}
-            <div style={{ marginBottom: '24px' }}>
+            <div>
               <Title level={5} style={{
-                fontSize: '14px',
-                fontWeight: 600,
+                fontSize: '12px',
+                fontWeight: 700,
                 textTransform: 'uppercase',
-                letterSpacing: '0.5px',
-                marginBottom: '16px',
-                color: isDarkMode ? '#e2e8f0' : '#1e293b'
+                letterSpacing: '1.5px',
+                marginBottom: '20px',
+                color: isDarkMode ? '#94a3b8' : '#64748b',
+                opacity: 0.8
               }}>
                 Technology Stack
               </Title>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
                 {technologies.map((tech, index) => (
                   <Tag
                     key={index}
                     style={{
-                      padding: '8px 16px',
+                      padding: '10px 20px',
                       fontSize: '14px',
-                      borderRadius: '8px',
+                      borderRadius: '10px',
                       background: isDarkMode
-                        ? 'rgba(246, 42, 58, 0.2)'
-                        : 'rgba(246, 42, 58, 0.1)',
-                      color: '#F62A3A',
-                      border: '1px solid rgba(246, 42, 58, 0.3)',
-                      fontWeight: 500
+                        ? 'rgba(246, 42, 58, 0.15)'
+                        : 'rgba(246, 42, 58, 0.08)',
+                      color: isDarkMode ? '#fca5a5' : '#dc2626',
+                      border: `1px solid ${isDarkMode ? 'rgba(246, 42, 58, 0.3)' : 'rgba(246, 42, 58, 0.2)'}`,
+                      fontWeight: 600
                     }}
                   >
                     {tech}
