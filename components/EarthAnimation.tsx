@@ -5,16 +5,13 @@ import { useTheme } from '../app/theme/ThemeProvider'
 
 export default function EarthAnimation() {
   const { isDarkMode } = useTheme()
-  const [sunAngle, setSunAngle] = useState(-45) // Start at top right (approximately -45 degrees)
+  const [animationProgress, setAnimationProgress] = useState(isDarkMode ? 1 : 0)
 
-  // Animate sun orbit when theme changes
+  // Animate sun/moon transformation when theme changes
   useEffect(() => {
-    const duration = 1500 // 1.5 seconds for full orbit
-    let startAngle = 0
-    setSunAngle((prev) => {
-      startAngle = prev
-      return prev
-    })
+    const duration = 1200 // 1.2 seconds for the transition
+    const targetProgress = isDarkMode ? 1 : 0
+    const startProgress = animationProgress
     const startTime = Date.now()
 
     const animate = () => {
@@ -26,28 +23,56 @@ export default function EarthAnimation() {
         t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
 
       const easedProgress = easeInOutCubic(progress)
-      const newAngle = startAngle + (360 * easedProgress)
+      const newProgress = startProgress + (targetProgress - startProgress) * easedProgress
 
-      setSunAngle(newAngle)
+      setAnimationProgress(newProgress)
 
       if (progress < 1) {
         requestAnimationFrame(animate)
-      } else {
-        // Normalize angle to 0-360 range
-        setSunAngle(newAngle % 360)
       }
     }
 
     requestAnimationFrame(animate)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isDarkMode])
 
-  // Calculate sun position based on angle
+  // Calculate celestial body position based on animation progress
   const earthCenterX = 250
   const earthCenterY = 250
-  const orbitRadius = 184 // Distance from earth center
 
-  const sunX = earthCenterX + orbitRadius * Math.cos((sunAngle * Math.PI) / 180)
-  const sunY = earthCenterY + orbitRadius * Math.sin((sunAngle * Math.PI) / 180)
+  // Light mode: sun at top right (angle -45°, behind earth, z-order wise will be before earth elements)
+  // Dark mode: moon at center front (angle 0°, in front of earth)
+  const startAngle = -45 // Top right for sun
+  const endAngle = 180 // Front center for moon (180° puts it at the left, which we'll use to orbit around)
+
+  // Orbit: sun goes from top-right, around the back, to the front
+  const currentAngle = startAngle + (endAngle + 180) * animationProgress // Add 180 to complete the orbit to front
+
+  // Radius changes: starts further out, comes closer to front
+  const startRadius = 184
+  const endRadius = 80 // Closer to earth when it's the moon in front
+  const currentRadius = startRadius - (startRadius - endRadius) * animationProgress
+
+  const celestialX = earthCenterX + currentRadius * Math.cos((currentAngle * Math.PI) / 180)
+  const celestialY = earthCenterY + currentRadius * Math.sin((currentAngle * Math.PI) / 180)
+
+  // Color transition from sun (yellow) to moon (gray)
+  const sunColor = { r: 251, g: 191, b: 36 } // #fbbf24
+  const moonColor = { r: 226, g: 232, b: 240 } // #e2e8f0
+
+  const currentR = Math.round(sunColor.r + (moonColor.r - sunColor.r) * animationProgress)
+  const currentG = Math.round(sunColor.g + (moonColor.g - sunColor.g) * animationProgress)
+  const currentB = Math.round(sunColor.b + (moonColor.b - sunColor.b) * animationProgress)
+  const currentColor = `rgb(${currentR}, ${currentG}, ${currentB})`
+
+  // Size changes: sun is bigger, moon is smaller
+  const sunSize = { outer: 80, middle: 60, inner: 45 }
+  const moonSize = { outer: 50, middle: 40, inner: 35 }
+  const currentSize = {
+    outer: sunSize.outer - (sunSize.outer - moonSize.outer) * animationProgress,
+    middle: sunSize.middle - (sunSize.middle - moonSize.middle) * animationProgress,
+    inner: sunSize.inner - (sunSize.inner - moonSize.inner) * animationProgress
+  }
 
   return (
     <>
@@ -83,12 +108,11 @@ export default function EarthAnimation() {
           maxWidth: '100%',
           height: 'auto'
         }}>
-          {/* Sun behind earth on the right */}
           <defs>
-            <radialGradient id="sunGradient">
-              <stop offset="0%" stopColor={isDarkMode ? '#fbbf24' : '#fbbf24'} stopOpacity="1"/>
-              <stop offset="50%" stopColor={isDarkMode ? '#f59e0b' : '#f59e0b'} stopOpacity="0.9"/>
-              <stop offset="100%" stopColor={isDarkMode ? '#d97706' : '#d97706'} stopOpacity="0.5"/>
+            <radialGradient id="celestialGradient">
+              <stop offset="0%" stopColor={currentColor} stopOpacity="1"/>
+              <stop offset="70%" stopColor={currentColor} stopOpacity="0.8"/>
+              <stop offset="100%" stopColor={currentColor} stopOpacity="0.3"/>
             </radialGradient>
             <radialGradient id="earthGradient">
               <stop offset="0%" stopColor={isDarkMode ? '#0ea5e9' : '#60a5fa'} stopOpacity="0.8"/>
@@ -97,10 +121,14 @@ export default function EarthAnimation() {
             </radialGradient>
           </defs>
 
-          {/* Sun with enhanced glow - orbits around earth on theme change */}
-          <circle cx={sunX} cy={sunY} r="80" fill="url(#sunGradient)" opacity="0.4" style={{ animation: 'pulse 4s ease-in-out infinite' }}/>
-          <circle cx={sunX} cy={sunY} r="60" fill="url(#sunGradient)" opacity="0.6"/>
-          <circle cx={sunX} cy={sunY} r="45" fill={isDarkMode ? '#fbbf24' : '#fde047'} opacity="0.9"/>
+          {/* Celestial body behind earth (when progress < 0.5) */}
+          {animationProgress < 0.5 && (
+            <>
+              <circle cx={celestialX} cy={celestialY} r={currentSize.outer} fill="url(#celestialGradient)" opacity="0.4" style={{ animation: 'pulse 4s ease-in-out infinite' }}/>
+              <circle cx={celestialX} cy={celestialY} r={currentSize.middle} fill="url(#celestialGradient)" opacity="0.6"/>
+              <circle cx={celestialX} cy={celestialY} r={currentSize.inner} fill={currentColor} opacity="0.9"/>
+            </>
+          )}
 
           {/* Earth Circle - large and prominent */}
           <circle cx="250" cy="250" r="180" fill={isDarkMode ? '#1e40af' : '#3b82f6'} opacity="0.15"/>
@@ -155,6 +183,25 @@ export default function EarthAnimation() {
           {/* Orbit lines - more prominent */}
           <ellipse cx="250" cy="250" rx="190" ry="60" fill="none" stroke={isDarkMode ? '#475569' : '#cbd5e1'} strokeWidth="2" opacity="0.4" transform="rotate(20 250 250)" strokeDasharray="5,5"/>
           <ellipse cx="250" cy="250" rx="190" ry="60" fill="none" stroke={isDarkMode ? '#475569' : '#cbd5e1'} strokeWidth="2" opacity="0.4" transform="rotate(-20 250 250)" strokeDasharray="5,5"/>
+
+          {/* Celestial body in front of earth (when progress >= 0.5) */}
+          {animationProgress >= 0.5 && (
+            <>
+              <circle cx={celestialX} cy={celestialY} r={currentSize.outer} fill="url(#celestialGradient)" opacity="0.4" style={{ animation: 'pulse 4s ease-in-out infinite' }}/>
+              <circle cx={celestialX} cy={celestialY} r={currentSize.middle} fill="url(#celestialGradient)" opacity="0.6"/>
+              <circle cx={celestialX} cy={celestialY} r={currentSize.inner} fill={currentColor} opacity="0.9"/>
+
+              {/* Moon craters (visible when animation progress > 0.6) */}
+              {animationProgress > 0.6 && (
+                <>
+                  <circle cx={celestialX - 8} cy={celestialY - 5} r="6" fill={isDarkMode ? '#94a3b8' : '#cbd5e1'} opacity={0.3 * animationProgress}/>
+                  <circle cx={celestialX + 10} cy={celestialY + 8} r="4" fill={isDarkMode ? '#94a3b8' : '#cbd5e1'} opacity={0.3 * animationProgress}/>
+                  <circle cx={celestialX + 5} cy={celestialY - 10} r="3" fill={isDarkMode ? '#94a3b8' : '#cbd5e1'} opacity={0.3 * animationProgress}/>
+                  <circle cx={celestialX - 12} cy={celestialY + 12} r="5" fill={isDarkMode ? '#94a3b8' : '#cbd5e1'} opacity={0.3 * animationProgress}/>
+                </>
+              )}
+            </>
+          )}
         </svg>
 
         {/* Indonesian Flag Pin on Jakarta (on Java island) - larger */}
