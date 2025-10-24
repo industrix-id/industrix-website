@@ -1,10 +1,53 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useTheme } from '../app/theme/ThemeProvider'
 
 export default function EarthAnimation() {
   const { isDarkMode } = useTheme()
+  const [sunAngle, setSunAngle] = useState(-45) // Start at top right (approximately -45 degrees)
+
+  // Animate sun orbit when theme changes
+  useEffect(() => {
+    const duration = 1500 // 1.5 seconds for full orbit
+    let startAngle = 0
+    setSunAngle((prev) => {
+      startAngle = prev
+      return prev
+    })
+    const startTime = Date.now()
+
+    const animate = () => {
+      const elapsed = Date.now() - startTime
+      const progress = Math.min(elapsed / duration, 1)
+
+      // Ease in-out function for smooth animation
+      const easeInOutCubic = (t: number) =>
+        t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+
+      const easedProgress = easeInOutCubic(progress)
+      const newAngle = startAngle + (360 * easedProgress)
+
+      setSunAngle(newAngle)
+
+      if (progress < 1) {
+        requestAnimationFrame(animate)
+      } else {
+        // Normalize angle to 0-360 range
+        setSunAngle(newAngle % 360)
+      }
+    }
+
+    requestAnimationFrame(animate)
+  }, [isDarkMode])
+
+  // Calculate sun position based on angle
+  const earthCenterX = 250
+  const earthCenterY = 250
+  const orbitRadius = 184 // Distance from earth center
+
+  const sunX = earthCenterX + orbitRadius * Math.cos((sunAngle * Math.PI) / 180)
+  const sunY = earthCenterY + orbitRadius * Math.sin((sunAngle * Math.PI) / 180)
 
   return (
     <>
@@ -54,10 +97,10 @@ export default function EarthAnimation() {
             </radialGradient>
           </defs>
 
-          {/* Sun with enhanced glow - positioned top right */}
-          <circle cx="380" cy="120" r="80" fill="url(#sunGradient)" opacity="0.4" style={{ animation: 'pulse 4s ease-in-out infinite' }}/>
-          <circle cx="380" cy="120" r="60" fill="url(#sunGradient)" opacity="0.6"/>
-          <circle cx="380" cy="120" r="45" fill={isDarkMode ? '#fbbf24' : '#fde047'} opacity="0.9"/>
+          {/* Sun with enhanced glow - orbits around earth on theme change */}
+          <circle cx={sunX} cy={sunY} r="80" fill="url(#sunGradient)" opacity="0.4" style={{ animation: 'pulse 4s ease-in-out infinite' }}/>
+          <circle cx={sunX} cy={sunY} r="60" fill="url(#sunGradient)" opacity="0.6"/>
+          <circle cx={sunX} cy={sunY} r="45" fill={isDarkMode ? '#fbbf24' : '#fde047'} opacity="0.9"/>
 
           {/* Earth Circle - large and prominent */}
           <circle cx="250" cy="250" r="180" fill={isDarkMode ? '#1e40af' : '#3b82f6'} opacity="0.15"/>
