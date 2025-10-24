@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Card, Typography, Button, Space } from 'antd'
-import { RocketOutlined, SettingOutlined, EyeOutlined, ArrowRightOutlined, ClockCircleOutlined, GlobalOutlined } from '@ant-design/icons'
+import { RocketOutlined, SettingOutlined, EyeOutlined, ArrowRightOutlined, GlobalOutlined } from '@ant-design/icons'
 import { useRouter } from 'next/navigation'
 import { useTheme } from '../app/theme/ThemeProvider'
 

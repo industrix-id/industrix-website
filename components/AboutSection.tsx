@@ -1,11 +1,9 @@
 'use client'
 
 import React from 'react'
-import { Row, Col, Card, Typography, Progress, Space, Button, Tag } from 'antd'
+import { Row, Col, Card, Typography, Space, Button, Tag } from 'antd'
 import {
-  TeamOutlined,
   GlobalOutlined,
-  TrophyOutlined,
   RocketOutlined,
   CheckCircleOutlined,
   StarOutlined,
