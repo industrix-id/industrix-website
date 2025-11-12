@@ -20,45 +20,45 @@ const { Title, Paragraph } = Typography
 const capabilities = [
   {
     icon: <ApiOutlined />,
-    title: 'IoT & Hardware Integration',
-    description: 'ROS2-based industrial IoT devices with real-time monitoring and control systems'
+    title: 'IoT Fuel Sensors',
+    description: 'Industrial-grade sensors installed on excavators, trucks, and generators—tracking every liter in real-time'
   },
   {
     icon: <DatabaseOutlined />,
-    title: 'Enterprise Resource Planning',
-    description: 'Scalable ERP solutions for multi-site operations and supply chain management'
+    title: 'Real-time Monitoring',
+    description: 'Cloud-based dashboards showing live fuel levels, consumption rates, and equipment status across all sites'
   },
   {
     icon: <SafetyOutlined />,
-    title: 'Environmental Compliance',
-    description: 'ESG reporting and environmental monitoring for regulatory adherence'
+    title: 'Theft & Anomaly Detection',
+    description: 'Automated alerts for suspicious fuel drops, unauthorized usage, and operational anomalies'
   },
   {
     icon: <ThunderboltOutlined />,
-    title: 'Predictive Analytics',
-    description: 'Data-driven insights for equipment tracking, maintenance, and resource optimization'
+    title: 'Usage Analytics & Reports',
+    description: 'Historical trends, equipment efficiency metrics, and detailed reports for operations and management'
   }
 ]
 
 const values = [
   {
-    title: 'Full-Stack Integration',
-    description: 'End-to-end solutions combining hardware sensors, edge computing, cloud infrastructure, and intuitive dashboards—all built in-house',
+    title: 'Proven in Production',
+    description: 'Currently deployed in palm oil operations, tracking diesel across excavators, trucks, and generators. Same system works for construction, mining, forestry, and agriculture.',
     icon: <RocketOutlined />
   },
   {
-    title: 'Indonesian Industrial Focus',
-    description: 'Deep understanding of local regulations, operational challenges in mining, logistics, manufacturing, and heavy industries across the archipelago',
+    title: 'Works Anywhere',
+    description: 'Designed for challenging environments—from remote Indonesian plantations to US construction yards. Reliable connectivity in areas with limited infrastructure.',
     icon: <GlobalOutlined />
   },
   {
-    title: 'Technical Excellence',
-    description: 'Modern engineering practices and proven architectures applied to real-world Indonesian industrial challenges',
+    title: 'Complete Hardware + Software',
+    description: 'We handle everything: IoT sensor installation, cloud infrastructure, dashboard development, and ongoing support—all from one team.',
     icon: <StarOutlined />
   },
   {
-    title: 'Measurable Impact',
-    description: 'We deliver quantifiable results: 20-40% efficiency gains, cost reductions, and operational improvements backed by real-time data',
+    title: 'Measurable ROI',
+    description: 'Stop diesel theft, catch anomalies in real-time, reduce fuel waste, and get detailed usage analytics that actually save money.',
     icon: <CheckCircleOutlined />
   }
 ]
@@ -66,35 +66,48 @@ const values = [
 export default function AboutSection() {
   const { isDarkMode } = useTheme()
   return (
-    <section id="about" className="section-padding">
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 clamp(16px, 4vw, 24px)' }}>
+    <section id="about" className="section-padding" style={{ overflow: 'hidden', overflowX: 'hidden' }}>
+      <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto',
+        padding: '0 clamp(20px, 4vw, 24px)',
+        overflow: 'hidden',
+        overflowX: 'hidden'
+      }}>
         {/* Main About Content */}
-        <Row gutter={[48, 48]} align="middle" style={{ marginBottom: '80px' }}>
+        <Row gutter={[{ xs: 24, sm: 32, md: 48 }, { xs: 32, sm: 40, md: 48 }]} align="middle" style={{
+          marginBottom: 'clamp(48px, 8vw, 80px)',
+          overflow: 'hidden',
+          overflowX: 'hidden'
+        }}>
           <Col xs={24} lg={12}>
             <div style={{ marginBottom: '24px' }}>
               <Tag color="blue" style={{ marginBottom: '16px', fontSize: '14px', padding: '6px 16px' }}>
-                🇮🇩 Built for Indonesian Industry
+                🌏 Global Heavy Equipment Operations
               </Tag>
             </div>
             <Title level={2} style={{ marginBottom: '24px', fontSize: 'clamp(2rem, 4vw, 2.5rem)' }}>
-              Bringing Silicon Valley <span className="text-gradient">Engineering Standards</span> to Indonesian Heavy Industries
+              Diesel Operations <span className="text-gradient">Digitalization</span> for Heavy Industries
             </Title>
-            <Paragraph style={{ fontSize: '18px', lineHeight: 1.7, marginBottom: '24px', color: isDarkMode ? '#cbd5e1' : '#475569' }}>
-              Industrix modernizes industrial operations through integrated <strong>software + hardware solutions</strong> designed
-              specifically for the unique challenges of Indonesian heavy industries, from remote mining sites to multi-warehouse logistics operations.
+            <Paragraph style={{ fontSize: 'clamp(16px, 3vw, 18px)', lineHeight: 1.7, marginBottom: '24px', color: isDarkMode ? '#cbd5e1' : '#475569' }}>
+              We digitalize diesel footprints for heavy equipment operations—<strong>proven in Indonesian palm oil plantations</strong>, now expanding to construction sites in the USA, and heavy industries globally. Our platform combines IoT sensors, real-time monitoring, and theft prevention to give you complete operational visibility.
             </Paragraph>
-            <Paragraph style={{ fontSize: '16px', lineHeight: 1.6, marginBottom: '32px', color: isDarkMode ? '#94a3b8' : '#64748b' }}>
-              Our platform spans the entire operational stack: <strong>IoT sensors and edge devices</strong>, real-time monitoring dashboards,
-              enterprise resource planning (ERP), environmental compliance reporting, and predictive maintenance, all delivered with a
-              modular, scalable architecture that grows with your business.
+            <Paragraph style={{ fontSize: 'clamp(15px, 2.5vw, 16px)', lineHeight: 1.6, marginBottom: '32px', color: isDarkMode ? '#94a3b8' : '#64748b' }}>
+              From <strong>fuel monitoring sensors</strong> on excavators and trucks to cloud-based dashboards showing every liter consumed, we deliver end-to-end solutions that stop theft, reduce waste, and optimize your diesel operations—whether you&apos;re running remote plantation sites or busy construction yards.
             </Paragraph>
-            <Space size="large" wrap>
+            <Space size="middle" wrap>
               <Button
                 type="primary"
                 size="large"
                 className="btn-gradient"
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-                style={{ height: '48px', paddingLeft: '32px', paddingRight: '32px' }}
+                style={{
+                  height: '48px',
+                  paddingLeft: 'clamp(20px, 4vw, 32px)',
+                  paddingRight: 'clamp(20px, 4vw, 32px)',
+                  fontSize: 'clamp(14px, 2.5vw, 16px)',
+                  whiteSpace: 'nowrap'
+                }}
               >
                 View Our Work
               </Button>
@@ -102,19 +115,32 @@ export default function AboutSection() {
                 size="large"
                 className="btn-outline"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                style={{ height: '48px', paddingLeft: '32px', paddingRight: '32px' }}
+                style={{
+                  height: '48px',
+                  paddingLeft: 'clamp(20px, 4vw, 32px)',
+                  paddingRight: 'clamp(20px, 4vw, 32px)',
+                  fontSize: 'clamp(14px, 2.5vw, 16px)',
+                  whiteSpace: 'nowrap'
+                }}
               >
                 Get Started
               </Button>
             </Space>
           </Col>
 
-          <Col xs={24} lg={12} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <Col xs={24} lg={12} style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            overflow: 'hidden'
+          }}>
             <div style={{
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              width: '100%'
+              width: '100%',
+              overflow: 'hidden',
+              maxWidth: '100%'
             }}>
               <EarthAnimation />
             </div>
@@ -125,21 +151,27 @@ export default function AboutSection() {
         <div style={{ marginBottom: '80px' }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
             <Title level={2} style={{ marginBottom: '16px' }}>
-              Platform <span className="text-gradient">Capabilities</span>
+              Our <span className="text-gradient">Solution</span>
             </Title>
             <Paragraph style={{
-              fontSize: '18px',
+              fontSize: 'clamp(16px, 3vw, 18px)',
               color: isDarkMode ? '#d1d5db' : '#6b7280',
               maxWidth: '700px',
               margin: '0 auto'
             }}>
-              Comprehensive digital infrastructure for industrial operations—from field sensors to C-suite dashboards
+              End-to-end diesel monitoring system—from IoT sensors on equipment to real-time cloud dashboards
             </Paragraph>
           </div>
 
-          <Row gutter={[24, 24]}>
+          <Row gutter={[{ xs: 16, sm: 20, md: 24 }, { xs: 16, sm: 20, md: 24 }]} style={{
+            overflow: 'hidden',
+            maxWidth: '100%'
+          }}>
             {capabilities.map((capability, index) => (
-              <Col xs={24} sm={12} key={index}>
+              <Col xs={24} sm={12} key={index} style={{
+                overflow: 'hidden',
+                maxWidth: '100%'
+              }}>
                 <Card
                   style={{
                     height: '100%',
@@ -149,27 +181,48 @@ export default function AboutSection() {
                       ? 'linear-gradient(135deg, rgba(16, 121, 255, 0.05), rgba(41, 197, 255, 0.02))'
                       : 'linear-gradient(135deg, rgba(16, 121, 255, 0.03), rgba(41, 197, 255, 0.01))',
                     borderLeft: `4px solid ${index % 2 === 0 ? '#1079FF' : '#29C5FF'}`,
-                    transition: 'all 0.3s ease'
+                    transition: 'all 0.3s ease',
+                    overflow: 'hidden',
+                    maxWidth: '100%'
                   }}
                   hoverable
                 >
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '16px',
+                    overflow: 'hidden',
+                    maxWidth: '100%'
+                  }}>
                     <div style={{
                       fontSize: '28px',
                       color: index % 2 === 0 ? '#1079FF' : '#29C5FF',
-                      marginTop: '4px'
+                      marginTop: '4px',
+                      flexShrink: 0
                     }}>
                       {capability.icon}
                     </div>
-                    <div style={{ flex: 1 }}>
-                      <Title level={5} style={{ marginBottom: '8px', fontSize: '16px' }}>
+                    <div style={{
+                      flex: 1,
+                      overflow: 'hidden',
+                      maxWidth: '100%',
+                      minWidth: 0
+                    }}>
+                      <Title level={5} style={{
+                        marginBottom: '8px',
+                        fontSize: '16px',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis'
+                      }}>
                         {capability.title}
                       </Title>
                       <Paragraph style={{
                         fontSize: '14px',
                         lineHeight: 1.6,
                         color: isDarkMode ? '#cbd5e1' : '#64748b',
-                        margin: 0
+                        margin: 0,
+                        overflow: 'hidden',
+                        wordWrap: 'break-word'
                       }}>
                         {capability.description}
                       </Paragraph>
@@ -255,35 +308,34 @@ export default function AboutSection() {
                 color: '#1079FF'
               }}
             >
-              Our Competitive Edge
+              Industries We Serve
             </Tag>
           </div>
           <Title level={2} style={{ marginBottom: '20px', fontSize: 'clamp(1.75rem, 4vw, 2.25rem)' }}>
-            Why Choose <span className="text-gradient">Industrix</span>?
+            One Platform, <span className="text-gradient">Multiple Industries</span>
           </Title>
           <Paragraph style={{
-            fontSize: '19px',
+            fontSize: 'clamp(16px, 3vw, 19px)',
             lineHeight: 1.6,
             color: isDarkMode ? '#cbd5e1' : '#475569',
             maxWidth: '800px',
             margin: '0 auto 16px'
           }}>
-            Most consultancies talk strategy. Most software shops don&apos;t understand hardware.
-            Most integrators lack modern engineering practices.
+            Our diesel monitoring system was built for palm oil contractors, but the same technology works for any heavy equipment operation.
           </Paragraph>
           <Paragraph style={{
-            fontSize: '20px',
+            fontSize: 'clamp(17px, 3.5vw, 20px)',
             lineHeight: 1.6,
             fontWeight: 600,
             color: isDarkMode ? '#e2e8f0' : '#1e293b',
             maxWidth: '800px',
             margin: '0 auto'
           }}>
-            We do <span className="text-gradient">all three</span> and we do them well.
+            If you run excavators, trucks, or generators—<span className="text-gradient">we can help</span>.
           </Paragraph>
         </div>
 
-        <Row gutter={[28, 28]} style={{ marginBottom: '64px' }}>
+        <Row gutter={[{ xs: 16, sm: 20, md: 28 }, { xs: 16, sm: 20, md: 28 }]} style={{ marginBottom: 'clamp(48px, 8vw, 64px)', overflow: 'hidden', maxWidth: '100%' }}>
           {values.map((value, index) => (
             <Col xs={24} md={12} key={index}>
               <Card
@@ -291,7 +343,7 @@ export default function AboutSection() {
                   height: '100%',
                   border: isDarkMode ? '1px solid rgba(16, 121, 255, 0.1)' : '1px solid rgba(16, 121, 255, 0.08)',
                   borderRadius: '20px',
-                  padding: '32px 28px',
+                  padding: 'clamp(24px, 4vw, 32px) clamp(20px, 4vw, 28px)',
                   background: isDarkMode
                     ? 'linear-gradient(135deg, rgba(15, 23, 42, 0.6) 0%, rgba(30, 41, 59, 0.4) 100%)'
                     : 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.8) 100%)',
@@ -379,6 +431,95 @@ export default function AboutSection() {
           ))}
         </Row>
 
+        {/* Future Vision Section */}
+        <div style={{ marginBottom: 'clamp(48px, 8vw, 64px)', textAlign: 'center' }}>
+          <div style={{ marginBottom: '32px' }}>
+            <Tag
+              color="blue"
+              style={{
+                fontSize: '13px',
+                padding: '4px 14px',
+                border: 'none',
+                background: isDarkMode ? 'rgba(16, 121, 255, 0.15)' : 'rgba(16, 121, 255, 0.1)',
+                color: '#1079FF',
+                marginBottom: '16px'
+              }}
+            >
+              Future Expansion
+            </Tag>
+          </div>
+          <Title level={2} style={{ marginBottom: '20px', fontSize: 'clamp(1.75rem, 4vw, 2.25rem)' }}>
+            Our <span className="text-gradient">Roadmap</span>
+          </Title>
+          <Paragraph style={{
+            fontSize: 'clamp(16px, 3vw, 18px)',
+            lineHeight: 1.7,
+            color: isDarkMode ? '#cbd5e1' : '#475569',
+            maxWidth: '800px',
+            margin: '0 auto 40px'
+          }}>
+            We&apos;re expanding beyond diesel tracking. Our platform will grow to include GPS fleet management,
+            inventory control, and predictive maintenance—serving construction, mining, and eventually defense sectors globally.
+          </Paragraph>
+
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: 'clamp(16px, 3vw, 24px)',
+            flexWrap: 'wrap',
+            maxWidth: '900px',
+            margin: '0 auto'
+          }}>
+            {[
+              { title: 'GPS Fleet Tracking', desc: 'Real-time location and route optimization', status: 'Coming Soon' },
+              { title: 'Inventory Management', desc: 'Supply chain visibility and control', status: 'In Development' },
+              { title: 'Defense Applications', desc: 'Specialized solutions for military operations', status: 'Future' }
+            ].map((item, idx) => (
+              <div
+                key={idx}
+                style={{
+                  flex: '1 1 250px',
+                  maxWidth: '280px',
+                  padding: '24px',
+                  borderRadius: '16px',
+                  border: isDarkMode ? '1px solid rgba(16, 121, 255, 0.2)' : '1px solid rgba(16, 121, 255, 0.15)',
+                  background: isDarkMode
+                    ? 'rgba(30, 41, 59, 0.4)'
+                    : 'rgba(255, 255, 255, 0.6)',
+                  textAlign: 'center',
+                  transition: 'all 0.3s ease'
+                }}
+              >
+                <div style={{
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.5px',
+                  color: '#1079FF',
+                  marginBottom: '12px'
+                }}>
+                  {item.status}
+                </div>
+                <Title level={5} style={{
+                  marginBottom: '8px',
+                  fontSize: '16px',
+                  color: isDarkMode ? '#f1f5f9' : '#0f172a'
+                }}>
+                  {item.title}
+                </Title>
+                <Paragraph style={{
+                  fontSize: '13px',
+                  lineHeight: 1.6,
+                  color: isDarkMode ? '#94a3b8' : '#64748b',
+                  margin: 0
+                }}>
+                  {item.desc}
+                </Paragraph>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Team Highlight */}
         <Card
           style={{
@@ -403,23 +544,22 @@ export default function AboutSection() {
           }} />
 
           <Title level={3} style={{ marginBottom: '20px', fontSize: '1.75rem' }}>
-            Built by Engineers with Real World Experience
+            Deployed Today. Expanding Globally.
           </Title>
           <Paragraph style={{
-            fontSize: '18px',
+            fontSize: 'clamp(16px, 3vw, 18px)',
             lineHeight: 1.7,
             marginBottom: '32px',
             color: isDarkMode ? '#cbd5e1' : '#475569',
             maxWidth: '900px',
             margin: '0 auto 32px'
           }}>
-            Our team has deployed production robotics and industrial IoT systems that operate profitably today.
-            We focus on solving real operational problems facing Indonesian industries, combining practical
-            engineering with an understanding of the challenges in deploying technology across the archipelago.
+            Our diesel monitoring system is live in Indonesian palm oil operations and expanding to construction industries in the USA.
+            We build practical solutions that work in real-world conditions—and we&apos;re ready to scale this proven technology to your operations, wherever they are.
           </Paragraph>
 
           <div style={{ marginBottom: '32px' }}>
-            <Row gutter={[32, 16]} justify="center">
+            <Row gutter={[{ xs: 24, sm: 28, md: 32 }, { xs: 12, sm: 14, md: 16 }]} justify="center">
               <Col>
                 <div style={{ textAlign: 'center' }}>
                   <Title level={2} className="text-gradient" style={{ marginBottom: '4px' }}>
@@ -443,19 +583,20 @@ export default function AboutSection() {
             </Row>
           </div>
 
-          <Space size="middle" wrap>
+          <Space size="middle" wrap style={{ justifyContent: 'center' }}>
             <Button
               type="primary"
               size="large"
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
               style={{
                 height: '48px',
-                paddingLeft: '32px',
-                paddingRight: '32px',
+                paddingLeft: 'clamp(20px, 4vw, 32px)',
+                paddingRight: 'clamp(20px, 4vw, 32px)',
                 background: 'var(--industrix-gradient)',
                 border: 'none',
                 fontWeight: '600',
-                fontSize: '15px'
+                fontSize: 'clamp(14px, 2.5vw, 15px)',
+                whiteSpace: 'nowrap'
               }}
             >
               See Our Projects
@@ -466,10 +607,11 @@ export default function AboutSection() {
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               style={{
                 height: '48px',
-                paddingLeft: '32px',
-                paddingRight: '32px',
+                paddingLeft: 'clamp(20px, 4vw, 32px)',
+                paddingRight: 'clamp(20px, 4vw, 32px)',
                 fontWeight: '600',
-                fontSize: '15px'
+                fontSize: 'clamp(14px, 2.5vw, 15px)',
+                whiteSpace: 'nowrap'
               }}
             >
               Let&apos;s Talk

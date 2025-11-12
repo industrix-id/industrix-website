@@ -355,39 +355,13 @@ body {
   .section-title {
     font-size: 1.8rem;
   }
-  
+
   .section-subtitle {
     font-size: 1rem;
   }
-  
+
   .section-padding {
     padding: 50px 0;
-  }
-  
-  .desktop-menu {
-    display: none;
-  }
-  
-  .desktop-only {
-    display: none;
-  }
-  
-  .mobile-only {
-    display: block;
-  }
-}
-
-@media (min-width: 769px) {
-  .desktop-menu {
-    display: flex;
-  }
-  
-  .desktop-only {
-    display: inline-block;
-  }
-  
-  .mobile-only {
-    display: none;
   }
 }
 
@@ -625,85 +599,242 @@ body {
   justify-content: center;
 }
 
-/* Light mode: make sun icon dark/black */
-.ant-switch:not(.ant-switch-checked) .ant-switch-inner .anticon {
-  color: #1f2937 !important;
+/* Light mode: clean white/light styling */
+.ant-switch:not(.ant-switch-checked) {
+  background-color: rgba(241, 245, 249, 0.8) !important;
+  border: 2px solid rgba(203, 213, 225, 0.5) !important;
 }
 
-/* Dark mode: keep moon icon white */
+.ant-switch:not(.ant-switch-checked):hover {
+  background-color: rgba(241, 245, 249, 1) !important;
+  border-color: rgba(16, 121, 255, 0.3) !important;
+}
+
+.ant-switch:not(.ant-switch-checked) .ant-switch-inner .anticon {
+  color: #64748b !important;
+}
+
+.ant-switch:not(.ant-switch-checked) .ant-switch-handle {
+  background: linear-gradient(135deg, #ffffff, #f8fafc) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.ant-switch:not(.ant-switch-checked) .ant-switch-handle::before {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Dark mode: blue styling */
+.ant-switch.ant-switch-checked {
+  background-color: #1079FF !important;
+  border: 2px solid rgba(16, 121, 255, 0.3) !important;
+}
+
+.ant-switch.ant-switch-checked:hover {
+  background-color: #0c65d1 !important;
+}
+
 .ant-switch.ant-switch-checked .ant-switch-inner .anticon {
   color: #ffffff !important;
 }
 
+.ant-switch.ant-switch-checked .ant-switch-handle {
+  background: linear-gradient(135deg, #1e293b, #0f172a) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+.ant-switch.ant-switch-checked .ant-switch-handle::before {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
 /* Mobile Optimizations */
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
   /* Prevent zoom completely */
   * {
     touch-action: manipulation !important;
   }
-  
-  html, body {
+
+  html {
     overflow-x: hidden !important;
+    overflow-y: auto !important;
+    width: 100% !important;
     max-width: 100vw !important;
+    position: relative !important;
+  }
+
+  body {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    max-width: 100vw !important;
+    width: 100% !important;
+    position: relative !important;
     -webkit-text-size-adjust: 100% !important;
     -ms-text-size-adjust: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
-  
+
+  /* Nuclear option: force everything */
+  * {
+    max-width: 100vw !important;
+  }
+
+  *:not(html):not(body) {
+    max-width: 100% !important;
+  }
+
+  /* Remove all horizontal scroll containers */
+  *::-webkit-scrollbar-horizontal {
+    display: none !important;
+    height: 0 !important;
+  }
+
   /* Prevent horizontal scroll for all containers */
   .ant-layout,
   .ant-layout-content,
   section,
-  div {
-    max-width: 100vw !important;
+  div,
+  main {
     overflow-x: hidden !important;
   }
-  
+
+  /* Ensure no element causes horizontal scroll */
+  * {
+    box-sizing: border-box !important;
+  }
+
+  /* Fix cards with absolute positioned elements */
+  .ant-card {
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  /* Hide scrollbars from all cards */
+  .ant-card::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  .ant-card {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+
   /* Prevent zoom on form inputs */
   input, select, textarea {
     font-size: 16px !important;
   }
-  
+
   /* Navbar mobile adjustments */
   .ant-layout-header {
     height: 70px !important;
     line-height: 70px !important;
-    padding: 0 8px !important;
+    padding: 0 clamp(12px, 3vw, 16px) !important;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    max-width: 100vw !important;
+    width: 100% !important;
+  }
+
+  /* Ensure navbar inner content doesn't overflow */
+  .ant-layout-header > div {
+    max-width: 100% !important;
+    width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Hide scrollbars in header specifically */
+  .ant-layout-header::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  .ant-layout-header {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
   }
   
-  /* Better spacing for mobile navbar */
-  .mobile-only {
-    padding: 8px !important;
-  }
-  
-  /* Improve mobile button spacing */
-  .ant-space-item {
-    margin-right: 8px !important;
-  }
-  
-  /* Mobile navbar right section */
-  .animate-slideInRight {
-    gap: 8px !important;
-  }
-  
-  /* Mobile contact button positioning */
-  .desktop-only {
-    margin-right: -4px !important;
-    padding-left: 8px !important;
-    padding-right: 8px !important;
-    font-size: 12px !important;
-    height: 36px !important;
-    min-width: auto !important;
-    line-height: 36px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
   
   /* Mobile content spacing */
   .hero-section {
     padding-top: 100px !important;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    max-width: 100vw !important;
+    width: 100% !important;
   }
-  
+
+  /* Hide scrollbars in hero section */
+  .hero-section::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  .hero-section {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+
+  /* Ensure hero section children don't overflow */
+  .hero-section > *,
+  .hero-section > * > * {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Target specific hero section elements */
+  #home,
+  section[id="home"] {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
+
+  /* Hide all scrollbars in hero/home section */
+  #home::-webkit-scrollbar,
+  section[id="home"]::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /* Hide scrollbars from all child elements in hero section */
+  .hero-section *::-webkit-scrollbar,
+  #home *::-webkit-scrollbar,
+  section[id="home"] *::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  .hero-section *,
+  #home *,
+  section[id="home"] * {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+
+  /* Hide scrollbars on About section */
+  #about,
+  section[id="about"] {
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    max-width: 100vw !important;
+  }
+
+  /* Hide horizontal scrollbars only, allow vertical */
+  #about::-webkit-scrollbar-horizontal,
+  section[id="about"]::-webkit-scrollbar-horizontal {
+    display: none !important;
+    height: 0 !important;
+  }
+
+  #about::-webkit-scrollbar-track-piece:horizontal,
+  section[id="about"]::-webkit-scrollbar-track-piece:horizontal {
+    display: none !important;
+  }
+
   /* Mobile card padding */
   .ant-card-body {
     padding: 16px !important;
@@ -721,40 +852,78 @@ body {
   
   /* Ensure all rows and columns stay within viewport */
   .ant-row {
-    max-width: 100vw !important;
+    max-width: 100% !important;
+    width: 100% !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
-  
+
   .ant-col {
     max-width: 100% !important;
-    padding-left: 12px !important;
-    padding-right: 12px !important;
+    width: 100% !important;
+    padding-left: clamp(12px, 3vw, 16px) !important;
+    padding-right: clamp(12px, 3vw, 16px) !important;
   }
-  
+
   /* Fix container widths */
   .hero-bg-pattern {
-    max-width: 100vw !important;
+    max-width: 100% !important;
+    width: 100% !important;
     overflow: hidden !important;
   }
-  
+
   /* Ensure cards don't exceed viewport */
   .ant-card {
-    max-width: calc(100vw - 24px) !important;
-    margin: 0 auto !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
   }
-  
+
   /* Fix space components */
   .ant-space {
     max-width: 100% !important;
+    width: 100% !important;
     flex-wrap: wrap !important;
   }
-  
+
   /* Ensure buttons don't cause overflow */
   .btn-gradient,
-  .btn-outline {
-    max-width: calc(100vw - 48px) !important;
+  .btn-outline,
+  .ant-btn {
+    max-width: 100% !important;
     word-break: break-word !important;
+  }
+
+  /* Fix all sections and containers */
+  section,
+  header,
+  footer,
+  main {
+    max-width: 100vw !important;
+    width: 100% !important;
+  }
+
+  /* Ensure all child divs respect viewport */
+  section > div,
+  main > div {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Fix SVG and images */
+  svg,
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Prevent Typography components from overflowing */
+  .ant-typography,
+  h1, h2, h3, h4, h5, h6,
+  p, span {
+    max-width: 100% !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
   }
 
   /* Mobile project section adjustments */
@@ -786,5 +955,53 @@ body {
   /* Mobile row gutters */
   .ant-row {
     row-gap: 24px !important;
+  }
+
+  /* Improved mobile animation performance */
+  * {
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  /* Better mobile readability */
+  body {
+    line-height: 1.6 !important;
+  }
+
+  /* Reduce animation intensity on mobile for better performance */
+  .animate-fadeInUp,
+  .animate-slideInLeft,
+  .animate-slideInRight,
+  .animate-fadeInScale {
+    animation-duration: 0.4s !important;
+  }
+
+  /* Smoother scrolling on mobile */
+  * {
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  /* Better mobile card spacing */
+  .ant-card {
+    margin-bottom: 16px !important;
+  }
+
+  /* Mobile Space component gaps */
+  .ant-space-horizontal {
+    gap: 12px !important;
+  }
+
+  .ant-space-vertical {
+    gap: 16px !important;
+  }
+
+  /* Better mobile title spacing */
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0 !important;
+    margin-bottom: clamp(12px, 3vw, 24px) !important;
+  }
+
+  /* Mobile paragraph spacing */
+  p {
+    margin-bottom: clamp(12px, 3vw, 16px) !important;
   }
 }

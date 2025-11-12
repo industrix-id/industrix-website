@@ -2,11 +2,12 @@
 
 import React from 'react'
 import { Layout, Row, Col, Typography, Space } from 'antd'
-import { 
-  MailOutlined, 
+import {
+  MailOutlined,
   EnvironmentOutlined
 } from '@ant-design/icons'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useTheme } from '../app/theme/ThemeProvider'
 
 const { Footer: AntFooter } = Layout
@@ -53,8 +54,8 @@ export default function Footer() {
         marginTop: 0
       }}
     >
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
-        <Row gutter={[48, 48]}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 clamp(20px, 4vw, 24px)' }}>
+        <Row gutter={[{ xs: 24, sm: 32, md: 48 }, { xs: 32, sm: 40, md: 48 }]}>
           {/* Company Info */}
           <Col xs={24} md={8}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
@@ -73,9 +74,9 @@ export default function Footer() {
                 Industrix
               </Text>
             </div>
-            <Paragraph style={{ 
+            <Paragraph style={{
               color: '#a1a1aa',
-              fontSize: '16px',
+              fontSize: 'clamp(14px, 2.5vw, 16px)',
               lineHeight: 1.6,
               marginBottom: '24px'
             }}>
@@ -92,14 +93,17 @@ export default function Footer() {
             </Title>
             <Space direction="vertical" size={12}>
               {footerLinks.company.map((link, index) => (
-                <a 
+                <a
                   key={index}
                   href={link.href}
-                  style={{ 
+                  style={{
                     color: '#a1a1aa',
                     textDecoration: 'none',
-                    fontSize: '14px',
-                    transition: 'color 0.3s ease'
+                    fontSize: 'clamp(13px, 2vw, 14px)',
+                    transition: 'color 0.3s ease',
+                    minHeight: '44px',
+                    display: 'flex',
+                    alignItems: 'center'
                   }}
                   className="footer-link"
                 >
@@ -115,14 +119,17 @@ export default function Footer() {
             </Title>
             <Space direction="vertical" size={12}>
               {footerLinks.solutions.map((link, index) => (
-                <a 
+                <a
                   key={index}
                   href={link.href}
-                  style={{ 
+                  style={{
                     color: '#a1a1aa',
                     textDecoration: 'none',
-                    fontSize: '14px',
-                    transition: 'color 0.3s ease'
+                    fontSize: 'clamp(13px, 2vw, 14px)',
+                    transition: 'color 0.3s ease',
+                    minHeight: '44px',
+                    display: 'flex',
+                    alignItems: 'center'
                   }}
                   className="footer-link"
                 >
@@ -169,36 +176,45 @@ export default function Footer() {
             © {currentYear} Industrix. All rights reserved.
           </Text>
           <Space size="large">
-            <a 
-              href="/privacy" 
-              style={{ 
-                color: '#a1a1aa', 
+            <Link
+              href="/privacy"
+              style={{
+                color: '#a1a1aa',
                 textDecoration: 'none',
-                fontSize: '14px'
+                fontSize: 'clamp(13px, 2vw, 14px)',
+                minHeight: '44px',
+                display: 'flex',
+                alignItems: 'center'
               }}
             >
               Privacy Policy
-            </a>
-            <a 
-              href="/terms" 
-              style={{ 
-                color: '#a1a1aa', 
+            </Link>
+            <Link
+              href="/terms"
+              style={{
+                color: '#a1a1aa',
                 textDecoration: 'none',
-                fontSize: '14px'
+                fontSize: 'clamp(13px, 2vw, 14px)',
+                minHeight: '44px',
+                display: 'flex',
+                alignItems: 'center'
               }}
             >
               Terms of Service
-            </a>
-            <a 
-              href="/cookies" 
-              style={{ 
-                color: '#a1a1aa', 
+            </Link>
+            <Link
+              href="/cookies"
+              style={{
+                color: '#a1a1aa',
                 textDecoration: 'none',
-                fontSize: '14px'
+                fontSize: 'clamp(13px, 2vw, 14px)',
+                minHeight: '44px',
+                display: 'flex',
+                alignItems: 'center'
               }}
             >
               Cookie Policy
-            </a>
+            </Link>
           </Space>
         </div>
       </div>

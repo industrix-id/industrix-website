@@ -7,7 +7,7 @@ import { useTheme } from '../app/theme/ThemeProvider'
 
 const { Title, Paragraph } = Typography
 
-const rotatingWords = ['Hardware', 'Software', 'IoT Systems', 'Web Portals', 'Mobile Apps']
+const rotatingWords = ['Plantations', 'Construction', 'Mining', 'Forestry', 'Agriculture']
 
 // Floating Particles Component - Clean geometric shapes
 function FloatingParticles({ isDarkMode }: { isDarkMode: boolean }) {
@@ -228,7 +228,7 @@ export default function HeroSection() {
       <section
         ref={heroRef}
         style={{
-        minHeight: '100vh',
+        minHeight: 'max(600px, 100vh)',
         display: 'flex',
         alignItems: 'center',
         paddingTop: '80px',
@@ -273,17 +273,17 @@ export default function HeroSection() {
       <div style={{
         maxWidth: '1400px',
         margin: '0 auto',
-        padding: '0 clamp(16px, 4vw, 24px)',
+        padding: '0 clamp(20px, 4vw, 24px)',
         width: '100%',
         position: 'relative',
-        zIndex: 1
+        zIndex: 1,
+        overflow: 'hidden'
       }}>
         {/* Top Text Content */}
         <div style={{
           textAlign: 'center',
-          marginBottom: '48px',
           maxWidth: '900px',
-          margin: '0 auto 48px',
+          margin: '0 auto clamp(40px, 8vw, 48px)',
           opacity,
           transform: `scale(${scale})`,
           transition: 'opacity 0.1s ease-out, transform 0.1s ease-out'
@@ -303,21 +303,22 @@ export default function HeroSection() {
               fontWeight: 600,
               color: '#1079FF'
             }}>
-              <ThunderboltOutlined /> Silicon Valley Tech Standards
+              <ThunderboltOutlined /> Proven in Production
             </Tag>
           </div>
 
           {/* Main Heading */}
           <Title level={1} style={{
-            fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
+            fontSize: 'clamp(1.75rem, 6vw, 4.5rem)',
             fontWeight: 900,
-            marginBottom: '24px',
-            lineHeight: 1.1,
+            marginBottom: 'clamp(20px, 4vw, 24px)',
+            lineHeight: 1.15,
             color: isDarkMode ? '#ffffff' : '#0f172a',
             transform: headingTransform,
-            transition: 'transform 0.1s ease-out'
+            transition: 'transform 0.1s ease-out',
+            letterSpacing: '-0.02em'
           }}>
-            Custom
+            Digitalize Your
             <br />
             <div style={{
               display: 'inline-block',
@@ -338,29 +339,28 @@ export default function HeroSection() {
               </span>
             </div>
             <br />
-            for Indonesia
+            Diesel Operations
           </Title>
 
           {/* Subheading */}
           <Paragraph style={{
-            fontSize: 'clamp(1.1rem, 2vw, 1.35rem)',
-            marginBottom: '40px',
-            lineHeight: 1.7,
+            fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+            lineHeight: 1.6,
             color: isDarkMode ? '#94a3b8' : '#475569',
             maxWidth: '700px',
-            margin: '0 auto 40px',
+            margin: '0 auto clamp(32px, 6vw, 40px)',
             transform: subtextTransform,
             transition: 'transform 0.1s ease-out'
           }}>
-            We build enterprise grade digital solutions from IoT devices to web platforms
-            transforming Indonesian industries with world-class technology.
+            Real-time fuel monitoring, theft prevention, and complete operational visibility for heavy equipment operations. From IoT sensors to cloud dashboards—proven in Indonesia, expanding globally.
           </Paragraph>
 
           {/* CTA Buttons */}
-          <Space size={16} wrap style={{
+          <Space size="middle" wrap style={{
             marginBottom: '32px',
             transform: buttonsTransform,
-            transition: 'transform 0.1s ease-out'
+            transition: 'transform 0.1s ease-out',
+            justifyContent: 'center'
           }}>
             <Button
               type="primary"
@@ -368,33 +368,35 @@ export default function HeroSection() {
               icon={<ArrowRightOutlined />}
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               style={{
-                height: '56px',
-                paddingLeft: '32px',
-                paddingRight: '32px',
-                fontSize: '16px',
+                height: '48px',
+                paddingLeft: 'clamp(20px, 4vw, 32px)',
+                paddingRight: 'clamp(20px, 4vw, 32px)',
+                fontSize: 'clamp(14px, 2.5vw, 16px)',
                 fontWeight: 700,
                 borderRadius: '12px',
                 background: 'var(--industrix-gradient)',
                 border: 'none',
-                boxShadow: '0 8px 24px rgba(16, 121, 255, 0.3)'
+                boxShadow: '0 8px 24px rgba(16, 121, 255, 0.3)',
+                whiteSpace: 'nowrap'
               }}
             >
-              Start Your Project
+              Get a Demo
             </Button>
             <Button
               size="large"
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
               style={{
-                height: '56px',
-                paddingLeft: '32px',
-                paddingRight: '32px',
-                fontSize: '16px',
+                height: '48px',
+                paddingLeft: 'clamp(20px, 4vw, 32px)',
+                paddingRight: 'clamp(20px, 4vw, 32px)',
+                fontSize: 'clamp(14px, 2.5vw, 16px)',
                 fontWeight: 700,
                 borderRadius: '12px',
                 borderWidth: '2px',
                 borderColor: isDarkMode ? '#334155' : '#cbd5e1',
                 color: isDarkMode ? '#e2e8f0' : '#1e293b',
-                background: 'transparent'
+                background: 'transparent',
+                whiteSpace: 'nowrap'
               }}
             >
               View Projects
@@ -408,25 +410,35 @@ export default function HeroSection() {
           ref={statsRef}
           style={{
             display: 'flex',
-            gap: '48px',
+            gap: 'clamp(24px, 4vw, 48px)',
             flexWrap: 'wrap',
             justifyContent: 'center',
-            maxWidth: '800px',
+            maxWidth: '100%',
             margin: '0 auto',
             opacity: statsVisible ? 1 : 0,
             transform: statsVisible ? 'translateY(0)' : 'translateY(20px)',
-            transition: 'opacity 0.8s ease-out, transform 0.8s ease-out'
+            transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
+            overflow: 'hidden',
+            overflowX: 'hidden',
+            overflowY: 'hidden',
+            width: '100%'
           }}
         >
-          <div style={{ textAlign: 'center' }}>
+          <div style={{
+            textAlign: 'center',
+            overflow: 'hidden',
+            maxWidth: '100%'
+          }}>
             <div style={{
-              fontSize: '2.5rem',
+              fontSize: 'clamp(2rem, 5vw, 2.5rem)',
               fontWeight: 800,
               background: 'var(--industrix-gradient)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
-              lineHeight: 1
+              lineHeight: 1,
+              overflow: 'hidden',
+              maxWidth: '100%'
             }}>
               {statsVisible ? <AnimatedCounter target={2} duration={1200} /> : 0}
             </div>
@@ -434,20 +446,29 @@ export default function HeroSection() {
               fontSize: '15px',
               color: isDarkMode ? '#94a3b8' : '#64748b',
               marginTop: '8px',
-              fontWeight: 500
+              fontWeight: 500,
+              overflow: 'hidden',
+              maxWidth: '100%',
+              whiteSpace: 'nowrap'
             }}>
               Silicon Valley Veterans
             </div>
           </div>
-          <div style={{ textAlign: 'center' }}>
+          <div style={{
+            textAlign: 'center',
+            overflow: 'hidden',
+            maxWidth: '100%'
+          }}>
             <div style={{
-              fontSize: '2.5rem',
+              fontSize: 'clamp(2rem, 5vw, 2.5rem)',
               fontWeight: 800,
               background: 'var(--industrix-gradient)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
-              lineHeight: 1
+              lineHeight: 1,
+              overflow: 'hidden',
+              maxWidth: '100%'
             }}>
               {statsVisible ? <AnimatedCounter target={3} duration={1400} /> : 0}
             </div>
@@ -455,20 +476,29 @@ export default function HeroSection() {
               fontSize: '15px',
               color: isDarkMode ? '#94a3b8' : '#64748b',
               marginTop: '8px',
-              fontWeight: 500
+              fontWeight: 500,
+              overflow: 'hidden',
+              maxWidth: '100%',
+              whiteSpace: 'nowrap'
             }}>
               Active Projects
             </div>
           </div>
-          <div style={{ textAlign: 'center' }}>
+          <div style={{
+            textAlign: 'center',
+            overflow: 'hidden',
+            maxWidth: '100%'
+          }}>
             <div style={{
-              fontSize: '2.5rem',
+              fontSize: 'clamp(2rem, 5vw, 2.5rem)',
               fontWeight: 800,
               background: 'var(--industrix-gradient)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
-              lineHeight: 1
+              lineHeight: 1,
+              overflow: 'hidden',
+              maxWidth: '100%'
             }}>
               {statsVisible ? <AnimatedCounter target={100} suffix="%" duration={1600} /> : '0%'}
             </div>
@@ -476,7 +506,10 @@ export default function HeroSection() {
               fontSize: '15px',
               color: isDarkMode ? '#94a3b8' : '#64748b',
               marginTop: '8px',
-              fontWeight: 500
+              fontWeight: 500,
+              overflow: 'hidden',
+              maxWidth: '100%',
+              whiteSpace: 'nowrap'
             }}>
               Commitment
             </div>

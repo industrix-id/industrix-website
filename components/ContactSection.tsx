@@ -207,7 +207,7 @@ export default function ContactSection() {
       background: isDarkMode ? '#0f172a' : '#f8fafc',
       transition: 'background-color 0.3s ease'
     }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 clamp(16px, 4vw, 24px)' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 clamp(20px, 4vw, 24px)' }}>
         <div style={{ textAlign: 'center', marginBottom: '80px' }} className="animate-fadeInUp">
           <Title level={2} className="section-title" style={{ 
             fontSize: 'clamp(2rem, 5vw, 3.5rem)',
@@ -234,7 +234,7 @@ export default function ContactSection() {
           </Paragraph>
         </div>
 
-        <Row gutter={[48, 48]}>
+        <Row gutter={[{ xs: 24, sm: 32, md: 48 }, { xs: 32, sm: 40, md: 48 }]}>
           {/* Contact Information */}
           <Col xs={24} lg={8}>
             <div className="animate-slideInLeft">
@@ -242,8 +242,8 @@ export default function ContactSection() {
               <Title level={3} style={{ marginBottom: '24px' }}>
                 Contact Information
               </Title>
-              <Paragraph style={{ 
-                fontSize: '16px',
+              <Paragraph style={{
+                fontSize: 'clamp(15px, 2.5vw, 16px)',
                 lineHeight: 1.6,
                 opacity: 0.7,
                 marginBottom: '32px'
@@ -347,11 +347,11 @@ export default function ContactSection() {
           {/* Contact Form */}
           <Col xs={24} lg={16}>
             <div className="animate-slideInRight">
-              <Card 
+              <Card
                 style={{
                   borderRadius: '24px',
                   border: 'none',
-                  padding: '40px',
+                  padding: 'clamp(24px, 5vw, 40px)',
                   background: isDarkMode 
                     ? 'linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.8))'
                     : 'linear-gradient(145deg, rgba(255,255,255,0.95), rgba(255,255,255,0.8))',
@@ -374,15 +374,17 @@ export default function ContactSection() {
                 onFinish={handleSubmit}
                 size="large"
               >
-                <Row gutter={[24, 0]}>
+                <Row gutter={[{ xs: 16, sm: 20, md: 24 }, 0]}>
                   <Col xs={24} md={12}>
                     <Form.Item
                       name="name"
                       label="Full Name"
                       rules={[{ required: true, message: 'Please enter your name' }]}
                     >
-                      <Input 
+                      <Input
                         placeholder="Your full name"
+                        type="text"
+                        inputMode="text"
                       />
                     </Form.Item>
                   </Col>
@@ -395,9 +397,11 @@ export default function ContactSection() {
                         { type: 'email', message: 'Please enter a valid email' }
                       ]}
                     >
-                      <Input 
+                      <Input
                         placeholder="your@email.com"
                         style={{ borderRadius: '8px' }}
+                        type="email"
+                        inputMode="email"
                       />
                     </Form.Item>
                   </Col>
@@ -407,22 +411,26 @@ export default function ContactSection() {
                   name="phone"
                   label="Phone Number (Optional)"
                 >
-                  <Input 
+                  <Input
                     placeholder="+62 xxx xxx xxxx"
                     style={{ borderRadius: '8px' }}
+                    type="tel"
+                    inputMode="tel"
                   />
                 </Form.Item>
 
-                <Row gutter={[24, 0]}>
+                <Row gutter={[{ xs: 16, sm: 20, md: 24 }, 0]}>
                   <Col xs={24} md={12}>
                     <Form.Item
                       name="company"
                       label="Company Name"
                       rules={[{ required: true, message: 'Please enter your company name' }]}
                     >
-                      <Input 
+                      <Input
                         placeholder="Your company name"
                         style={{ borderRadius: '8px' }}
+                        type="text"
+                        inputMode="text"
                       />
                     </Form.Item>
                   </Col>

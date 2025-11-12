@@ -23,17 +23,17 @@ interface CaseStudy {
 const caseStudies: CaseStudy[] = [
   {
     id: 'fuel-tank-monitoring',
-    title: 'Fuel Tank Monitoring & Theft Prevention System',
-    description: 'Credit-based fuel dispensing system with real-time anomaly detection, remote oversight dashboard, and intelligent theft prevention for industrial operations.',
+    title: 'Palm Oil Diesel Tracking System',
+    description: 'Real-time diesel monitoring for palm oil plantation contractors—tracking fuel across excavators, trucks, and generators with IoT sensors, theft detection, and cloud dashboards.',
     icon: <RocketOutlined />,
     technologies: ['React + TypeScript', 'Node.js + WebSocket', 'PostgreSQL + InfluxDB', 'Raspberry Pi IoT', 'RS485 Modbus'],
-    status: 'In Delivery',
+    status: 'Deployed in Production',
     gradient: 'var(--industrix-gradient)',
     features: [
-      'Credit-based fuel dispensing control',
-      'Real-time theft detection & alerts',
-      'Remote Finance/Admin dashboard',
-      'Pattern analysis & behavioral learning'
+      'IoT sensors on all heavy equipment',
+      'Real-time fuel theft detection & alerts',
+      'Cloud dashboard for operations & finance',
+      'Usage analytics & efficiency reports'
     ]
   },
   {
@@ -80,7 +80,7 @@ export default function CaseStudiesSection() {
         ? '#0f172a'
         : '#ffffff'
     }}>
-      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 clamp(16px, 4vw, 48px)' }}>
+      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 clamp(20px, 4vw, 48px)' }}>
         {/* Section Header */}
         <div style={{ textAlign: 'center', marginBottom: 'clamp(32px, 8vw, 64px)' }}>
           <Title level={2} style={{
@@ -92,7 +92,7 @@ export default function CaseStudiesSection() {
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text'
           }}>
-            Featured Projects
+            Proven in Production
           </Title>
           <Paragraph style={{
             fontSize: 'clamp(1rem, 2vw, 1.25rem)',
@@ -100,57 +100,72 @@ export default function CaseStudiesSection() {
             margin: '0 auto',
             color: isDarkMode ? '#94a3b8' : '#64748b'
           }}>
-            Explore our current portfolio of innovative digital solutions
-            transforming Indonesian businesses across various industries.
+            Our diesel tracking system is deployed and running today in palm oil operations.
+            The same platform is expanding to construction, mining, and heavy equipment industries globally.
           </Paragraph>
         </div>
 
-        {/* Projects Horizontal Scroll */}
+        {/* Projects Grid */}
         <div
-          className="projects-scroll-container"
+          className="projects-container"
           style={{
-            overflowX: 'auto',
-            overflowY: 'visible',
-            scrollSnapType: 'x mandatory',
-            scrollBehavior: 'smooth',
-            WebkitOverflowScrolling: 'touch',
             paddingBottom: '32px',
             paddingTop: '8px',
             marginBottom: '8px'
           }}
         >
           <style>{`
-            .projects-scroll-container {
-              scrollbar-width: thin;
-              scrollbar-color: ${isDarkMode ? '#1079FF transparent' : '#1079FF transparent'};
+            @media (min-width: 1024px) {
+              .projects-container > div {
+                display: flex;
+                gap: 24px;
+                overflow-x: auto;
+                overflow-y: visible;
+                scroll-snap-type: x mandatory;
+                scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+                scrollbar-color: ${isDarkMode ? '#1079FF transparent' : '#1079FF transparent'};
+              }
+              .projects-container > div::-webkit-scrollbar {
+                height: 8px;
+              }
+              .projects-container > div::-webkit-scrollbar-track {
+                background: transparent;
+                border-radius: 5px;
+              }
+              .projects-container > div::-webkit-scrollbar-thumb {
+                background: linear-gradient(135deg, #1079FF, #29C5FF);
+                border-radius: 5px;
+              }
+              .projects-container > div::-webkit-scrollbar-thumb:hover {
+                background: linear-gradient(135deg, #0d63d9, #1fa3d9);
+              }
+              .project-card {
+                min-width: 380px;
+                max-width: 380px;
+                flex-shrink: 0;
+                scroll-snap-align: center;
+              }
             }
-            .projects-scroll-container::-webkit-scrollbar {
-              height: 8px;
-            }
-            .projects-scroll-container::-webkit-scrollbar-track {
-              background: transparent;
-              border-radius: 5px;
-            }
-            .projects-scroll-container::-webkit-scrollbar-thumb {
-              background: linear-gradient(135deg, #1079FF, #29C5FF);
-              border-radius: 5px;
-            }
-            .projects-scroll-container::-webkit-scrollbar-thumb:hover {
-              background: linear-gradient(135deg, #0d63d9, #1fa3d9);
+            @media (max-width: 1023px) {
+              .projects-container > div {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 24px;
+              }
+              .project-card {
+                width: 100%;
+                max-width: 100%;
+              }
             }
           `}</style>
-          <div style={{
-            display: 'flex',
-            gap: '24px'
-          }}>
+          <div>
             {caseStudies.map((caseStudy) => (
               <Card
                 key={caseStudy.id}
+                className="project-card"
                 style={{
-                  minWidth: 'clamp(280px, 85vw, 380px)',
-                  maxWidth: 'clamp(280px, 85vw, 380px)',
-                  flexShrink: 0,
-                  scrollSnapAlign: 'center',
                   border: isDarkMode
                     ? '1px solid rgba(255, 255, 255, 0.1)'
                     : '1px solid rgba(0, 0, 0, 0.08)',
@@ -189,12 +204,16 @@ export default function CaseStudiesSection() {
                   marginBottom: '16px',
                   padding: '4px 12px',
                   borderRadius: '12px',
-                  background: caseStudy.status === 'In Delivery'
+                  background: caseStudy.status === 'Deployed in Production'
+                    ? 'rgba(34, 197, 94, 0.15)'
+                    : caseStudy.status === 'In Delivery'
                     ? 'rgba(59, 130, 246, 0.15)'
                     : caseStudy.status === 'Late Stage Development'
                     ? 'rgba(245, 158, 11, 0.15)'
                     : 'rgba(139, 92, 246, 0.15)',
-                  color: caseStudy.status === 'In Delivery'
+                  color: caseStudy.status === 'Deployed in Production'
+                    ? '#22c55e'
+                    : caseStudy.status === 'In Delivery'
                     ? '#3b82f6'
                     : caseStudy.status === 'Late Stage Development'
                     ? '#f59e0b'
@@ -335,7 +354,7 @@ export default function CaseStudiesSection() {
                   }}
                   style={{
                     width: '100%',
-                    height: '44px',
+                    height: '48px',
                     borderRadius: '10px',
                     background: caseStudy.gradient,
                     border: 'none',
@@ -376,37 +395,39 @@ export default function CaseStudiesSection() {
             : 'linear-gradient(145deg, rgba(16, 121, 255, 0.05), rgba(41, 197, 255, 0.02))',
           border: `1px solid ${isDarkMode ? 'rgba(16, 121, 255, 0.2)' : 'rgba(16, 121, 255, 0.1)'}`
         }}>
-          <Title level={3} style={{ 
+          <Title level={3} style={{
             marginBottom: '16px',
             color: isDarkMode ? '#e2e8f0' : '#1e293b'
           }}>
-            Ready to Transform Your Operations?
+            Stop Diesel Theft. Optimize Your Fleet.
           </Title>
-          <Paragraph style={{ 
-            fontSize: '16px',
+          <Paragraph style={{
+            fontSize: 'clamp(15px, 2.5vw, 16px)',
             marginBottom: '32px',
             color: isDarkMode ? '#94a3b8' : '#64748b',
             maxWidth: '600px',
             margin: '0 auto 32px'
           }}>
-            Let&apos;s discuss how we can create custom digital solutions 
-            tailored to your company&apos;s specific industrial needs and goals.
+            Whether you&apos;re running palm oil operations in Indonesia or construction sites in the USA—
+            our diesel tracking system adapts to your needs.
           </Paragraph>
-          <Space size="large">
+          <Space size="middle" wrap style={{ justifyContent: 'center' }}>
             <Button
               type="primary"
               size="large"
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               style={{
                 height: '48px',
-                paddingLeft: '32px',
-                paddingRight: '32px',
+                paddingLeft: 'clamp(20px, 4vw, 32px)',
+                paddingRight: 'clamp(20px, 4vw, 32px)',
                 borderRadius: '12px',
                 background: 'var(--industrix-gradient)',
                 border: 'none',
                 fontWeight: 600,
                 textTransform: 'uppercase',
-                letterSpacing: '0.5px'
+                letterSpacing: '0.5px',
+                fontSize: 'clamp(13px, 2.5vw, 14px)',
+                whiteSpace: 'nowrap'
               }}
             >
               Discuss Your Needs
@@ -419,15 +440,17 @@ export default function CaseStudiesSection() {
               }}
               style={{
                 height: '48px',
-                paddingLeft: '32px',
-                paddingRight: '32px',
+                paddingLeft: 'clamp(20px, 4vw, 32px)',
+                paddingRight: 'clamp(20px, 4vw, 32px)',
                 borderRadius: '12px',
                 borderWidth: '2px',
                 borderColor: '#1079FF',
                 color: '#1079FF',
                 fontWeight: 600,
                 textTransform: 'uppercase',
-                letterSpacing: '0.5px'
+                letterSpacing: '0.5px',
+                fontSize: 'clamp(13px, 2.5vw, 14px)',
+                whiteSpace: 'nowrap'
               }}
             >
               View All Projects

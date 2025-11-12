@@ -158,11 +158,7 @@ export default function EarthAnimation() {
   // Adjusted for new perspective scale range
   const depthOpacity = 0.75 + (perspectiveScale - 0.73) / (1.27 - 0.73) * 0.25
 
-  // Parallax offsets (different layers move at different speeds)
-  // Reduced intensity and using smoothScrollProgress for silky movement
-  const parallaxCelestial = (smoothScrollProgress - 0.5) * -20 // Slowest (background)
-  const parallaxEarth = (smoothScrollProgress - 0.5) * -35 // Medium speed
-  const parallaxFlag = (smoothScrollProgress - 0.5) * -50 // Fastest (foreground)
+  // No parallax - keep earth static during scroll
 
   return (
     <>
@@ -184,27 +180,42 @@ export default function EarthAnimation() {
         svg * {
           transition: opacity 0.3s ease-out;
         }
+
+        /* Hide scrollbars on the animation container */
+        .earth-animation-container {
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+        .earth-animation-container::-webkit-scrollbar {
+          display: none;
+          width: 0;
+          height: 0;
+        }
       `}</style>
 
       <div
         ref={containerRef}
+        className="earth-animation-container"
         style={{
           position: 'relative',
           width: '100%',
-          maxWidth: '500px',
+          maxWidth: 'min(500px, 100vw)',
           height: 'auto',
           aspectRatio: '1/1',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           willChange: 'transform',
-          margin: '0 auto'
+          margin: '0 auto',
+          padding: '50px 20px 20px 20px',
+          boxSizing: 'border-box'
         }}
       >
         <svg width="100%" height="100%" viewBox="0 0 500 500" style={{
           filter: 'drop-shadow(0 20px 60px rgba(16, 121, 255, 0.3))',
           maxWidth: '100%',
-          height: 'auto'
+          height: 'auto',
+          display: 'block'
         }}>
           <defs>
             <radialGradient id="celestialGradient">
@@ -221,7 +232,7 @@ export default function EarthAnimation() {
 
           {/* Celestial body BEHIND earth - only render when behind */}
           {isBehindEarth && (
-            <g transform={`translate(0, ${parallaxCelestial})`} opacity={depthOpacity}>
+            <g opacity={depthOpacity}>
               <circle cx={celestialX} cy={celestialY} r={currentSize.outer} fill="url(#celestialGradient)" opacity="0.4" style={{ animation: 'pulse 5s ease-in-out infinite' }}/>
               <circle cx={celestialX} cy={celestialY} r={currentSize.middle} fill="url(#celestialGradient)" opacity="0.6"/>
               <circle cx={celestialX} cy={celestialY} r={currentSize.inner} fill={currentColor} opacity="0.9"/>
@@ -239,7 +250,7 @@ export default function EarthAnimation() {
           )}
 
           {/* Earth Circle - large and prominent - MIDDLE LAYER */}
-          <g transform={`translate(0, ${parallaxEarth})`}>
+          <g>
             <circle cx="250" cy="250" r="180" fill={isDarkMode ? '#1e40af' : '#3b82f6'} opacity="0.15"/>
             <circle cx="250" cy="250" r="170" fill="url(#earthGradient)"/>
 
@@ -296,7 +307,7 @@ export default function EarthAnimation() {
 
           {/* Celestial body IN FRONT of earth - only render when in front */}
           {!isBehindEarth && (
-            <g transform={`translate(0, ${parallaxCelestial})`} opacity={depthOpacity}>
+            <g opacity={depthOpacity}>
               <circle cx={celestialX} cy={celestialY} r={currentSize.outer} fill="url(#celestialGradient)" opacity="0.4" style={{ animation: 'pulse 5s ease-in-out infinite' }}/>
               <circle cx={celestialX} cy={celestialY} r={currentSize.middle} fill="url(#celestialGradient)" opacity="0.6"/>
               <circle cx={celestialX} cy={celestialY} r={currentSize.inner} fill={currentColor} opacity="0.9"/>
@@ -314,53 +325,46 @@ export default function EarthAnimation() {
           )}
         </svg>
 
-        {/* Indonesian Flag Pin on Jakarta (on Java island) - larger - FOREGROUND LAYER */}
+        {/* Indonesian Flag Pin on Jakarta (on Java island) - FOREGROUND LAYER */}
         <div style={{
           position: 'absolute',
-          top: '40.5%',
-          left: '43.5%',
-          marginTop: '0px',
-          marginLeft: '0px',
+          top: '48%',
+          left: '44%',
           zIndex: 10,
-          willChange: 'transform',
-          transform: `translateY(${parallaxFlag}px)`
+          transform: 'translate(-50%, -50%)',
+          pointerEvents: 'none'
         }}>
           <div style={{
-            transform: 'translate(-50%, -50%)',
-            animation: 'float 5s ease-in-out infinite'
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
           }}>
-            {/* Flag Pole */}
-            <div style={{
-              width: '3px',
-              height: '70px',
-              background: isDarkMode ? '#94a3b8' : '#475569',
-              margin: '0 auto'
-            }}/>
             {/* Indonesian Flag */}
             <div style={{
-              width: '50px',
-              height: '38px',
-              position: 'absolute',
-              top: '0',
-              left: '3px',
-              boxShadow: '0 4px 16px rgba(0,0,0,0.3)',
-              borderRadius: '3px',
-              overflow: 'hidden'
+              width: '38px',
+              height: '26px',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
+              borderRadius: '2px',
+              overflow: 'hidden',
+              marginBottom: '2px'
             }}>
-              <div style={{ height: '19px', background: '#FF0000' }}/>
-              <div style={{ height: '19px', background: '#FFFFFF' }}/>
+              <div style={{ height: '13px', background: '#FF0000' }}/>
+              <div style={{ height: '13px', background: '#FFFFFF' }}/>
             </div>
+            {/* Flag Pole */}
+            <div style={{
+              width: '2px',
+              height: '50px',
+              background: isDarkMode ? '#94a3b8' : '#475569'
+            }}/>
             {/* Pin dot */}
             <div style={{
-              width: '12px',
-              height: '12px',
+              width: '9px',
+              height: '9px',
               borderRadius: '50%',
               background: '#ef4444',
-              position: 'absolute',
-              bottom: '-6px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              boxShadow: '0 4px 12px rgba(239, 68, 68, 0.5)'
+              marginTop: '-2px',
+              boxShadow: '0 2px 6px rgba(239, 68, 68, 0.5)'
             }}/>
           </div>
         </div>
