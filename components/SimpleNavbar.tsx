@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Layout, Switch } from 'antd'
+import { Layout, Button } from 'antd'
 import { SunOutlined, MoonOutlined } from '@ant-design/icons'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -91,14 +91,25 @@ export default function SimpleNavbar() {
 
         {/* Right side - Just theme toggle */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }} className="animate-slideInRight">
-          <Switch
-            checked={isDarkMode}
-            onChange={toggleTheme}
-            checkedChildren={<MoonOutlined style={{ color: '#ffffff' }} />}
-            unCheckedChildren={<SunOutlined style={{ color: '#1f2937' }} />}
+          <Button
+            type="text"
+            onClick={toggleTheme}
             style={{
-              background: isDarkMode ? '#1079FF' : '#f0f0f0',
+              width: '44px',
+              height: '44px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: '12px',
+              transition: 'all 0.3s ease',
             }}
+            icon={
+              isDarkMode ? (
+                <SunOutlined style={{ fontSize: '20px', color: '#fbbf24' }} />
+              ) : (
+                <MoonOutlined style={{ fontSize: '20px', color: '#1079FF' }} />
+              )
+            }
           />
         </div>
       </div>

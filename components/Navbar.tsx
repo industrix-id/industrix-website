@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Layout, Menu, Button, Switch, Space, Drawer } from 'antd'
+import { Layout, Menu, Button, Space, Drawer } from 'antd'
 import { MenuOutlined, SunOutlined, MoonOutlined } from '@ant-design/icons'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -100,14 +100,25 @@ export default function Navbar() {
         {/* Theme Toggle & Contact Button */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(16px, 4vw, 32px)' }} className="animate-slideInRight">
           <Space size="large">
-            <Switch
-              checked={isDarkMode}
-              onChange={toggleTheme}
-              checkedChildren={<MoonOutlined style={{ color: '#ffffff' }} />}
-              unCheckedChildren={<SunOutlined style={{ color: '#1f2937' }} />}
+            <Button
+              type="text"
+              onClick={toggleTheme}
               style={{
-                background: isDarkMode ? '#1079FF' : '#f0f0f0',
+                width: '44px',
+                height: '44px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: '12px',
+                transition: 'all 0.3s ease',
               }}
+              icon={
+                isDarkMode ? (
+                  <SunOutlined style={{ fontSize: '20px', color: '#fbbf24' }} />
+                ) : (
+                  <MoonOutlined style={{ fontSize: '20px', color: '#1079FF' }} />
+                )
+              }
             />
             
             <Button 
