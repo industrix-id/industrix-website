@@ -18,10 +18,10 @@ export default function FuelTankMonitoringPage() {
   const technologies = [
     'React + TypeScript',
     'Node.js + WebSocket',
-    'PostgreSQL + InfluxDB',
-    'Raspberry Pi IoT',
-    'RS485 Modbus',
-    'Real-time Analytics'
+    'Cloud Database',
+    'IoT Sensors',
+    'Real-time Analytics',
+    'Mobile Dashboards'
   ]
 
   const features = [
@@ -29,7 +29,7 @@ export default function FuelTankMonitoringPage() {
     'Real-time theft detection and anomaly alerts',
     'Remote Finance/Admin dashboard for oversight',
     'Pattern analysis and behavioral learning',
-    'RS485 Modbus integration with flowmeter hardware',
+    'Hardware integration with fuel flow meters',
     'Multi-factor authentication and role-based access control'
   ]
 
@@ -180,10 +180,10 @@ export default function FuelTankMonitoringPage() {
               marginBottom: '32px'
             }}>
               We built a credit-based fuel dispensing system that prevents theft before it happens.
-              The system integrates with existing flowmeters via RS485 Modbus, running on Raspberry Pi
-              edge devices. Real-time WebSocket connections stream data to a Node.js backend with
-              InfluxDB time-series storage. Finance/Admin teams access remote dashboards with
-              anomaly detection, pattern analysis, and automated alerts.
+              The system integrates with existing fuel flow meters using industrial IoT hardware
+              at each fuel station. Real-time data streams to cloud servers where advanced analytics
+              detect patterns and anomalies. Finance and operations teams access remote dashboards
+              with theft detection, pattern analysis, and automated alerts.
             </Paragraph>
 
             <Row gutter={[24, 24]}>
@@ -245,9 +245,9 @@ export default function FuelTankMonitoringPage() {
                 gap: '16px'
               }}>
                 {[
-                  { layer: 'Hardware Layer', desc: 'Raspberry Pi with RS485 Modbus integration for flowmeter control' },
-                  { layer: 'Communication Layer', desc: 'WebSocket real-time streaming with automatic reconnection' },
-                  { layer: 'Backend Layer', desc: 'Node.js with PostgreSQL (transactional) + InfluxDB (time-series)' },
+                  { layer: 'Hardware Layer', desc: 'Industrial IoT devices with fuel flow meter integration and edge computing' },
+                  { layer: 'Communication Layer', desc: 'Real-time data streaming with automatic reconnection and failover' },
+                  { layer: 'Backend Layer', desc: 'Cloud servers with transactional and time-series databases' },
                   { layer: 'Analytics Layer', desc: 'Pattern analysis engine with anomaly detection algorithms' },
                   { layer: 'Frontend Layer', desc: 'React admin dashboard with mobile-responsive design' }
                 ].map((item, index) => (

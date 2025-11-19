@@ -85,56 +85,12 @@ function GridBackground({ isDarkMode }: { isDarkMode: boolean }) {
   )
 }
 
-// Animated counter component
-function AnimatedCounter({ target, suffix = '', duration = 1500 }: { target: number | string; suffix?: string; duration?: number }) {
-  const [count, setCount] = useState(0)
-  const [hasAnimated, setHasAnimated] = useState(false)
-
-  useEffect(() => {
-    if (hasAnimated) return
-
-    // For percentage or non-numeric targets
-    if (typeof target === 'string') {
-      setCount(target as any)
-      setHasAnimated(true)
-      return
-    }
-
-    setHasAnimated(true)
-    const startTime = Date.now()
-    const endValue = target
-
-    const animate = () => {
-      const elapsed = Date.now() - startTime
-      const progress = Math.min(elapsed / duration, 1)
-
-      // Easing function for smooth animation
-      const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4)
-      const currentCount = Math.floor(easeOutQuart(progress) * endValue)
-
-      setCount(currentCount)
-
-      if (progress < 1) {
-        requestAnimationFrame(animate)
-      } else {
-        setCount(endValue)
-      }
-    }
-
-    requestAnimationFrame(animate)
-  }, [target, duration, hasAnimated])
-
-  return <>{count}{suffix}</>
-}
-
 export default function HeroSection() {
   const { isDarkMode } = useTheme()
   const [currentWordIndex, setCurrentWordIndex] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
   const [scrollProgress, setScrollProgress] = useState(0)
-  const [statsVisible, setStatsVisible] = useState(false)
   const heroRef = useRef<HTMLDivElement>(null)
-  const statsRef = useRef<HTMLDivElement>(null)
 
   // Rotating words animation
   useEffect(() => {
@@ -168,26 +124,6 @@ export default function HeroSection() {
 
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  // Intersection observer for stats counter animation
-  useEffect(() => {
-    if (!statsRef.current) return
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !statsVisible) {
-            setStatsVisible(true)
-          }
-        })
-      },
-      { threshold: 0.3 }
-    )
-
-    observer.observe(statsRef.current)
-
-    return () => observer.disconnect()
-  }, [statsVisible])
 
   // Parallax calculations
   const badgeTransform = `translateY(${scrollProgress * -50}px)`
@@ -402,118 +338,6 @@ export default function HeroSection() {
               View Projects
             </Button>
           </Space>
-        </div>
-
-
-        {/* Trust Indicators - Bottom Center */}
-        <div
-          ref={statsRef}
-          style={{
-            display: 'flex',
-            gap: 'clamp(24px, 4vw, 48px)',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-            maxWidth: '100%',
-            margin: '0 auto',
-            opacity: statsVisible ? 1 : 0,
-            transform: statsVisible ? 'translateY(0)' : 'translateY(20px)',
-            transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
-            overflow: 'hidden',
-            overflowX: 'hidden',
-            overflowY: 'hidden',
-            width: '100%'
-          }}
-        >
-          <div style={{
-            textAlign: 'center',
-            overflow: 'hidden',
-            maxWidth: '100%'
-          }}>
-            <div style={{
-              fontSize: 'clamp(2rem, 5vw, 2.5rem)',
-              fontWeight: 800,
-              background: 'var(--industrix-gradient)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              lineHeight: 1,
-              overflow: 'hidden',
-              maxWidth: '100%'
-            }}>
-              {statsVisible ? <AnimatedCounter target={2} duration={1200} /> : 0}
-            </div>
-            <div style={{
-              fontSize: '15px',
-              color: isDarkMode ? '#94a3b8' : '#64748b',
-              marginTop: '8px',
-              fontWeight: 500,
-              overflow: 'hidden',
-              maxWidth: '100%',
-              whiteSpace: 'nowrap'
-            }}>
-              Silicon Valley Veterans
-            </div>
-          </div>
-          <div style={{
-            textAlign: 'center',
-            overflow: 'hidden',
-            maxWidth: '100%'
-          }}>
-            <div style={{
-              fontSize: 'clamp(2rem, 5vw, 2.5rem)',
-              fontWeight: 800,
-              background: 'var(--industrix-gradient)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              lineHeight: 1,
-              overflow: 'hidden',
-              maxWidth: '100%'
-            }}>
-              {statsVisible ? <AnimatedCounter target={3} duration={1400} /> : 0}
-            </div>
-            <div style={{
-              fontSize: '15px',
-              color: isDarkMode ? '#94a3b8' : '#64748b',
-              marginTop: '8px',
-              fontWeight: 500,
-              overflow: 'hidden',
-              maxWidth: '100%',
-              whiteSpace: 'nowrap'
-            }}>
-              Active Projects
-            </div>
-          </div>
-          <div style={{
-            textAlign: 'center',
-            overflow: 'hidden',
-            maxWidth: '100%'
-          }}>
-            <div style={{
-              fontSize: 'clamp(2rem, 5vw, 2.5rem)',
-              fontWeight: 800,
-              background: 'var(--industrix-gradient)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              lineHeight: 1,
-              overflow: 'hidden',
-              maxWidth: '100%'
-            }}>
-              {statsVisible ? <AnimatedCounter target={100} suffix="%" duration={1600} /> : '0%'}
-            </div>
-            <div style={{
-              fontSize: '15px',
-              color: isDarkMode ? '#94a3b8' : '#64748b',
-              marginTop: '8px',
-              fontWeight: 500,
-              overflow: 'hidden',
-              maxWidth: '100%',
-              whiteSpace: 'nowrap'
-            }}>
-              Commitment
-            </div>
-          </div>
         </div>
       </div>
     </section>

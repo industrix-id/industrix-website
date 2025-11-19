@@ -26,7 +26,7 @@ const caseStudies: CaseStudy[] = [
     title: 'Palm Oil Diesel Tracking System',
     description: 'Real-time diesel monitoring for palm oil plantation contractors—tracking fuel across excavators, trucks, and generators with IoT sensors, theft detection, and cloud dashboards.',
     icon: <RocketOutlined />,
-    technologies: ['React + TypeScript', 'Node.js + WebSocket', 'PostgreSQL + InfluxDB', 'Raspberry Pi IoT', 'RS485 Modbus'],
+    technologies: ['React + TypeScript', 'Node.js + WebSocket', 'Cloud Database', 'IoT Sensors', 'Real-time Monitoring'],
     status: 'Deployed in Production',
     gradient: 'var(--industrix-gradient)',
     features: [
@@ -37,32 +37,32 @@ const caseStudies: CaseStudy[] = [
     ]
   },
   {
-    id: 'blue-nautical',
-    title: 'Blue Nautical Cold Storage Logistics App',
-    description: 'Mobile seafood logistics tracking between Jakarta and Bali warehouses with GPS-enforced anti-fraud security.',
+    id: 'commerce-inventory',
+    title: 'Commerce and Inventory Management System',
+    description: 'Comprehensive inventory tracking and commerce management platform for multi-location operations with real-time stock monitoring and analytics.',
     icon: <SettingOutlined />,
-    technologies: ['React + TypeScript', 'GPS Geofencing', 'Mobile Photography', 'Real-time Tracking'],
+    technologies: ['React + TypeScript', 'Real-time Tracking', 'Analytics Dashboard', 'Multi-location Support'],
     status: 'Early Stage Development',
     gradient: 'var(--industrix-gradient-red)',
     features: [
-      'Multi-location intake & dispatch',
-      'GPS-enforced security zones',
-      'Photo documentation workflow',
-      'Weight discrepancy detection'
+      'Multi-location inventory tracking',
+      'Real-time stock level monitoring',
+      'Automated reorder alerts',
+      'Sales and purchase analytics'
     ]
   },
   {
     id: 'acemark',
     title: 'AceMark IP Law Firm Website',
-    description: 'Professional corporate website for Indonesia\'s leading intellectual property law firm with bilingual support and modern design.',
+    description: 'Professional corporate website for Indonesia\'s leading intellectual property law firm with multi-language support and modern design.',
     icon: <GlobalOutlined />,
     technologies: ['Next.js', 'React + TypeScript', 'Tailwind CSS', 'Multi-language'],
     status: 'Late Stage Development',
     gradient: 'var(--industrix-gradient)',
-    link: 'https://acemark-website.vercel.app/id',
+    link: 'https://www.acemark-ip.com/en',
     features: [
       'Modern, professional design',
-      'Multi-language support (ID/EN/JP)',
+      'Multi-language support (ID/EN/JP/CN/TW)',
       'Service showcase and portfolio',
       'SEO optimization'
     ]

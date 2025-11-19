@@ -21,7 +21,7 @@ const capabilities = [
   {
     icon: <ApiOutlined />,
     title: 'IoT Fuel Sensors',
-    description: 'Industrial-grade sensors installed on excavators, trucks, and generators—tracking every liter in real-time'
+    description: 'Mini fuel station kits with pumps, meters, tank probes, RFID tap access, and user tracking'
   },
   {
     icon: <DatabaseOutlined />,
@@ -53,12 +53,12 @@ const values = [
   },
   {
     title: 'Complete Hardware + Software',
-    description: 'We handle everything: IoT sensor installation, cloud infrastructure, dashboard development, and ongoing support—all from one team.',
+    description: 'Full stack delivery of sensors, cloud, dashboards, and support handled by one team from kickoff to scale.',
     icon: <StarOutlined />
   },
   {
     title: 'Measurable ROI',
-    description: 'Stop diesel theft, catch anomalies in real-time, reduce fuel waste, and get detailed usage analytics that actually save money.',
+    description: 'Prevent diesel loss, surface anomalies in real time, trim fuel waste, and deliver usage analytics that actually save money.',
     icon: <CheckCircleOutlined />
   }
 ]
@@ -90,7 +90,7 @@ export default function AboutSection() {
               Diesel Operations <span className="text-gradient">Digitalization</span> for Heavy Industries
             </Title>
             <Paragraph style={{ fontSize: 'clamp(16px, 3vw, 18px)', lineHeight: 1.7, marginBottom: '24px', color: isDarkMode ? '#cbd5e1' : '#475569' }}>
-              We digitalize diesel footprints for heavy equipment operations—<strong>proven in Indonesian palm oil plantations</strong>, now expanding to construction sites in the USA, and heavy industries globally. Our platform combines IoT sensors, real-time monitoring, and theft prevention to give you complete operational visibility.
+              We digitalize diesel footprints for heavy equipment operations <strong>proven in Indonesian palm oil plantations</strong>, now expanding to construction sites in the USA, and heavy industries globally. Our platform combines IoT sensors, real-time monitoring, and theft prevention to give you complete operational visibility.
             </Paragraph>
             <Paragraph style={{ fontSize: 'clamp(15px, 2.5vw, 16px)', lineHeight: 1.6, marginBottom: '32px', color: isDarkMode ? '#94a3b8' : '#64748b' }}>
               From <strong>fuel monitoring sensors</strong> on excavators and trucks to cloud-based dashboards showing every liter consumed, we deliver end-to-end solutions that stop theft, reduce waste, and optimize your diesel operations—whether you&apos;re running remote plantation sites or busy construction yards.
@@ -159,7 +159,7 @@ export default function AboutSection() {
               maxWidth: '700px',
               margin: '0 auto'
             }}>
-              End-to-end diesel monitoring system—from IoT sensors on equipment to real-time cloud dashboards
+              End to end diesel monitoring system from IoT sensors on equipment to real-time cloud dashboards
             </Paragraph>
           </div>
 
@@ -331,7 +331,7 @@ export default function AboutSection() {
             maxWidth: '800px',
             margin: '0 auto'
           }}>
-            If you run excavators, trucks, or generators—<span className="text-gradient">we can help</span>.
+            If you run excavators, trucks, or generators <span className="text-gradient">we can help</span>.
           </Paragraph>
         </div>
 
@@ -471,7 +471,7 @@ export default function AboutSection() {
             margin: '0 auto'
           }}>
             {[
-              { title: 'GPS Fleet Tracking', desc: 'Real-time location and route optimization', status: 'Coming Soon' },
+              { title: 'GPS Fleet Tracking', desc: 'Real time location and route optimization', status: 'Coming Soon' },
               { title: 'Inventory Management', desc: 'Supply chain visibility and control', status: 'In Development' },
               { title: 'Defense Applications', desc: 'Specialized solutions for military operations', status: 'Future' }
             ].map((item, idx) => (
@@ -555,7 +555,7 @@ export default function AboutSection() {
             margin: '0 auto 32px'
           }}>
             Our diesel monitoring system is live in Indonesian palm oil operations and expanding to construction industries in the USA.
-            We build practical solutions that work in real-world conditions—and we&apos;re ready to scale this proven technology to your operations, wherever they are.
+            We build practical solutions that work in real world conditions and we&apos;re ready to scale this proven technology to your operations, wherever they are.
           </Paragraph>
 
           <div style={{ marginBottom: '32px' }}>
