@@ -48,33 +48,39 @@ export default function FuelTankMonitoringPage() {
           padding: 'clamp(40px, 8vw, 80px) clamp(16px, 4vw, 24px)'
         }}>
           <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-            <Button
-              icon={<ArrowLeftOutlined />}
-              onClick={() => router.push('/')}
-              style={{
-                marginBottom: '32px',
-                borderRadius: '8px',
-                border: 'none',
-                background: isDarkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)',
-                color: isDarkMode ? '#fff' : '#000'
-              }}
-            >
-              Back to Home
-            </Button>
-
             <div style={{
-              display: 'inline-block',
-              padding: '8px 20px',
-              borderRadius: '20px',
-              background: 'linear-gradient(135deg, #3b82f6, #2563eb)',
-              color: 'white',
-              fontSize: '14px',
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px',
-              marginBottom: '24px'
+              display: 'flex',
+              alignItems: 'center',
+              gap: '16px',
+              marginBottom: '32px',
+              flexWrap: 'wrap'
             }}>
-              In Delivery
+              <Button
+                icon={<ArrowLeftOutlined />}
+                onClick={() => router.push('/')}
+                style={{
+                  borderRadius: '8px',
+                  border: 'none',
+                  background: isDarkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)',
+                  color: isDarkMode ? '#fff' : '#000'
+                }}
+              >
+                Back to Home
+              </Button>
+
+              <div style={{
+                display: 'inline-block',
+                padding: '8px 20px',
+                borderRadius: '20px',
+                background: 'linear-gradient(135deg, #3b82f6, #2563eb)',
+                color: 'white',
+                fontSize: '14px',
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: '0.5px'
+              }}>
+                In Delivery
+              </div>
             </div>
 
             <Title level={1} style={{

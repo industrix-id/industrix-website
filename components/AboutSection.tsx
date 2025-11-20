@@ -10,7 +10,7 @@ import {
   ApiOutlined,
   DatabaseOutlined,
   SafetyOutlined,
-  ThunderboltOutlined
+  UserOutlined
 } from '@ant-design/icons'
 import { useTheme } from '../app/theme/ThemeProvider'
 import EarthAnimation from './EarthAnimation'
@@ -20,23 +20,23 @@ const { Title, Paragraph } = Typography
 const capabilities = [
   {
     icon: <ApiOutlined />,
-    title: 'IoT Fuel Sensors',
+    title: 'IoT Fuel Pump System',
     description: 'Mini fuel station kits with pumps, meters, tank probes, RFID tap access, and user tracking'
   },
   {
+    icon: <UserOutlined />,
+    title: 'User Access Control',
+    description: 'RFID-based access control with role-based permissions, multi-factor authentication, and operator tracking'
+  },
+  {
     icon: <DatabaseOutlined />,
-    title: 'Real-time Monitoring',
-    description: 'Cloud-based dashboards showing live fuel levels, consumption rates, and equipment status across all sites'
+    title: 'Real-time Monitoring & Analytics',
+    description: 'Cloud-based dashboards showing live fuel levels, consumption rates, historical trends, and detailed efficiency reports for operations and management'
   },
   {
     icon: <SafetyOutlined />,
     title: 'Theft & Anomaly Detection',
     description: 'Automated alerts for suspicious fuel drops, unauthorized usage, and operational anomalies'
-  },
-  {
-    icon: <ThunderboltOutlined />,
-    title: 'Usage Analytics & Reports',
-    description: 'Historical trends, equipment efficiency metrics, and detailed reports for operations and management'
   }
 ]
 
@@ -48,7 +48,7 @@ const values = [
   },
   {
     title: 'Works Anywhere',
-    description: 'Designed for challenging environments—from remote Indonesian plantations to US construction yards. Reliable connectivity in areas with limited infrastructure.',
+    description: 'Designed for challenging environments, from remote Indonesian plantations to industrial facilities worldwide. Reliable connectivity in areas with limited infrastructure.',
     icon: <GlobalOutlined />
   },
   {
@@ -90,10 +90,10 @@ export default function AboutSection() {
               Diesel Operations <span className="text-gradient">Digitalization</span> for Heavy Industries
             </Title>
             <Paragraph style={{ fontSize: 'clamp(16px, 3vw, 18px)', lineHeight: 1.7, marginBottom: '24px', color: isDarkMode ? '#cbd5e1' : '#475569' }}>
-              We digitalize diesel footprints for heavy equipment operations <strong>proven in Indonesian palm oil plantations</strong>, now expanding to construction sites in the USA, and heavy industries globally. Our platform combines IoT sensors, real-time monitoring, and theft prevention to give you complete operational visibility.
+              We digitalize diesel footprints for heavy equipment operations, <strong>proven in Indonesian palm oil plantations</strong> with a roadmap for global application. Our platform combines IoT sensors, real-time monitoring, and theft prevention to give you complete operational visibility.
             </Paragraph>
             <Paragraph style={{ fontSize: 'clamp(15px, 2.5vw, 16px)', lineHeight: 1.6, marginBottom: '32px', color: isDarkMode ? '#94a3b8' : '#64748b' }}>
-              From <strong>fuel monitoring sensors</strong> on excavators and trucks to cloud-based dashboards showing every liter consumed, we deliver end-to-end solutions that stop theft, reduce waste, and optimize your diesel operations—whether you&apos;re running remote plantation sites or busy construction yards.
+              Our solution centers on <strong>fuel dispensing station systems</strong> equipped with IoT sensors, flow meters, and RFID access control, feeding data to cloud-based dashboards that track every liter consumed. We deliver end-to-end solutions that stop theft, reduce waste, and optimize your diesel operations across plantation sites, construction yards, and industrial facilities.
             </Paragraph>
             <Space size="middle" wrap>
               <Button
@@ -458,8 +458,8 @@ export default function AboutSection() {
             maxWidth: '800px',
             margin: '0 auto 40px'
           }}>
-            We&apos;re expanding beyond diesel tracking. Our platform will grow to include GPS fleet management,
-            inventory control, and predictive maintenance—serving construction, mining, and eventually defense sectors globally.
+            Starting with palm oil operations, we&apos;re expanding our diesel monitoring platform to serve construction, mining, forestry, and agriculture industries worldwide.
+            Our roadmap focuses on GPS integration, mobile fuel stations, and continuous platform refinement.
           </Paragraph>
 
           <div style={{
@@ -471,9 +471,9 @@ export default function AboutSection() {
             margin: '0 auto'
           }}>
             {[
-              { title: 'GPS Fleet Tracking', desc: 'Real time location and route optimization', status: 'Coming Soon' },
-              { title: 'Inventory Management', desc: 'Supply chain visibility and control', status: 'In Development' },
-              { title: 'Defense Applications', desc: 'Specialized solutions for military operations', status: 'Future' }
+              { title: 'GPS Tracking Integration', desc: 'Real-time equipment location tracking and integration with existing GPS systems', status: 'Coming Soon' },
+              { title: 'Mobile Fuel Stations', desc: 'IoT-enabled fuel dispensing units on wheels for remote site operations', status: 'In Development' },
+              { title: 'Continuous Platform Evolution', desc: 'Ongoing refinement based on field deployment insights and operational feedback', status: 'Always Learning' }
             ].map((item, idx) => (
               <div
                 key={idx}
@@ -554,7 +554,7 @@ export default function AboutSection() {
             maxWidth: '900px',
             margin: '0 auto 32px'
           }}>
-            Our diesel monitoring system is live in Indonesian palm oil operations and expanding to construction industries in the USA.
+            Our diesel monitoring system is live in Indonesian palm oil operations with a clear roadmap for global expansion.
             We build practical solutions that work in real world conditions and we&apos;re ready to scale this proven technology to your operations, wherever they are.
           </Paragraph>
 

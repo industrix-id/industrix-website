@@ -365,18 +365,31 @@ For support, email support@industrix.id or create an issue in the repository.
 
 ## 🎯 Next Steps
 
-### Planned Features
-- [ ] Blog/News section
-- [ ] Client testimonials carousel
-- [ ] Interactive demos
-- [ ] Multi-language support
-- [ ] Advanced analytics integration
+### Roadmap - Expanding Beyond Palm Oil
 
-### Performance Improvements
-- [ ] Implement service worker
-- [ ] Add progressive web app features
-- [ ] Optimize critical rendering path
-- [ ] Add resource hints
+**GPS Tracking Integration** (Coming Soon)
+- Real-time equipment location tracking for excavators, trucks, and generators
+- Integration with existing GPS telematics systems
+- Route optimization and geofencing capabilities
+- Unified fuel + location visibility in single dashboard
+
+**Mobile Fuel Stations** (In Development)
+- IoT-enabled fuel dispensing units on wheels for remote site operations
+- Same monitoring capabilities as fixed fuel stations
+- Fleet management for mobile refueling trucks
+- Remote site support without permanent infrastructure
+
+**Continuous Platform Evolution** (Always Learning)
+- Ongoing refinement based on field deployment insights and operational feedback
+- Iterative hardware improvements for harsh industrial environments
+- Enhanced analytics from real-world diesel consumption patterns
+- Feature development driven by contractor and operations manager needs
+
+**Industry Expansion**
+- Branch out from palm oil to construction, mining, forestry, and agriculture
+- Adapt platform for different heavy equipment operation profiles
+- Regional expansion across Southeast Asia and beyond
+- Industry-specific compliance and reporting features
 
 ---
 

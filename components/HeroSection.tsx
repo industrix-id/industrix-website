@@ -288,7 +288,7 @@ export default function HeroSection() {
             transform: subtextTransform,
             transition: 'transform 0.1s ease-out'
           }}>
-            Real-time fuel monitoring, theft prevention, and complete operational visibility for heavy equipment operations. From IoT sensors to cloud dashboards—proven in Indonesia, expanding globally.
+            Real-time fuel monitoring, theft prevention, and complete operational visibility for heavy equipment operations. From IoT sensors to cloud dashboards, proven in Indonesia with a roadmap for global application.
           </Paragraph>
 
           {/* CTA Buttons */}
@@ -320,7 +320,7 @@ export default function HeroSection() {
             </Button>
             <Button
               size="large"
-              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => window.location.href = '/projects/fuel-tank-monitoring'}
               style={{
                 height: '48px',
                 paddingLeft: 'clamp(20px, 4vw, 32px)',
@@ -335,7 +335,7 @@ export default function HeroSection() {
                 whiteSpace: 'nowrap'
               }}
             >
-              View Projects
+              See How It Works
             </Button>
           </Space>
         </div>

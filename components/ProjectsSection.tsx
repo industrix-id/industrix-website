@@ -24,13 +24,13 @@ const caseStudies: CaseStudy[] = [
   {
     id: 'fuel-tank-monitoring',
     title: 'Palm Oil Diesel Tracking System',
-    description: 'Real-time diesel monitoring for palm oil plantation contractors—tracking fuel across excavators, trucks, and generators with IoT sensors, theft detection, and cloud dashboards.',
+    description: 'Real-time diesel monitoring for palm oil plantation contractors, tracking fuel dispensing at centralized fuel stations with IoT sensors, theft detection, and cloud dashboards.',
     icon: <RocketOutlined />,
     technologies: ['React + TypeScript', 'Node.js + WebSocket', 'Cloud Database', 'IoT Sensors', 'Real-time Monitoring'],
     status: 'Deployed in Production',
     gradient: 'var(--industrix-gradient)',
     features: [
-      'IoT sensors on all heavy equipment',
+      'IoT-enabled fuel dispensing stations',
       'Real-time fuel theft detection & alerts',
       'Cloud dashboard for operations & finance',
       'Usage analytics & efficiency reports'
@@ -72,6 +72,7 @@ const caseStudies: CaseStudy[] = [
 export default function CaseStudiesSection() {
   const { isDarkMode } = useTheme()
   const router = useRouter()
+  const [shakingCard, setShakingCard] = React.useState<string | null>(null)
 
   return (
     <section id="projects" style={{
@@ -115,6 +116,14 @@ export default function CaseStudiesSection() {
           }}
         >
           <style>{`
+            @keyframes shakeButton {
+              0%, 100% { transform: translateX(0); }
+              10%, 30%, 50%, 70%, 90% { transform: translateX(-8px); }
+              20%, 40%, 60%, 80% { transform: translateX(8px); }
+            }
+            .shake-animation {
+              animation: shakeButton 0.6s ease-in-out;
+            }
             @media (min-width: 1024px) {
               .projects-container > div {
                 display: flex;
@@ -345,9 +354,14 @@ export default function CaseStudiesSection() {
                 <Button
                   type="primary"
                   size="large"
+                  className={shakingCard === caseStudy.id ? 'shake-animation' : ''}
                   onClick={() => {
                     if (caseStudy.link) {
                       window.open(caseStudy.link, '_blank', 'noopener,noreferrer')
+                    } else if (caseStudy.id === 'commerce-inventory') {
+                      // Coming soon - trigger shake animation
+                      setShakingCard(caseStudy.id)
+                      setTimeout(() => setShakingCard(null), 600)
                     } else {
                       router.push(`/projects/${caseStudy.id}`)
                     }
@@ -376,7 +390,7 @@ export default function CaseStudiesSection() {
                     e.currentTarget.style.opacity = '1'
                   }}
                 >
-                  {caseStudy.link ? 'Visit Website' : 'View Details'}
+                  {caseStudy.link ? 'Visit Website' : caseStudy.id === 'commerce-inventory' ? 'Coming Soon' : 'View Details'}
                   <ArrowRightOutlined style={{ fontSize: '12px' }} />
                 </Button>
               </Card>
@@ -408,7 +422,7 @@ export default function CaseStudiesSection() {
             maxWidth: '600px',
             margin: '0 auto 32px'
           }}>
-            Whether you&apos;re running palm oil operations in Indonesia or construction sites in the USA—
+            Whether you&apos;re running palm oil operations, construction sites, or industrial facilities,
             our diesel tracking system adapts to your needs.
           </Paragraph>
           <Space size="middle" wrap style={{ justifyContent: 'center' }}>
