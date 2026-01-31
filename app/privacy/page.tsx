@@ -129,7 +129,7 @@ export default function PrivacyPolicyPage() {
                   If you have any questions about this Privacy Policy, please contact us at:
                 </Paragraph>
                 <Paragraph>
-                  <strong>Email:</strong> dustin@industrix.id<br />
+                  <strong>Email:</strong> carlos@industrix.id<br />
                   <strong>Address:</strong> Jakarta, Indonesia
                 </Paragraph>
 

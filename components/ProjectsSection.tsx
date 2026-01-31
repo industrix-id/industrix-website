@@ -274,39 +274,6 @@ export default function CaseStudiesSection() {
                   </Paragraph>
                 </div>
 
-                {/* Technologies */}
-                <div style={{ marginBottom: '20px' }}>
-                  <div style={{
-                    marginBottom: '10px',
-                    fontSize: '10px',
-                    fontWeight: 600,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.8px',
-                    color: isDarkMode ? '#64748b' : '#94a3b8'
-                  }}>
-                    Tech Stack
-                  </div>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                    {caseStudy.technologies.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        style={{
-                          padding: '4px 10px',
-                          borderRadius: '6px',
-                          background: isDarkMode
-                            ? 'rgba(16, 121, 255, 0.15)'
-                            : 'rgba(16, 121, 255, 0.1)',
-                          color: '#1079FF',
-                          fontSize: '11px',
-                          fontWeight: 500
-                        }}
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
                 {/* Features */}
                 <div style={{ marginBottom: '20px' }}>
                   <div style={{

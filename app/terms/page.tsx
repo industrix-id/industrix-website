@@ -150,7 +150,7 @@ export default function TermsOfServicePage() {
                   If you have any questions about these Terms of Service, please contact us at:
                 </Paragraph>
                 <Paragraph>
-                  <strong>Email:</strong> dustin@industrix.id<br />
+                  <strong>Email:</strong> carlos@industrix.id<br />
                   <strong>Address:</strong> Jakarta, Indonesia
                 </Paragraph>
 

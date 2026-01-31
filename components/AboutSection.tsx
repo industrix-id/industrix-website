@@ -42,11 +42,6 @@ const capabilities = [
 
 const values = [
   {
-    title: 'Proven in Production',
-    description: 'Currently deployed in palm oil operations, tracking diesel across excavators, trucks, and generators. Same system works for construction, mining, forestry, and agriculture.',
-    icon: <RocketOutlined />
-  },
-  {
     title: 'Works Anywhere',
     description: 'Designed for challenging environments, from remote Indonesian plantations to industrial facilities worldwide. Reliable connectivity in areas with limited infrastructure.',
     icon: <GlobalOutlined />
@@ -341,31 +336,33 @@ export default function AboutSection() {
               <Card
                 style={{
                   height: '100%',
-                  border: isDarkMode ? '1px solid rgba(16, 121, 255, 0.1)' : '1px solid rgba(16, 121, 255, 0.08)',
+                  border: isDarkMode ? '1px solid rgba(16, 121, 255, 0.25)' : '1px solid rgba(16, 121, 255, 0.12)',
                   borderRadius: '20px',
                   padding: 'clamp(24px, 4vw, 32px) clamp(20px, 4vw, 28px)',
                   background: isDarkMode
-                    ? 'linear-gradient(135deg, rgba(15, 23, 42, 0.6) 0%, rgba(30, 41, 59, 0.4) 100%)'
-                    : 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.8) 100%)',
+                    ? 'linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.9) 100%)'
+                    : 'linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 100%)',
                   boxShadow: isDarkMode
-                    ? '0 8px 32px rgba(0, 0, 0, 0.3)'
-                    : '0 8px 32px rgba(0, 0, 0, 0.06)',
+                    ? '0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(16, 121, 255, 0.1)'
+                    : '0 8px 32px rgba(0, 0, 0, 0.08)',
                   transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                   position: 'relative',
-                  overflow: 'hidden'
+                  overflow: 'hidden',
+                  touchAction: 'pan-y',
+                  WebkitOverflowScrolling: 'touch'
                 }}
                 hoverable
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-6px)'
                   e.currentTarget.style.boxShadow = isDarkMode
-                    ? '0 16px 48px rgba(16, 121, 255, 0.2)'
-                    : '0 16px 48px rgba(16, 121, 255, 0.12)'
+                    ? '0 16px 48px rgba(16, 121, 255, 0.25)'
+                    : '0 16px 48px rgba(16, 121, 255, 0.15)'
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)'
                   e.currentTarget.style.boxShadow = isDarkMode
-                    ? '0 8px 32px rgba(0, 0, 0, 0.3)'
-                    : '0 8px 32px rgba(0, 0, 0, 0.06)'
+                    ? '0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(16, 121, 255, 0.1)'
+                    : '0 8px 32px rgba(0, 0, 0, 0.08)'
                 }}
               >
                 {/* Number badge */}

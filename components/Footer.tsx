@@ -22,8 +22,7 @@ export default function Footer() {
     company: [
       { label: 'About Us', href: '/#about' },
       { label: 'Our Team', href: '/team' },
-      { label: 'Careers', href: '/careers' },
-      { label: 'News', href: '/#news' }
+      { label: 'Careers', href: '/careers' }
     ],
     solutions: [
       { label: 'Real-Time Monitoring', href: '/#solutions' },
@@ -148,13 +147,13 @@ export default function Footer() {
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                 <MailOutlined style={{ color: '#1079FF', fontSize: '16px' }} />
                 <Text style={{ color: '#a1a1aa', fontSize: '14px' }}>
-                  dustin@industrix.id
+                  carlos@industrix.id
                 </Text>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <EnvironmentOutlined style={{ color: '#1079FF', fontSize: '16px' }} />
-                <Text style={{ color: '#a1a1aa', fontSize: '14px' }}>
-                  Jakarta, Indonesia
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                <EnvironmentOutlined style={{ color: '#1079FF', fontSize: '16px', marginTop: '3px' }} />
+                <Text style={{ color: '#a1a1aa', fontSize: '14px', lineHeight: 1.5 }}>
+                  Jl. Taman Palem Mutiara No.3 Blok A5, RT.7/RW.14, Cengkareng Tim., Kecamatan Cengkareng, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11730, Indonesia
                 </Text>
               </div>
             </Space>
@@ -173,7 +172,7 @@ export default function Footer() {
           gap: '16px'
         }}>
           <Text style={{ color: '#a1a1aa', fontSize: '14px' }}>
-            © {currentYear} Industrix. All rights reserved.
+            © {currentYear} PT. Teknologi Solusi Industri. All rights reserved.
           </Text>
           <Space size="large">
             <Link

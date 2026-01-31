@@ -107,39 +107,6 @@ export default function FuelTankMonitoringPage() {
               operations.
             </Paragraph>
 
-            {/* Technologies */}
-            <div style={{ marginBottom: '24px' }}>
-              <Title level={5} style={{
-                fontSize: '14px',
-                fontWeight: 600,
-                textTransform: 'uppercase',
-                letterSpacing: '0.5px',
-                marginBottom: '16px',
-                color: isDarkMode ? '#e2e8f0' : '#1e293b'
-              }}>
-                Technology Stack
-              </Title>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
-                {technologies.map((tech, index) => (
-                  <Tag
-                    key={index}
-                    style={{
-                      padding: '8px 16px',
-                      fontSize: '14px',
-                      borderRadius: '8px',
-                      background: isDarkMode
-                        ? 'rgba(16, 121, 255, 0.2)'
-                        : 'rgba(16, 121, 255, 0.1)',
-                      color: '#1079FF',
-                      border: '1px solid rgba(16, 121, 255, 0.3)',
-                      fontWeight: 500
-                    }}
-                  >
-                    {tech}
-                  </Tag>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
 

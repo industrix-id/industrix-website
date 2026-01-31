@@ -330,7 +330,13 @@ body {
 
 /* Section Styles */
 .section-padding {
-  padding: 60px 0;
+  padding: 48px 0;
+}
+
+/* Contact section reduced padding */
+#contact.section-padding,
+section#contact.section-padding {
+  padding: 40px 0;
 }
 
 .section-title {
@@ -928,7 +934,32 @@ body {
 
   /* Mobile project section adjustments */
   .section-padding {
-    padding: 40px 0 !important;
+    padding: 32px 0 !important;
+  }
+
+  /* Contact section further reduced on mobile */
+  #contact.section-padding,
+  section#contact.section-padding {
+    padding: 24px 0 !important;
+  }
+
+  /* Fix card scrolling bug on mobile */
+  .ant-card,
+  .ant-card-body,
+  .ant-card-cover {
+    overflow: hidden !important;
+    -webkit-overflow-scrolling: auto !important;
+    overscroll-behavior: none !important;
+  }
+
+  /* Prevent any card content from triggering scroll */
+  .ant-card * {
+    overflow: visible !important;
+  }
+
+  .ant-card,
+  .ant-card-body {
+    overflow: hidden !important;
   }
 
   /* Reduce gap between scrolling cards on mobile */

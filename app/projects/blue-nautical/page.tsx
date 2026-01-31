@@ -123,40 +123,6 @@ export default function BlueNauticalPage() {
               documentation requirements.
             </Paragraph>
 
-            {/* Technologies */}
-            <div>
-              <Title level={5} style={{
-                fontSize: '12px',
-                fontWeight: 700,
-                textTransform: 'uppercase',
-                letterSpacing: '1.5px',
-                marginBottom: '20px',
-                color: isDarkMode ? '#94a3b8' : '#64748b',
-                opacity: 0.8
-              }}>
-                Technology Stack
-              </Title>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                {technologies.map((tech, index) => (
-                  <Tag
-                    key={index}
-                    style={{
-                      padding: '10px 20px',
-                      fontSize: '14px',
-                      borderRadius: '10px',
-                      background: isDarkMode
-                        ? 'rgba(246, 42, 58, 0.15)'
-                        : 'rgba(246, 42, 58, 0.08)',
-                      color: isDarkMode ? '#fca5a5' : '#dc2626',
-                      border: `1px solid ${isDarkMode ? 'rgba(246, 42, 58, 0.3)' : 'rgba(246, 42, 58, 0.2)'}`,
-                      fontWeight: 600
-                    }}
-                  >
-                    {tech}
-                  </Tag>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
 
