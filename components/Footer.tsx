@@ -4,6 +4,7 @@ import React from 'react'
 import { Layout, Row, Col, Typography, Space } from 'antd'
 import {
   MailOutlined,
+  PhoneOutlined,
   EnvironmentOutlined
 } from '@ant-design/icons'
 import Image from 'next/image'
@@ -148,6 +149,12 @@ export default function Footer() {
                 <MailOutlined style={{ color: '#1079FF', fontSize: '16px' }} />
                 <Text style={{ color: '#a1a1aa', fontSize: '14px' }}>
                   carlos@industrix.id
+                </Text>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <PhoneOutlined style={{ color: '#1079FF', fontSize: '16px' }} />
+                <Text style={{ color: '#a1a1aa', fontSize: '14px' }}>
+                  +62 815-3003-886
                 </Text>
               </div>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>

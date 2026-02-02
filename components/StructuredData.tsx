@@ -27,7 +27,8 @@ export default function StructuredData({ type, data }: StructuredDataProps) {
         contactPoint: {
           '@type': 'ContactPoint',
           contactType: 'Customer Service',
-          email: 'info@industrix.id'
+          email: 'carlos@industrix.id',
+          telephone: '+62-815-3003-886'
         },
         sameAs: [
           'https://linkedin.com/company/industrix',

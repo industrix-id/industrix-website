@@ -2,9 +2,10 @@
 
 import React, { useState, useEffect } from 'react'
 import { Row, Col, Card, Typography, Form, Input, Button, Select, message, Space } from 'antd'
-import { 
-  MailOutlined, 
-  EnvironmentOutlined, 
+import {
+  MailOutlined,
+  PhoneOutlined,
+  EnvironmentOutlined,
   SendOutlined
 } from '@ant-design/icons'
 import emailjs from '@emailjs/browser'
@@ -109,7 +110,7 @@ export default function ContactSection() {
 • Company: ${values.company}
 • Industry: ${values.industry}
 • Message Type: Contact Form Inquiry`,
-            call_to_action: '📞 For urgent matters, you can also reach us directly at carlos@industrix.id.',
+            call_to_action: '📞 For urgent matters, you can also reach us directly at +62 815-3003-886 or carlos@industrix.id.',
             closing_message: 'We look forward to discussing how Industrix can help transform your industrial operations.',
             footer_note: 'This is an automated confirmation of your contact form submission.'
           }
@@ -193,6 +194,12 @@ export default function ContactSection() {
       title: 'Email',
       details: 'carlos@industrix.id',
       action: 'mailto:carlos@industrix.id'
+    },
+    {
+      icon: <PhoneOutlined />,
+      title: 'Phone',
+      details: '+62 815-3003-886',
+      action: 'tel:+628153003886'
     },
     {
       icon: <EnvironmentOutlined />,
