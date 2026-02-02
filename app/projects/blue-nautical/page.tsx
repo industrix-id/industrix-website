@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Layout, Typography, Card, Row, Col, Tag, Button, Space } from 'antd'
+import { Layout, Typography, Card, Row, Col, Button, Space } from 'antd'
 import { ArrowLeftOutlined, CheckCircleOutlined } from '@ant-design/icons'
 import { useRouter } from 'next/navigation'
 import { useTheme } from '@/app/theme/ThemeProvider'
@@ -14,14 +14,6 @@ const { Title, Paragraph } = Typography
 export default function BlueNauticalPage() {
   const router = useRouter()
   const { isDarkMode } = useTheme()
-
-  const technologies = [
-    'React + TypeScript',
-    'GPS Geofencing',
-    'Mobile Photography',
-    'Real-time Tracking',
-    'PostgreSQL'
-  ]
 
   const features = [
     'Multi-location seafood intake & dispatch tracking',

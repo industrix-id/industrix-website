@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Layout, Typography, Card, Row, Col, Tag, Button, Space } from 'antd'
+import { Layout, Typography, Card, Row, Col, Button, Space } from 'antd'
 import { ArrowLeftOutlined, GlobalOutlined, CheckCircleOutlined, LinkOutlined } from '@ant-design/icons'
 import { useRouter } from 'next/navigation'
 import { useTheme } from '@/app/theme/ThemeProvider'
@@ -14,14 +14,6 @@ const { Title, Paragraph } = Typography
 export default function AcemarkPage() {
   const router = useRouter()
   const { isDarkMode } = useTheme()
-
-  const technologies = [
-    'Next.js',
-    'React + TypeScript',
-    'Tailwind CSS',
-    'Responsive Design',
-    'Multi-language (ID/EN)'
-  ]
 
   const features = [
     'Modern, professional website design for IP law firm',

@@ -4,7 +4,6 @@ import React from 'react'
 import { Row, Col, Card, Typography, Space, Button, Tag } from 'antd'
 import {
   GlobalOutlined,
-  RocketOutlined,
   CheckCircleOutlined,
   StarOutlined,
   ApiOutlined,
