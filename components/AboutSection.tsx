@@ -346,9 +346,7 @@ export default function AboutSection() {
                     : '0 8px 32px rgba(0, 0, 0, 0.08)',
                   transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                   position: 'relative',
-                  overflow: 'hidden',
-                  touchAction: 'pan-y',
-                  WebkitOverflowScrolling: 'touch'
+                  overflow: 'visible'
                 }}
                 hoverable
                 onMouseEnter={(e) => {
