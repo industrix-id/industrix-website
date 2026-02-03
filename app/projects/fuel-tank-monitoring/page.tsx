@@ -1,8 +1,8 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { Layout, Typography, Row, Col, Button, Space } from 'antd'
-import { ArrowLeftOutlined, CheckCircleOutlined } from '@ant-design/icons'
+import { ArrowLeftOutlined, CheckCircleOutlined, CloseOutlined } from '@ant-design/icons'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import SimpleNavbar from '@/components/SimpleNavbar'
@@ -13,6 +13,7 @@ const { Title, Paragraph } = Typography
 
 export default function FuelTankMonitoringPage() {
   const router = useRouter()
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null)
 
   const features = [
     'Credit-based fuel dispensing with automatic pump control',
@@ -170,7 +171,7 @@ export default function FuelTankMonitoringPage() {
             </Title>
 
             {/* Main screenshot */}
-            <a href="/5.jpeg" target="_blank" rel="noopener noreferrer" style={{ display: 'block', marginBottom: '10px', borderRadius: '10px', overflow: 'hidden', cursor: 'zoom-in' }}>
+            <div onClick={() => setLightboxImage('/5.jpeg')} style={{ marginBottom: '10px', borderRadius: '10px', overflow: 'hidden', cursor: 'zoom-in' }}>
               <Image
                 src="/5.jpeg"
                 alt="Dispensing active state"
@@ -183,57 +184,57 @@ export default function FuelTankMonitoringPage() {
                   Live dispensing view with real-time flow rate, session volume, and tank level
                 </p>
               </div>
-            </a>
+            </div>
 
             {/* Screenshot grid */}
             <Row gutter={[10, 10]}>
               <Col xs={12} sm={8}>
-                <a href="/3.jpeg" target="_blank" rel="noopener noreferrer" style={{ display: 'block', borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
+                <div onClick={() => setLightboxImage('/3.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
                   <Image src="/3.jpeg" alt="RFID login" width={400} height={250} style={{ width: '100%', height: '140px', objectFit: 'cover' }} />
                   <div style={{ padding: '8px 10px' }}>
                     <p style={{ margin: 0, fontSize: '11px', color: '#94a3b8' }}>RFID Login</p>
                   </div>
-                </a>
+                </div>
               </Col>
               <Col xs={12} sm={8}>
-                <a href="/6.jpeg" target="_blank" rel="noopener noreferrer" style={{ display: 'block', borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
+                <div onClick={() => setLightboxImage('/6.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
                   <Image src="/6.jpeg" alt="Idle state" width={400} height={250} style={{ width: '100%', height: '140px', objectFit: 'cover' }} />
                   <div style={{ padding: '8px 10px' }}>
                     <p style={{ margin: 0, fontSize: '11px', color: '#94a3b8' }}>Idle State</p>
                   </div>
-                </a>
+                </div>
               </Col>
               <Col xs={12} sm={8}>
-                <a href="/7.jpeg" target="_blank" rel="noopener noreferrer" style={{ display: 'block', borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
+                <div onClick={() => setLightboxImage('/7.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
                   <Image src="/7.jpeg" alt="Paused state" width={400} height={250} style={{ width: '100%', height: '140px', objectFit: 'cover' }} />
                   <div style={{ padding: '8px 10px' }}>
                     <p style={{ margin: 0, fontSize: '11px', color: '#94a3b8' }}>Paused</p>
                   </div>
-                </a>
+                </div>
               </Col>
               <Col xs={12} sm={8}>
-                <a href="/2.jpeg" target="_blank" rel="noopener noreferrer" style={{ display: 'block', borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
+                <div onClick={() => setLightboxImage('/2.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
                   <Image src="/2.jpeg" alt="Supervisor approval" width={400} height={250} style={{ width: '100%', height: '140px', objectFit: 'cover' }} />
                   <div style={{ padding: '8px 10px' }}>
                     <p style={{ margin: 0, fontSize: '11px', color: '#94a3b8' }}>Supervisor OTP</p>
                   </div>
-                </a>
+                </div>
               </Col>
               <Col xs={12} sm={8}>
-                <a href="/4.jpeg" target="_blank" rel="noopener noreferrer" style={{ display: 'block', borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
+                <div onClick={() => setLightboxImage('/4.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
                   <Image src="/4.jpeg" alt="Approval failed" width={400} height={250} style={{ width: '100%', height: '140px', objectFit: 'cover' }} />
                   <div style={{ padding: '8px 10px' }}>
                     <p style={{ margin: 0, fontSize: '11px', color: '#94a3b8' }}>Auth Failed</p>
                   </div>
-                </a>
+                </div>
               </Col>
               <Col xs={12} sm={8}>
-                <a href="/9.jpeg" target="_blank" rel="noopener noreferrer" style={{ display: 'block', borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
+                <div onClick={() => setLightboxImage('/9.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
                   <Image src="/9.jpeg" alt="Session summary" width={400} height={250} style={{ width: '100%', height: '140px', objectFit: 'cover' }} />
                   <div style={{ padding: '8px 10px' }}>
                     <p style={{ margin: 0, fontSize: '11px', color: '#94a3b8' }}>Session Summary</p>
                   </div>
-                </a>
+                </div>
               </Col>
             </Row>
           </section>
@@ -412,6 +413,63 @@ export default function FuelTankMonitoringPage() {
         </div>
       </Content>
       <Footer />
+
+      {/* Lightbox Modal */}
+      {lightboxImage && (
+        <div
+          onClick={() => setLightboxImage(null)}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0, 0, 0, 0.9)',
+            zIndex: 9999,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            padding: '20px'
+          }}
+        >
+          <button
+            onClick={() => setLightboxImage(null)}
+            style={{
+              position: 'absolute',
+              top: '20px',
+              right: '20px',
+              background: 'rgba(255,255,255,0.1)',
+              border: 'none',
+              borderRadius: '50%',
+              width: '40px',
+              height: '40px',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#fff',
+              fontSize: '18px'
+            }}
+          >
+            <CloseOutlined />
+          </button>
+          <Image
+            src={lightboxImage}
+            alt="Full size preview"
+            width={1200}
+            height={800}
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              maxWidth: '90vw',
+              maxHeight: '90vh',
+              objectFit: 'contain',
+              borderRadius: '8px',
+              cursor: 'default'
+            }}
+          />
+        </div>
+      )}
     </Layout>
   )
 }
