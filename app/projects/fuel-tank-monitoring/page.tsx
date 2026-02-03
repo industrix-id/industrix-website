@@ -454,20 +454,20 @@ export default function FuelTankMonitoringPage() {
           >
             <CloseOutlined />
           </button>
-          <Image
-            src={lightboxImage}
-            alt="Full size preview"
-            width={1200}
-            height={800}
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              maxWidth: '90vw',
-              maxHeight: '90vh',
-              objectFit: 'contain',
-              borderRadius: '8px',
-              cursor: 'default'
-            }}
-          />
+          <div onClick={(e) => e.stopPropagation()} style={{ cursor: 'default' }}>
+            <Image
+              src={lightboxImage}
+              alt="Full size preview"
+              width={1200}
+              height={800}
+              style={{
+                maxWidth: '90vw',
+                maxHeight: '90vh',
+                objectFit: 'contain',
+                borderRadius: '8px'
+              }}
+            />
+          </div>
         </div>
       )}
     </Layout>
