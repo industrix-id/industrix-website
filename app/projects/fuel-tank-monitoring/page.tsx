@@ -429,7 +429,11 @@ export default function FuelTankMonitoringPage() {
       {/* Lightbox Modal */}
       {lightboxImage && (
         <div
-          onClick={() => setLightboxImage(null)}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              setLightboxImage(null)
+            }
+          }}
           style={{
             position: 'fixed',
             top: 0,
@@ -466,20 +470,19 @@ export default function FuelTankMonitoringPage() {
           >
             <CloseOutlined />
           </button>
-          <div onClick={(e) => e.stopPropagation()} style={{ cursor: 'default' }}>
-            <Image
-              src={lightboxImage}
-              alt="Full size preview"
-              width={1200}
-              height={800}
-              style={{
-                maxWidth: '90vw',
-                maxHeight: '90vh',
-                objectFit: 'contain',
-                borderRadius: '8px'
-              }}
-            />
-          </div>
+          <Image
+            src={lightboxImage}
+            alt="Full size preview"
+            width={1200}
+            height={800}
+            style={{
+              maxWidth: '90vw',
+              maxHeight: '90vh',
+              objectFit: 'contain',
+              borderRadius: '8px',
+              cursor: 'default'
+            }}
+          />
         </div>
       )}
     </Layout>
