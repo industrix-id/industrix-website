@@ -246,7 +246,7 @@ export default function FuelTankMonitoringPage() {
             </Title>
 
             {/* Featured Image */}
-            <div style={{ marginBottom: '10px', borderRadius: '10px', overflow: 'hidden' }}>
+            <div onClick={() => setLightboxImage('/deployment-1.jpeg')} style={{ marginBottom: '10px', borderRadius: '10px', overflow: 'hidden', cursor: 'zoom-in' }}>
               <Image
                 src="/deployment-1.jpeg"
                 alt="Team installing IoT control system"
@@ -264,7 +264,7 @@ export default function FuelTankMonitoringPage() {
             {/* Photo Grid */}
             <Row gutter={[8, 8]}>
               <Col xs={12} sm={6}>
-                <div style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b' }}>
+                <div onClick={() => setLightboxImage('/deployment-3.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
                   <Image
                     src="/deployment-3.jpeg"
                     alt="Hardware installation"
@@ -275,7 +275,7 @@ export default function FuelTankMonitoringPage() {
                 </div>
               </Col>
               <Col xs={12} sm={6}>
-                <div style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b' }}>
+                <div onClick={() => setLightboxImage('/ftm1.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
                   <Image
                     src="/ftm1.jpeg"
                     alt="Control box interior"
@@ -286,7 +286,7 @@ export default function FuelTankMonitoringPage() {
                 </div>
               </Col>
               <Col xs={12} sm={6}>
-                <div style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b' }}>
+                <div onClick={() => setLightboxImage('/ftm2.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
                   <Image
                     src="/ftm2.jpeg"
                     alt="Components assembly"
@@ -297,7 +297,7 @@ export default function FuelTankMonitoringPage() {
                 </div>
               </Col>
               <Col xs={12} sm={6}>
-                <div style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b' }}>
+                <div onClick={() => setLightboxImage('/ftm3.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
                   <Image
                     src="/ftm3.jpeg"
                     alt="Completed system"
@@ -323,7 +323,7 @@ export default function FuelTankMonitoringPage() {
             }}>
               <Row gutter={[16, 16]} align="middle">
                 <Col xs={24} md={12}>
-                  <div style={{ borderRadius: '8px', overflow: 'hidden' }}>
+                  <div onClick={() => setLightboxImage('/3D_PCB.png')} style={{ borderRadius: '8px', overflow: 'hidden', cursor: 'zoom-in' }}>
                     <Image
                       src="/3D_PCB.png"
                       alt="Next generation PCB design"
