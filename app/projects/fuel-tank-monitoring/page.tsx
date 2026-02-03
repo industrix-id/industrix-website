@@ -163,6 +163,27 @@ export default function FuelTankMonitoringPage() {
             </Row>
           </section>
 
+          {/* Operator Interface */}
+          <section style={{ marginBottom: '20px' }}>
+            <Title level={2} style={{ fontSize: '1rem', marginBottom: '12px', color: '#f1f5f9' }}>
+              Operator Interface
+            </Title>
+            <div style={{ borderRadius: '10px', overflow: 'hidden' }}>
+              <Image
+                src="/7.jpeg"
+                alt="Fuel dispensing operator interface"
+                width={1000}
+                height={600}
+                style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+              />
+              <div style={{ padding: '10px 14px', background: '#1e293b' }}>
+                <p style={{ margin: 0, fontSize: '13px', color: '#94a3b8' }}>
+                  Touchscreen interface showing real-time flow rate, session volume, elapsed time, and tank level
+                </p>
+              </div>
+            </div>
+          </section>
+
           {/* Deployment Photos */}
           <section style={{ marginBottom: '20px' }}>
             <Title level={2} style={{ fontSize: '1rem', marginBottom: '12px', color: '#f1f5f9' }}>
