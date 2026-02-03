@@ -78,7 +78,7 @@ export default function ProjectsSection() {
   }
 
   return (
-    <section id="projects" style={{ background: '#0f172a' }}>
+    <section id="projects" className="home-section" style={{ background: '#0f172a' }}>
       <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>

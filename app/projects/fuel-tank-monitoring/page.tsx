@@ -2,7 +2,8 @@
 
 import React from 'react'
 import { Layout, Typography, Row, Col, Button, Space } from 'antd'
-import { ArrowLeftOutlined, RocketOutlined, CheckCircleOutlined } from '@ant-design/icons'
+import { ArrowLeftOutlined, CheckCircleOutlined } from '@ant-design/icons'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import SimpleNavbar from '@/components/SimpleNavbar'
 import Footer from '@/components/Footer'
@@ -29,10 +30,10 @@ export default function FuelTankMonitoringPage() {
         {/* Hero Section */}
         <div style={{
           background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
-          padding: '48px 12px'
+          padding: '28px 12px 20px'
         }}>
           <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px', flexWrap: 'wrap' }}>
               <Button
                 icon={<ArrowLeftOutlined />}
                 onClick={() => router.push('/')}
@@ -61,7 +62,7 @@ export default function FuelTankMonitoringPage() {
             <Title level={1} style={{
               fontSize: 'clamp(1.75rem, 5vw, 2.5rem)',
               fontWeight: 800,
-              marginBottom: '16px',
+              marginBottom: '8px',
               background: 'linear-gradient(135deg, #1079FF, #29C5FF)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent'
@@ -70,10 +71,11 @@ export default function FuelTankMonitoringPage() {
             </Title>
 
             <Paragraph style={{
-              fontSize: 'clamp(15px, 3vw, 17px)',
-              lineHeight: 1.6,
+              fontSize: 'clamp(14px, 3vw, 16px)',
+              lineHeight: 1.5,
               color: '#94a3b8',
-              maxWidth: '700px'
+              maxWidth: '700px',
+              marginBottom: 0
             }}>
               Credit-based fuel dispensing system with real-time anomaly detection,
               remote oversight dashboard, and intelligent theft prevention.
@@ -82,137 +84,250 @@ export default function FuelTankMonitoringPage() {
         </div>
 
         {/* Main Content */}
-        <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '48px 12px' }}>
-          {/* The Problem */}
-          <section style={{ marginBottom: '48px' }}>
-            <Title level={2} style={{ fontSize: '1.5rem', marginBottom: '16px', color: '#f1f5f9' }}>
-              The Problem
-            </Title>
-            <Paragraph style={{ fontSize: '15px', lineHeight: 1.7, color: '#cbd5e1' }}>
-              Industrial facilities face significant fuel theft and unauthorized consumption.
-              Traditional monitoring only detects theft after it occurs. Companies need
-              proactive prevention with remote administrative oversight.
-            </Paragraph>
-          </section>
+        <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '20px 12px' }}>
+          {/* Problem & Solution - Side by Side on Desktop */}
+          <Row gutter={[16, 12]} style={{ marginBottom: '20px' }}>
+            <Col xs={24} md={12}>
+              <div style={{
+                padding: '14px 16px',
+                background: 'rgba(246, 42, 58, 0.06)',
+                border: '1px solid rgba(246, 42, 58, 0.15)',
+                borderRadius: '10px',
+                height: '100%'
+              }}>
+                <div style={{
+                  display: 'inline-block',
+                  padding: '3px 8px',
+                  background: 'rgba(246, 42, 58, 0.15)',
+                  borderRadius: '4px',
+                  marginBottom: '8px'
+                }}>
+                  <span style={{ fontSize: '10px', fontWeight: 700, color: '#F62A3A', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                    Problem
+                  </span>
+                </div>
+                <Paragraph style={{ fontSize: '14px', lineHeight: 1.6, color: '#cbd5e1', margin: 0 }}>
+                  Industrial facilities face significant fuel theft and unauthorized consumption.
+                  Traditional monitoring only detects theft after it occurs.
+                </Paragraph>
+              </div>
+            </Col>
+            <Col xs={24} md={12}>
+              <div style={{
+                padding: '14px 16px',
+                background: 'rgba(34, 197, 94, 0.06)',
+                border: '1px solid rgba(34, 197, 94, 0.15)',
+                borderRadius: '10px',
+                height: '100%'
+              }}>
+                <div style={{
+                  display: 'inline-block',
+                  padding: '3px 8px',
+                  background: 'rgba(34, 197, 94, 0.15)',
+                  borderRadius: '4px',
+                  marginBottom: '8px'
+                }}>
+                  <span style={{ fontSize: '10px', fontWeight: 700, color: '#22c55e', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                    Solution
+                  </span>
+                </div>
+                <Paragraph style={{ fontSize: '14px', lineHeight: 1.6, color: '#cbd5e1', margin: 0 }}>
+                  Credit-based fuel dispensing with IoT hardware, real-time cloud analytics,
+                  and anomaly detection to prevent theft before it happens.
+                </Paragraph>
+              </div>
+            </Col>
+          </Row>
 
-          {/* The Solution */}
-          <section style={{ marginBottom: '48px' }}>
-            <Title level={2} style={{ fontSize: '1.5rem', marginBottom: '16px', color: '#f1f5f9' }}>
-              The Solution
+          {/* Key Features */}
+          <section style={{ marginBottom: '20px' }}>
+            <Title level={2} style={{ fontSize: '1rem', marginBottom: '12px', color: '#f1f5f9' }}>
+              Key Features
             </Title>
-            <Paragraph style={{ fontSize: '15px', lineHeight: 1.7, color: '#cbd5e1', marginBottom: '24px' }}>
-              A credit-based fuel dispensing system that prevents theft before it happens.
-              IoT hardware integrates with fuel flow meters, streaming data to cloud servers
-              where analytics detect patterns and anomalies.
-            </Paragraph>
-
-            <Row gutter={[16, 16]}>
+            <Row gutter={[10, 10]}>
               {features.map((feature, index) => (
-                <Col xs={24} sm={12} key={index}>
+                <Col xs={24} sm={12} md={8} key={index}>
                   <div style={{
                     display: 'flex',
-                    gap: '12px',
-                    padding: '16px',
+                    gap: '10px',
+                    padding: '12px 14px',
                     background: '#1e293b',
-                    borderRadius: '12px',
+                    borderRadius: '8px',
                     height: '100%'
                   }}>
-                    <CheckCircleOutlined style={{ color: '#1079FF', fontSize: '18px', marginTop: '2px' }} />
-                    <span style={{ fontSize: '14px', color: '#e2e8f0', lineHeight: 1.5 }}>{feature}</span>
+                    <CheckCircleOutlined style={{ color: '#1079FF', fontSize: '14px', marginTop: '2px', flexShrink: 0 }} />
+                    <span style={{ fontSize: '13px', color: '#e2e8f0', lineHeight: 1.5 }}>{feature}</span>
                   </div>
                 </Col>
               ))}
             </Row>
           </section>
 
-          {/* Technical Architecture */}
-          <section style={{ marginBottom: '48px' }}>
-            <Title level={2} style={{ fontSize: '1.5rem', marginBottom: '16px', color: '#f1f5f9' }}>
-              Technical Architecture
+          {/* Deployment Photos */}
+          <section style={{ marginBottom: '20px' }}>
+            <Title level={2} style={{ fontSize: '1rem', marginBottom: '12px', color: '#f1f5f9' }}>
+              Deployment Photos
             </Title>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              {[
-                { layer: 'Hardware', desc: 'Industrial IoT devices with fuel flow meter integration' },
-                { layer: 'Communication', desc: 'Real-time data streaming with automatic failover' },
-                { layer: 'Backend', desc: 'Cloud servers with transactional and time-series databases' },
-                { layer: 'Analytics', desc: 'Pattern analysis with anomaly detection algorithms' },
-                { layer: 'Frontend', desc: 'React admin dashboard with mobile-responsive design' }
-              ].map((item, index) => (
-                <div
-                  key={index}
-                  style={{
-                    padding: '16px',
-                    borderRadius: '8px',
-                    background: 'rgba(16, 121, 255, 0.08)',
-                    borderLeft: '3px solid #1079FF'
-                  }}
-                >
-                  <div style={{ fontSize: '14px', fontWeight: 600, color: '#1079FF', marginBottom: '4px' }}>
-                    {item.layer}
-                  </div>
-                  <div style={{ fontSize: '13px', color: '#94a3b8' }}>{item.desc}</div>
-                </div>
-              ))}
+
+            {/* Featured Image */}
+            <div style={{ marginBottom: '10px', borderRadius: '10px', overflow: 'hidden' }}>
+              <Image
+                src="/deployment-1.jpeg"
+                alt="Team installing IoT control system"
+                width={1000}
+                height={600}
+                style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+              />
+              <div style={{ padding: '8px 12px', background: '#1e293b' }}>
+                <p style={{ margin: 0, fontSize: '12px', color: '#94a3b8' }}>
+                  Team installing IoT fuel monitoring system at client site
+                </p>
+              </div>
             </div>
+
+            {/* Photo Grid */}
+            <Row gutter={[8, 8]}>
+              <Col xs={12} sm={6}>
+                <div style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b' }}>
+                  <Image
+                    src="/deployment-3.jpeg"
+                    alt="Hardware installation"
+                    width={500}
+                    height={350}
+                    style={{ width: '100%', height: '120px', objectFit: 'cover' }}
+                  />
+                </div>
+              </Col>
+              <Col xs={12} sm={6}>
+                <div style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b' }}>
+                  <Image
+                    src="/ftm1.jpeg"
+                    alt="Control box interior"
+                    width={500}
+                    height={350}
+                    style={{ width: '100%', height: '120px', objectFit: 'cover' }}
+                  />
+                </div>
+              </Col>
+              <Col xs={12} sm={6}>
+                <div style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b' }}>
+                  <Image
+                    src="/ftm2.jpeg"
+                    alt="Components assembly"
+                    width={500}
+                    height={350}
+                    style={{ width: '100%', height: '120px', objectFit: 'cover' }}
+                  />
+                </div>
+              </Col>
+              <Col xs={12} sm={6}>
+                <div style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b' }}>
+                  <Image
+                    src="/ftm3.jpeg"
+                    alt="Completed system"
+                    width={500}
+                    height={350}
+                    style={{ width: '100%', height: '120px', objectFit: 'cover' }}
+                  />
+                </div>
+              </Col>
+            </Row>
           </section>
 
-          {/* Photos Placeholder */}
-          <section style={{ marginBottom: '48px' }}>
-            <Title level={2} style={{ fontSize: '1.5rem', marginBottom: '16px', color: '#f1f5f9' }}>
-              Project Photos
+          {/* What's Next */}
+          <section style={{ marginBottom: '20px' }}>
+            <Title level={2} style={{ fontSize: '1rem', marginBottom: '12px', color: '#f1f5f9' }}>
+              What&apos;s Next
             </Title>
             <div style={{
-              border: '2px dashed rgba(255,255,255,0.15)',
-              borderRadius: '12px',
-              padding: '48px 24px',
-              textAlign: 'center'
+              padding: '16px',
+              background: 'rgba(34, 197, 94, 0.08)',
+              border: '1px solid rgba(34, 197, 94, 0.2)',
+              borderRadius: '10px'
             }}>
-              <RocketOutlined style={{ fontSize: '36px', color: '#64748b', marginBottom: '12px' }} />
-              <p style={{ color: '#64748b', margin: 0 }}>Hardware installation photos coming soon</p>
+              <Row gutter={[16, 16]} align="middle">
+                <Col xs={24} md={12}>
+                  <div style={{ borderRadius: '8px', overflow: 'hidden' }}>
+                    <Image
+                      src="/3D_PCB.png"
+                      alt="Next generation PCB design"
+                      width={600}
+                      height={450}
+                      style={{ width: '100%', height: 'auto' }}
+                    />
+                  </div>
+                </Col>
+                <Col xs={24} md={12}>
+                  <div style={{
+                    padding: '4px 10px',
+                    background: 'rgba(34, 197, 94, 0.15)',
+                    borderRadius: '4px',
+                    display: 'inline-block',
+                    marginBottom: '10px'
+                  }}>
+                    <span style={{ fontSize: '11px', fontWeight: 600, color: '#22c55e', textTransform: 'uppercase' }}>
+                      In Development
+                    </span>
+                  </div>
+                  <Title level={3} style={{ fontSize: '1.1rem', marginBottom: '8px', color: '#f1f5f9' }}>
+                    Next-Gen Custom PCB
+                  </Title>
+                  <Paragraph style={{ fontSize: '13px', color: '#94a3b8', marginBottom: '10px' }}>
+                    Custom PCB replacing off-the-shelf components:
+                  </Paragraph>
+                  <ul style={{ margin: 0, paddingLeft: '18px', color: '#cbd5e1', fontSize: '12px', lineHeight: 1.7 }}>
+                    <li>4-channel relay with LED indicators</li>
+                    <li>ADS1115 ADC for precision sensing</li>
+                    <li>RS485 industrial communication</li>
+                    <li>Dual current sensors</li>
+                    <li>Redundant power supplies</li>
+                  </ul>
+                </Col>
+              </Row>
             </div>
           </section>
 
           {/* CTA */}
           <div style={{
-            padding: '32px 24px',
+            padding: '24px',
             background: 'rgba(16, 121, 255, 0.08)',
             border: '1px solid rgba(16, 121, 255, 0.15)',
-            borderRadius: '12px',
+            borderRadius: '10px',
             textAlign: 'center'
           }}>
-            <Title level={3} style={{ fontSize: '1.25rem', marginBottom: '8px', color: '#f1f5f9' }}>
+            <Title level={3} style={{ fontSize: '1.1rem', marginBottom: '6px', color: '#f1f5f9' }}>
               Need a Similar Solution?
             </Title>
-            <Paragraph style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '24px' }}>
-              We build custom monitoring systems tailored to your industrial needs.
+            <Paragraph style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '16px' }}>
+              We build custom monitoring systems for industrial needs.
             </Paragraph>
-            <Space size="middle" wrap style={{ justifyContent: 'center' }}>
+            <Space size="small" wrap style={{ justifyContent: 'center' }}>
               <Button
                 type="primary"
-                size="large"
                 onClick={() => router.push('/#contact')}
                 style={{
-                  height: '44px',
-                  padding: '0 24px',
-                  borderRadius: '8px',
+                  height: '36px',
+                  padding: '0 20px',
+                  borderRadius: '6px',
                   background: 'linear-gradient(135deg, #1079FF, #29C5FF)',
                   border: 'none',
-                  fontWeight: 600
+                  fontWeight: 600,
+                  fontSize: '13px'
                 }}
               >
                 Get In Touch
               </Button>
               <Button
-                size="large"
                 onClick={() => router.push('/')}
                 style={{
-                  height: '44px',
-                  padding: '0 24px',
-                  borderRadius: '8px',
-                  border: '2px solid #1079FF',
+                  height: '36px',
+                  padding: '0 20px',
+                  borderRadius: '6px',
+                  border: '1px solid #1079FF',
                   color: '#1079FF',
                   background: 'transparent',
-                  fontWeight: 600
+                  fontWeight: 600,
+                  fontSize: '13px'
                 }}
               >
                 View More Projects

@@ -44,13 +44,13 @@ body {
   background-clip: text;
 }
 
-/* Section Base */
-section {
+/* Section Base - only for homepage sections */
+section.home-section {
   padding: 48px var(--padding);
 }
 
 @media (min-width: 768px) {
-  section {
+  section.home-section {
     padding: 64px 24px;
   }
 }
@@ -226,4 +226,30 @@ p {
 /* Footer link hover */
 .footer-link:hover {
   color: var(--blue) !important;
+}
+
+/* Architecture Grid Responsive */
+.arch-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+@media (max-width: 900px) {
+  .arch-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .arch-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+}
+
+@media (max-width: 400px) {
+  .arch-grid {
+    grid-template-columns: 1fr;
+  }
 }

@@ -71,7 +71,7 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" style={{ background: '#0f172a' }}>
+    <section id="contact" className="home-section" style={{ background: '#0f172a' }}>
       <div style={{ maxWidth: '900px', margin: '0 auto' }}>
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '32px' }}>

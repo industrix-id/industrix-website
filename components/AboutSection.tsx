@@ -49,7 +49,7 @@ const values = [
 
 export default function AboutSection() {
   return (
-    <section id="about" style={{ background: '#0f172a' }}>
+    <section id="about" className="home-section" style={{ background: '#0f172a' }}>
       <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
