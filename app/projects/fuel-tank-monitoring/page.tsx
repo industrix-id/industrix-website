@@ -270,8 +270,11 @@ export default function FuelTankMonitoringPage() {
                     alt="Hardware installation"
                     width={500}
                     height={350}
-                    style={{ width: '100%', height: '120px', objectFit: 'cover' }}
+                    style={{ width: '100%', height: '100px', objectFit: 'cover' }}
                   />
+                  <div style={{ padding: '6px 8px' }}>
+                    <p style={{ margin: 0, fontSize: '10px', color: '#94a3b8' }}>Installation</p>
+                  </div>
                 </div>
               </Col>
               <Col xs={12} sm={6}>
@@ -281,8 +284,11 @@ export default function FuelTankMonitoringPage() {
                     alt="Control box interior"
                     width={500}
                     height={350}
-                    style={{ width: '100%', height: '120px', objectFit: 'cover' }}
+                    style={{ width: '100%', height: '100px', objectFit: 'cover' }}
                   />
+                  <div style={{ padding: '6px 8px' }}>
+                    <p style={{ margin: 0, fontSize: '10px', color: '#94a3b8' }}>Control Box</p>
+                  </div>
                 </div>
               </Col>
               <Col xs={12} sm={6}>
@@ -292,8 +298,11 @@ export default function FuelTankMonitoringPage() {
                     alt="Components assembly"
                     width={500}
                     height={350}
-                    style={{ width: '100%', height: '120px', objectFit: 'cover' }}
+                    style={{ width: '100%', height: '100px', objectFit: 'cover' }}
                   />
+                  <div style={{ padding: '6px 8px' }}>
+                    <p style={{ margin: 0, fontSize: '10px', color: '#94a3b8' }}>Assembly</p>
+                  </div>
                 </div>
               </Col>
               <Col xs={12} sm={6}>
@@ -303,8 +312,11 @@ export default function FuelTankMonitoringPage() {
                     alt="Completed system"
                     width={500}
                     height={350}
-                    style={{ width: '100%', height: '120px', objectFit: 'cover' }}
+                    style={{ width: '100%', height: '100px', objectFit: 'cover' }}
                   />
+                  <div style={{ padding: '6px 8px' }}>
+                    <p style={{ margin: 0, fontSize: '10px', color: '#94a3b8' }}>Wiring</p>
+                  </div>
                 </div>
               </Col>
             </Row>
