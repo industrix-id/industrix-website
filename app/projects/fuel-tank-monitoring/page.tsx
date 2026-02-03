@@ -168,20 +168,74 @@ export default function FuelTankMonitoringPage() {
             <Title level={2} style={{ fontSize: '1rem', marginBottom: '12px', color: '#f1f5f9' }}>
               Operator Interface
             </Title>
-            <div style={{ borderRadius: '10px', overflow: 'hidden' }}>
+
+            {/* Main screenshot */}
+            <div style={{ marginBottom: '10px', borderRadius: '10px', overflow: 'hidden' }}>
               <Image
-                src="/7.jpeg"
-                alt="Fuel dispensing operator interface"
+                src="/5.jpeg"
+                alt="Dispensing active state"
                 width={1000}
                 height={600}
                 style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
               />
               <div style={{ padding: '10px 14px', background: '#1e293b' }}>
                 <p style={{ margin: 0, fontSize: '13px', color: '#94a3b8' }}>
-                  Touchscreen interface showing real-time flow rate, session volume, elapsed time, and tank level
+                  Live dispensing view with real-time flow rate, session volume, and tank level
                 </p>
               </div>
             </div>
+
+            {/* Screenshot grid */}
+            <Row gutter={[8, 8]}>
+              <Col xs={12} sm={8} md={4}>
+                <div style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b' }}>
+                  <Image src="/3.jpeg" alt="RFID login" width={300} height={200} style={{ width: '100%', height: '80px', objectFit: 'cover' }} />
+                  <div style={{ padding: '6px 8px' }}>
+                    <p style={{ margin: 0, fontSize: '10px', color: '#94a3b8' }}>RFID Login</p>
+                  </div>
+                </div>
+              </Col>
+              <Col xs={12} sm={8} md={4}>
+                <div style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b' }}>
+                  <Image src="/6.jpeg" alt="Idle state" width={300} height={200} style={{ width: '100%', height: '80px', objectFit: 'cover' }} />
+                  <div style={{ padding: '6px 8px' }}>
+                    <p style={{ margin: 0, fontSize: '10px', color: '#94a3b8' }}>Idle State</p>
+                  </div>
+                </div>
+              </Col>
+              <Col xs={12} sm={8} md={4}>
+                <div style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b' }}>
+                  <Image src="/7.jpeg" alt="Paused state" width={300} height={200} style={{ width: '100%', height: '80px', objectFit: 'cover' }} />
+                  <div style={{ padding: '6px 8px' }}>
+                    <p style={{ margin: 0, fontSize: '10px', color: '#94a3b8' }}>Paused</p>
+                  </div>
+                </div>
+              </Col>
+              <Col xs={12} sm={8} md={4}>
+                <div style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b' }}>
+                  <Image src="/2.jpeg" alt="Supervisor approval" width={300} height={200} style={{ width: '100%', height: '80px', objectFit: 'cover' }} />
+                  <div style={{ padding: '6px 8px' }}>
+                    <p style={{ margin: 0, fontSize: '10px', color: '#94a3b8' }}>Supervisor OTP</p>
+                  </div>
+                </div>
+              </Col>
+              <Col xs={12} sm={8} md={4}>
+                <div style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b' }}>
+                  <Image src="/4.jpeg" alt="Approval failed" width={300} height={200} style={{ width: '100%', height: '80px', objectFit: 'cover' }} />
+                  <div style={{ padding: '6px 8px' }}>
+                    <p style={{ margin: 0, fontSize: '10px', color: '#94a3b8' }}>Auth Failed</p>
+                  </div>
+                </div>
+              </Col>
+              <Col xs={12} sm={8} md={4}>
+                <div style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b' }}>
+                  <Image src="/9.jpeg" alt="Session summary" width={300} height={200} style={{ width: '100%', height: '80px', objectFit: 'cover' }} />
+                  <div style={{ padding: '6px 8px' }}>
+                    <p style={{ margin: 0, fontSize: '10px', color: '#94a3b8' }}>Session Summary</p>
+                  </div>
+                </div>
+              </Col>
+            </Row>
           </section>
 
           {/* Deployment Photos */}
