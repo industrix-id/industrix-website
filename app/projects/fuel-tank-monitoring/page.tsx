@@ -170,7 +170,7 @@ export default function FuelTankMonitoringPage() {
             </Title>
 
             {/* Main screenshot */}
-            <div style={{ marginBottom: '10px', borderRadius: '10px', overflow: 'hidden' }}>
+            <a href="/5.jpeg" target="_blank" rel="noopener noreferrer" style={{ display: 'block', marginBottom: '10px', borderRadius: '10px', overflow: 'hidden', cursor: 'zoom-in' }}>
               <Image
                 src="/5.jpeg"
                 alt="Dispensing active state"
@@ -183,57 +183,57 @@ export default function FuelTankMonitoringPage() {
                   Live dispensing view with real-time flow rate, session volume, and tank level
                 </p>
               </div>
-            </div>
+            </a>
 
             {/* Screenshot grid */}
             <Row gutter={[10, 10]}>
               <Col xs={12} sm={8}>
-                <div style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b' }}>
+                <a href="/3.jpeg" target="_blank" rel="noopener noreferrer" style={{ display: 'block', borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
                   <Image src="/3.jpeg" alt="RFID login" width={400} height={250} style={{ width: '100%', height: '140px', objectFit: 'cover' }} />
                   <div style={{ padding: '8px 10px' }}>
                     <p style={{ margin: 0, fontSize: '11px', color: '#94a3b8' }}>RFID Login</p>
                   </div>
-                </div>
+                </a>
               </Col>
               <Col xs={12} sm={8}>
-                <div style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b' }}>
+                <a href="/6.jpeg" target="_blank" rel="noopener noreferrer" style={{ display: 'block', borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
                   <Image src="/6.jpeg" alt="Idle state" width={400} height={250} style={{ width: '100%', height: '140px', objectFit: 'cover' }} />
                   <div style={{ padding: '8px 10px' }}>
                     <p style={{ margin: 0, fontSize: '11px', color: '#94a3b8' }}>Idle State</p>
                   </div>
-                </div>
+                </a>
               </Col>
               <Col xs={12} sm={8}>
-                <div style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b' }}>
+                <a href="/7.jpeg" target="_blank" rel="noopener noreferrer" style={{ display: 'block', borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
                   <Image src="/7.jpeg" alt="Paused state" width={400} height={250} style={{ width: '100%', height: '140px', objectFit: 'cover' }} />
                   <div style={{ padding: '8px 10px' }}>
                     <p style={{ margin: 0, fontSize: '11px', color: '#94a3b8' }}>Paused</p>
                   </div>
-                </div>
+                </a>
               </Col>
               <Col xs={12} sm={8}>
-                <div style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b' }}>
+                <a href="/2.jpeg" target="_blank" rel="noopener noreferrer" style={{ display: 'block', borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
                   <Image src="/2.jpeg" alt="Supervisor approval" width={400} height={250} style={{ width: '100%', height: '140px', objectFit: 'cover' }} />
                   <div style={{ padding: '8px 10px' }}>
                     <p style={{ margin: 0, fontSize: '11px', color: '#94a3b8' }}>Supervisor OTP</p>
                   </div>
-                </div>
+                </a>
               </Col>
               <Col xs={12} sm={8}>
-                <div style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b' }}>
+                <a href="/4.jpeg" target="_blank" rel="noopener noreferrer" style={{ display: 'block', borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
                   <Image src="/4.jpeg" alt="Approval failed" width={400} height={250} style={{ width: '100%', height: '140px', objectFit: 'cover' }} />
                   <div style={{ padding: '8px 10px' }}>
                     <p style={{ margin: 0, fontSize: '11px', color: '#94a3b8' }}>Auth Failed</p>
                   </div>
-                </div>
+                </a>
               </Col>
               <Col xs={12} sm={8}>
-                <div style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b' }}>
+                <a href="/9.jpeg" target="_blank" rel="noopener noreferrer" style={{ display: 'block', borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
                   <Image src="/9.jpeg" alt="Session summary" width={400} height={250} style={{ width: '100%', height: '140px', objectFit: 'cover' }} />
                   <div style={{ padding: '8px 10px' }}>
                     <p style={{ margin: 0, fontSize: '11px', color: '#94a3b8' }}>Session Summary</p>
                   </div>
-                </div>
+                </a>
               </Col>
             </Row>
           </section>
