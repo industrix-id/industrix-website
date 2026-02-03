@@ -1,10 +1,9 @@
 'use client'
 
 import React from 'react'
-import { Layout, Typography, Card, Row, Col, Button, Space } from 'antd'
+import { Layout, Typography, Row, Col, Button, Space } from 'antd'
 import { ArrowLeftOutlined, GlobalOutlined, CheckCircleOutlined, LinkOutlined } from '@ant-design/icons'
 import { useRouter } from 'next/navigation'
-import { useTheme } from '@/app/theme/ThemeProvider'
 import SimpleNavbar from '@/components/SimpleNavbar'
 import Footer from '@/components/Footer'
 
@@ -13,11 +12,10 @@ const { Title, Paragraph } = Typography
 
 export default function AcemarkPage() {
   const router = useRouter()
-  const { isDarkMode } = useTheme()
 
   const features = [
     'Modern, professional website design for IP law firm',
-    'Multi-language support (Indonesian & English)',
+    'Multi-language support (ID/EN/JP/CN/TW)',
     'Responsive design optimized for all devices',
     'Service showcase and portfolio sections',
     'Team member profiles and credentials',
@@ -27,366 +25,212 @@ export default function AcemarkPage() {
   ]
 
   return (
-    <Layout style={{ minHeight: '100vh' }}>
+    <Layout style={{ minHeight: '100vh', background: '#0f172a' }}>
       <SimpleNavbar />
-      <Content style={{
-        marginTop: '64px',
-        background: isDarkMode ? '#0f172a' : '#ffffff'
-      }}>
+      <Content style={{ marginTop: '64px' }}>
         {/* Hero Section */}
         <div style={{
-          background: isDarkMode
-            ? 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)'
-            : 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
-          padding: '80px 24px'
+          background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+          padding: '48px 12px'
         }}>
-          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-            <Button
-              icon={<ArrowLeftOutlined />}
-              onClick={() => router.push('/')}
-              style={{
-                marginBottom: '32px',
-                borderRadius: '8px',
-                border: 'none',
-                background: isDarkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)',
-                color: isDarkMode ? '#fff' : '#000'
-              }}
-            >
-              Back to Home
-            </Button>
-
-            <div style={{
-              display: 'inline-block',
-              padding: '8px 20px',
-              borderRadius: '20px',
-              background: 'linear-gradient(135deg, #3b82f6, #2563eb)',
-              color: 'white',
-              fontSize: '14px',
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px',
-              marginBottom: '24px'
-            }}>
-              In Development
+          <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px', flexWrap: 'wrap' }}>
+              <Button
+                icon={<ArrowLeftOutlined />}
+                onClick={() => router.push('/')}
+                style={{
+                  borderRadius: '8px',
+                  border: 'none',
+                  background: 'rgba(255,255,255,0.1)',
+                  color: '#fff'
+                }}
+              >
+                Back
+              </Button>
+              <div style={{
+                padding: '6px 14px',
+                borderRadius: '16px',
+                background: 'rgba(34, 197, 94, 0.15)',
+                color: '#22c55e',
+                fontSize: '12px',
+                fontWeight: 600,
+                textTransform: 'uppercase'
+              }}>
+                Deployed
+              </div>
             </div>
 
             <Title level={1} style={{
-              fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-              fontWeight: 900,
-              marginBottom: '24px',
-              background: 'var(--industrix-gradient)',
+              fontSize: 'clamp(1.75rem, 5vw, 2.5rem)',
+              fontWeight: 800,
+              marginBottom: '16px',
+              background: 'linear-gradient(135deg, #1079FF, #29C5FF)',
               WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
+              WebkitTextFillColor: 'transparent'
             }}>
               AceMark IP Law Firm Website
             </Title>
 
             <Paragraph style={{
-              fontSize: 'clamp(1.1rem, 2vw, 1.3rem)',
+              fontSize: 'clamp(15px, 3vw, 17px)',
               lineHeight: 1.6,
-              color: isDarkMode ? '#94a3b8' : '#64748b',
-              maxWidth: '900px',
-              marginBottom: '32px'
+              color: '#94a3b8',
+              maxWidth: '700px',
+              marginBottom: '24px'
             }}>
               Professional corporate website for Indonesia&apos;s leading intellectual property law firm,
-              founded in 1951. Modern, bilingual platform showcasing legal services, team expertise,
-              and client success stories.
+              founded in 1951. Modern, multilingual platform showcasing legal services and expertise.
             </Paragraph>
 
-            {/* Live Preview Link */}
             <Button
               type="primary"
               size="large"
               icon={<LinkOutlined />}
-              onClick={() => window.open('https://acemark-website.vercel.app/id', '_blank')}
+              onClick={() => window.open('https://www.acemark-ip.com/en', '_blank')}
               style={{
-                height: '48px',
-                paddingLeft: '24px',
-                paddingRight: '24px',
-                borderRadius: '12px',
-                background: 'var(--industrix-gradient)',
+                height: '44px',
+                padding: '0 24px',
+                borderRadius: '8px',
+                background: 'linear-gradient(135deg, #1079FF, #29C5FF)',
                 border: 'none',
-                fontWeight: 600,
-                textTransform: 'uppercase',
-                letterSpacing: '0.5px'
+                fontWeight: 600
               }}
             >
-              View Live Preview
+              Visit Live Site
             </Button>
           </div>
         </div>
 
         {/* Main Content */}
-        <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          padding: '60px 24px'
-        }}>
-          {/* About the Client */}
-          <section style={{ marginBottom: '60px' }}>
-            <Title level={2} style={{
-              fontSize: '2rem',
-              marginBottom: '24px',
-              color: isDarkMode ? '#e2e8f0' : '#1e293b'
-            }}>
+        <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '48px 12px' }}>
+          {/* About */}
+          <section style={{ marginBottom: '48px' }}>
+            <Title level={2} style={{ fontSize: '1.5rem', marginBottom: '16px', color: '#f1f5f9' }}>
               About AceMark
             </Title>
-            <Paragraph style={{
-              fontSize: '1.1rem',
-              lineHeight: 1.8,
-              color: isDarkMode ? '#cbd5e1' : '#475569',
-              marginBottom: '24px'
-            }}>
+            <Paragraph style={{ fontSize: '15px', lineHeight: 1.7, color: '#cbd5e1' }}>
               AceMark is a leading intellectual property law firm established in 1951 in Indonesia.
-              With over 300 professionals holding scientific degrees, they provide comprehensive
-              IP legal services including patent prosecution, trademark registration, copyright
-              protection, and IP litigation.
-            </Paragraph>
-            <Paragraph style={{
-              fontSize: '1.1rem',
-              lineHeight: 1.8,
-              color: isDarkMode ? '#cbd5e1' : '#475569'
-            }}>
-              The firm serves innovators, creators, and businesses seeking to protect and monetize
-              their intellectual assets across multiple technology sectors including AI, blockchain,
-              and biotechnology.
+              With over 300 professionals, they provide comprehensive IP legal services including
+              patent prosecution, trademark registration, copyright protection, and IP litigation.
             </Paragraph>
           </section>
 
-          {/* The Solution */}
-          <section style={{ marginBottom: '60px' }}>
-            <Title level={2} style={{
-              fontSize: '2rem',
-              marginBottom: '24px',
-              color: isDarkMode ? '#e2e8f0' : '#1e293b'
-            }}>
-              Our Approach
+          {/* Features */}
+          <section style={{ marginBottom: '48px' }}>
+            <Title level={2} style={{ fontSize: '1.5rem', marginBottom: '16px', color: '#f1f5f9' }}>
+              Website Features
             </Title>
-            <Paragraph style={{
-              fontSize: '1.1rem',
-              lineHeight: 1.8,
-              color: isDarkMode ? '#cbd5e1' : '#475569',
-              marginBottom: '32px'
-            }}>
-              We&apos;re building a modern, professional website that reflects AceMark&apos;s position as
-              Indonesia&apos;s premier IP law firm. The site features a clean design, bilingual content,
-              and optimized user experience for both potential clients and legal professionals.
-            </Paragraph>
-
-            <Row gutter={[24, 24]}>
+            <Row gutter={[16, 16]}>
               {features.map((feature, index) => (
-                <Col xs={24} md={12} key={index}>
-                  <Card
-                    style={{
-                      border: 'none',
-                      borderRadius: '12px',
-                      background: isDarkMode
-                        ? 'rgba(30, 41, 59, 0.5)'
-                        : 'rgba(255, 255, 255, 0.8)',
-                      height: '100%'
-                    }}
-                  >
-                    <div style={{ display: 'flex', gap: '12px' }}>
-                      <CheckCircleOutlined style={{
-                        color: '#1079FF',
-                        fontSize: '20px',
-                        marginTop: '4px'
-                      }} />
-                      <Paragraph style={{
-                        fontSize: '15px',
-                        lineHeight: 1.6,
-                        margin: 0,
-                        color: isDarkMode ? '#e2e8f0' : '#1e293b'
-                      }}>
-                        {feature}
-                      </Paragraph>
-                    </div>
-                  </Card>
+                <Col xs={24} sm={12} key={index}>
+                  <div style={{
+                    display: 'flex',
+                    gap: '12px',
+                    padding: '16px',
+                    background: '#1e293b',
+                    borderRadius: '12px',
+                    height: '100%'
+                  }}>
+                    <CheckCircleOutlined style={{ color: '#1079FF', fontSize: '18px', marginTop: '2px' }} />
+                    <span style={{ fontSize: '14px', color: '#e2e8f0', lineHeight: 1.5 }}>{feature}</span>
+                  </div>
                 </Col>
               ))}
             </Row>
           </section>
 
-          {/* Key Pages */}
-          <section style={{ marginBottom: '60px' }}>
-            <Title level={2} style={{
-              fontSize: '2rem',
-              marginBottom: '24px',
-              color: isDarkMode ? '#e2e8f0' : '#1e293b'
-            }}>
+          {/* Website Structure */}
+          <section style={{ marginBottom: '48px' }}>
+            <Title level={2} style={{ fontSize: '1.5rem', marginBottom: '16px', color: '#f1f5f9' }}>
               Website Structure
             </Title>
-            <Card
-              style={{
-                border: 'none',
-                borderRadius: '16px',
-                background: isDarkMode
-                  ? 'linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.7))'
-                  : 'linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7))',
-                padding: '24px'
-              }}
-            >
-              <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '16px'
-              }}>
-                {[
-                  {
-                    page: 'Homepage',
-                    desc: 'Hero section, service overview, awards, and client testimonials'
-                  },
-                  {
-                    page: 'Services',
-                    desc: 'Detailed IP legal service offerings across patents, trademarks, and copyrights'
-                  },
-                  {
-                    page: 'About Us',
-                    desc: 'Firm history, mission, values, and professional credentials'
-                  },
-                  {
-                    page: 'Team',
-                    desc: 'Attorney profiles, expertise areas, and professional backgrounds'
-                  },
-                  {
-                    page: 'Contact',
-                    desc: 'Contact forms, office locations, and inquiry submission'
-                  }
-                ].map((item, index) => (
-                  <div
-                    key={index}
-                    style={{
-                      padding: '16px',
-                      borderRadius: '8px',
-                      background: isDarkMode
-                        ? 'rgba(16, 121, 255, 0.1)'
-                        : 'rgba(16, 121, 255, 0.05)',
-                      borderLeft: '4px solid #1079FF'
-                    }}
-                  >
-                    <Title level={5} style={{
-                      margin: 0,
-                      marginBottom: '8px',
-                      color: '#1079FF'
-                    }}>
-                      {item.page}
-                    </Title>
-                    <Paragraph style={{
-                      margin: 0,
-                      color: isDarkMode ? '#cbd5e1' : '#475569'
-                    }}>
-                      {item.desc}
-                    </Paragraph>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              {[
+                { page: 'Homepage', desc: 'Hero section, service overview, awards, and client testimonials' },
+                { page: 'Services', desc: 'Detailed IP legal service offerings across patents, trademarks, and copyrights' },
+                { page: 'About Us', desc: 'Firm history, mission, values, and professional credentials' },
+                { page: 'Team', desc: 'Attorney profiles, expertise areas, and professional backgrounds' },
+                { page: 'Contact', desc: 'Contact forms, office locations, and inquiry submission' }
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  style={{
+                    padding: '16px',
+                    borderRadius: '8px',
+                    background: 'rgba(16, 121, 255, 0.08)',
+                    borderLeft: '3px solid #1079FF'
+                  }}
+                >
+                  <div style={{ fontSize: '14px', fontWeight: 600, color: '#1079FF', marginBottom: '4px' }}>
+                    {item.page}
                   </div>
-                ))}
-              </div>
-            </Card>
+                  <div style={{ fontSize: '13px', color: '#94a3b8' }}>{item.desc}</div>
+                </div>
+              ))}
+            </div>
           </section>
 
-          {/* Development Status */}
-          <section style={{ marginBottom: '60px' }}>
-            <Title level={2} style={{
-              fontSize: '2rem',
-              marginBottom: '24px',
-              color: isDarkMode ? '#e2e8f0' : '#1e293b'
+          {/* Live Site */}
+          <section style={{ marginBottom: '48px' }}>
+            <div style={{
+              padding: '32px 24px',
+              background: 'rgba(34, 197, 94, 0.08)',
+              border: '1px solid rgba(34, 197, 94, 0.2)',
+              borderRadius: '12px',
+              textAlign: 'center'
             }}>
-              Development Status
-            </Title>
-            <Card
-              style={{
-                border: 'none',
-                borderRadius: '16px',
-                background: isDarkMode
-                  ? 'linear-gradient(145deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.05))'
-                  : 'linear-gradient(145deg, rgba(59, 130, 246, 0.05), rgba(37, 99, 235, 0.02))',
-                padding: '32px',
-                textAlign: 'center'
-              }}
-            >
-              <GlobalOutlined style={{
-                fontSize: '48px',
-                color: '#3b82f6',
-                marginBottom: '16px'
-              }} />
-              <Title level={3} style={{
-                marginBottom: '16px',
-                color: isDarkMode ? '#e2e8f0' : '#1e293b'
-              }}>
-                Currently Under Development
+              <GlobalOutlined style={{ fontSize: '36px', color: '#22c55e', marginBottom: '12px' }} />
+              <Title level={3} style={{ fontSize: '1.25rem', marginBottom: '8px', color: '#f1f5f9' }}>
+                Website is Live
               </Title>
-              <Paragraph style={{
-                fontSize: '1.1rem',
-                color: isDarkMode ? '#94a3b8' : '#64748b',
-                marginBottom: '24px'
-              }}>
-                The AceMark website is actively being developed and refined.
-                Visit the live preview to see the latest progress.
+              <Paragraph style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '20px' }}>
+                The AceMark website is now deployed and serving clients worldwide.
               </Paragraph>
               <Button
                 type="primary"
                 size="large"
                 icon={<LinkOutlined />}
-                onClick={() => window.open('https://acemark-website.vercel.app/id', '_blank')}
+                onClick={() => window.open('https://www.acemark-ip.com/en', '_blank')}
                 style={{
-                  height: '48px',
-                  paddingLeft: '32px',
-                  paddingRight: '32px',
-                  borderRadius: '12px',
-                  background: 'linear-gradient(135deg, #3b82f6, #2563eb)',
+                  height: '44px',
+                  padding: '0 24px',
+                  borderRadius: '8px',
+                  background: '#22c55e',
                   border: 'none',
-                  fontWeight: 600,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.5px'
+                  fontWeight: 600
                 }}
               >
-                View Live Preview
+                Visit acemark-ip.com
               </Button>
-            </Card>
+            </div>
           </section>
 
           {/* CTA */}
-          <Card
-            style={{
-              border: 'none',
-              borderRadius: '16px',
-              background: isDarkMode
-                ? 'linear-gradient(145deg, rgba(16, 121, 255, 0.1), rgba(41, 197, 255, 0.05))'
-                : 'linear-gradient(145deg, rgba(16, 121, 255, 0.05), rgba(41, 197, 255, 0.02))',
-              padding: '40px 24px',
-              textAlign: 'center'
-            }}
-          >
-            <Title level={3} style={{
-              marginBottom: '16px',
-              color: isDarkMode ? '#e2e8f0' : '#1e293b'
-            }}>
+          <div style={{
+            padding: '32px 24px',
+            background: 'rgba(16, 121, 255, 0.08)',
+            border: '1px solid rgba(16, 121, 255, 0.15)',
+            borderRadius: '12px',
+            textAlign: 'center'
+          }}>
+            <Title level={3} style={{ fontSize: '1.25rem', marginBottom: '8px', color: '#f1f5f9' }}>
               Need a Professional Website?
             </Title>
-            <Paragraph style={{
-              fontSize: '1.1rem',
-              marginBottom: '32px',
-              color: isDarkMode ? '#94a3b8' : '#64748b',
-              maxWidth: '600px',
-              margin: '0 auto 32px'
-            }}>
+            <Paragraph style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '24px' }}>
               We build modern, responsive websites for businesses and professional services.
             </Paragraph>
-            <Space size="large">
+            <Space size="middle" wrap style={{ justifyContent: 'center' }}>
               <Button
                 type="primary"
                 size="large"
                 onClick={() => router.push('/#contact')}
                 style={{
-                  height: '48px',
-                  paddingLeft: '32px',
-                  paddingRight: '32px',
-                  borderRadius: '12px',
-                  background: 'var(--industrix-gradient)',
+                  height: '44px',
+                  padding: '0 24px',
+                  borderRadius: '8px',
+                  background: 'linear-gradient(135deg, #1079FF, #29C5FF)',
                   border: 'none',
-                  fontWeight: 600,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.5px'
+                  fontWeight: 600
                 }}
               >
                 Get In Touch
@@ -395,22 +239,19 @@ export default function AcemarkPage() {
                 size="large"
                 onClick={() => router.push('/')}
                 style={{
-                  height: '48px',
-                  paddingLeft: '32px',
-                  paddingRight: '32px',
-                  borderRadius: '12px',
-                  borderWidth: '2px',
-                  borderColor: '#1079FF',
+                  height: '44px',
+                  padding: '0 24px',
+                  borderRadius: '8px',
+                  border: '2px solid #1079FF',
                   color: '#1079FF',
-                  fontWeight: 600,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.5px'
+                  background: 'transparent',
+                  fontWeight: 600
                 }}
               >
                 View More Projects
               </Button>
             </Space>
-          </Card>
+          </div>
         </div>
       </Content>
       <Footer />

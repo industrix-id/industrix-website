@@ -1,10 +1,9 @@
 'use client'
 
 import React from 'react'
-import { Layout, Typography, Card, Row, Col, Button, Space } from 'antd'
+import { Layout, Typography, Row, Col, Button, Space } from 'antd'
 import { ArrowLeftOutlined, RocketOutlined, CheckCircleOutlined } from '@ant-design/icons'
 import { useRouter } from 'next/navigation'
-import { useTheme } from '@/app/theme/ThemeProvider'
 import SimpleNavbar from '@/components/SimpleNavbar'
 import Footer from '@/components/Footer'
 
@@ -13,7 +12,6 @@ const { Title, Paragraph } = Typography
 
 export default function FuelTankMonitoringPage() {
   const router = useRouter()
-  const { isDarkMode } = useTheme()
 
   const features = [
     'Credit-based fuel dispensing with automatic pump control',
@@ -25,303 +23,181 @@ export default function FuelTankMonitoringPage() {
   ]
 
   return (
-    <Layout style={{ minHeight: '100vh' }}>
+    <Layout style={{ minHeight: '100vh', background: '#0f172a' }}>
       <SimpleNavbar />
-      <Content style={{
-        marginTop: '64px',
-        background: isDarkMode ? '#0f172a' : '#ffffff'
-      }}>
+      <Content style={{ marginTop: '64px' }}>
         {/* Hero Section */}
         <div style={{
-          background: isDarkMode
-            ? 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)'
-            : 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
-          padding: 'clamp(40px, 8vw, 80px) clamp(16px, 4vw, 24px)'
+          background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+          padding: '48px 12px'
         }}>
-          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '16px',
-              marginBottom: '32px',
-              flexWrap: 'wrap'
-            }}>
+          <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px', flexWrap: 'wrap' }}>
               <Button
                 icon={<ArrowLeftOutlined />}
                 onClick={() => router.push('/')}
                 style={{
                   borderRadius: '8px',
                   border: 'none',
-                  background: isDarkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)',
-                  color: isDarkMode ? '#fff' : '#000'
+                  background: 'rgba(255,255,255,0.1)',
+                  color: '#fff'
                 }}
               >
-                Back to Home
+                Back
               </Button>
-
               <div style={{
-                display: 'inline-block',
-                padding: '8px 20px',
-                borderRadius: '20px',
-                background: 'linear-gradient(135deg, #3b82f6, #2563eb)',
-                color: 'white',
-                fontSize: '14px',
+                padding: '6px 14px',
+                borderRadius: '16px',
+                background: 'rgba(34, 197, 94, 0.15)',
+                color: '#22c55e',
+                fontSize: '12px',
                 fontWeight: 600,
-                textTransform: 'uppercase',
-                letterSpacing: '0.5px'
+                textTransform: 'uppercase'
               }}>
-                In Delivery
+                In Production
               </div>
             </div>
 
             <Title level={1} style={{
-              fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-              fontWeight: 900,
-              marginBottom: '24px',
-              background: 'var(--industrix-gradient)',
+              fontSize: 'clamp(1.75rem, 5vw, 2.5rem)',
+              fontWeight: 800,
+              marginBottom: '16px',
+              background: 'linear-gradient(135deg, #1079FF, #29C5FF)',
               WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
+              WebkitTextFillColor: 'transparent'
             }}>
-              Fuel Tank Monitoring & Theft Prevention System
+              Fuel Tank Monitoring & Theft Prevention
             </Title>
 
             <Paragraph style={{
-              fontSize: 'clamp(1.1rem, 2vw, 1.3rem)',
+              fontSize: 'clamp(15px, 3vw, 17px)',
               lineHeight: 1.6,
-              color: isDarkMode ? '#94a3b8' : '#64748b',
-              maxWidth: '900px',
-              marginBottom: '32px'
+              color: '#94a3b8',
+              maxWidth: '700px'
             }}>
               Credit-based fuel dispensing system with real-time anomaly detection,
-              remote oversight dashboard, and intelligent theft prevention for industrial
-              operations.
+              remote oversight dashboard, and intelligent theft prevention.
             </Paragraph>
-
           </div>
         </div>
 
         {/* Main Content */}
-        <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          padding: 'clamp(40px, 8vw, 60px) clamp(16px, 4vw, 24px)'
-        }}>
+        <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '48px 12px' }}>
           {/* The Problem */}
-          <section style={{ marginBottom: '60px' }}>
-            <Title level={2} style={{
-              fontSize: '2rem',
-              marginBottom: '24px',
-              color: isDarkMode ? '#e2e8f0' : '#1e293b'
-            }}>
+          <section style={{ marginBottom: '48px' }}>
+            <Title level={2} style={{ fontSize: '1.5rem', marginBottom: '16px', color: '#f1f5f9' }}>
               The Problem
             </Title>
-            <Paragraph style={{
-              fontSize: '1.1rem',
-              lineHeight: 1.8,
-              color: isDarkMode ? '#cbd5e1' : '#475569'
-            }}>
-              Industrial facilities face significant fuel theft and unauthorized consumption
-              issues. Traditional monitoring systems only detect theft after it occurs, while
-              manual oversight is inefficient and provides no real-time controls. Companies need
-              proactive prevention measures combined with remote administrative oversight.
+            <Paragraph style={{ fontSize: '15px', lineHeight: 1.7, color: '#cbd5e1' }}>
+              Industrial facilities face significant fuel theft and unauthorized consumption.
+              Traditional monitoring only detects theft after it occurs. Companies need
+              proactive prevention with remote administrative oversight.
             </Paragraph>
           </section>
 
           {/* The Solution */}
-          <section style={{ marginBottom: '60px' }}>
-            <Title level={2} style={{
-              fontSize: '2rem',
-              marginBottom: '24px',
-              color: isDarkMode ? '#e2e8f0' : '#1e293b'
-            }}>
+          <section style={{ marginBottom: '48px' }}>
+            <Title level={2} style={{ fontSize: '1.5rem', marginBottom: '16px', color: '#f1f5f9' }}>
               The Solution
             </Title>
-            <Paragraph style={{
-              fontSize: '1.1rem',
-              lineHeight: 1.8,
-              color: isDarkMode ? '#cbd5e1' : '#475569',
-              marginBottom: '32px'
-            }}>
-              We built a credit-based fuel dispensing system that prevents theft before it happens.
-              The system integrates with existing fuel flow meters using industrial IoT hardware
-              at each fuel station. Real-time data streams to cloud servers where advanced analytics
-              detect patterns and anomalies. Finance and operations teams access remote dashboards
-              with theft detection, pattern analysis, and automated alerts.
+            <Paragraph style={{ fontSize: '15px', lineHeight: 1.7, color: '#cbd5e1', marginBottom: '24px' }}>
+              A credit-based fuel dispensing system that prevents theft before it happens.
+              IoT hardware integrates with fuel flow meters, streaming data to cloud servers
+              where analytics detect patterns and anomalies.
             </Paragraph>
 
-            <Row gutter={[24, 24]}>
+            <Row gutter={[16, 16]}>
               {features.map((feature, index) => (
-                <Col xs={24} md={12} key={index}>
-                  <Card
-                    style={{
-                      border: 'none',
-                      borderRadius: '12px',
-                      background: isDarkMode
-                        ? 'rgba(30, 41, 59, 0.5)'
-                        : 'rgba(255, 255, 255, 0.8)',
-                      height: '100%'
-                    }}
-                  >
-                    <div style={{ display: 'flex', gap: '12px' }}>
-                      <CheckCircleOutlined style={{
-                        color: '#1079FF',
-                        fontSize: '20px',
-                        marginTop: '4px'
-                      }} />
-                      <Paragraph style={{
-                        fontSize: '15px',
-                        lineHeight: 1.6,
-                        margin: 0,
-                        color: isDarkMode ? '#e2e8f0' : '#1e293b'
-                      }}>
-                        {feature}
-                      </Paragraph>
-                    </div>
-                  </Card>
+                <Col xs={24} sm={12} key={index}>
+                  <div style={{
+                    display: 'flex',
+                    gap: '12px',
+                    padding: '16px',
+                    background: '#1e293b',
+                    borderRadius: '12px',
+                    height: '100%'
+                  }}>
+                    <CheckCircleOutlined style={{ color: '#1079FF', fontSize: '18px', marginTop: '2px' }} />
+                    <span style={{ fontSize: '14px', color: '#e2e8f0', lineHeight: 1.5 }}>{feature}</span>
+                  </div>
                 </Col>
               ))}
             </Row>
           </section>
 
           {/* Technical Architecture */}
-          <section style={{ marginBottom: '60px' }}>
-            <Title level={2} style={{
-              fontSize: '2rem',
-              marginBottom: '24px',
-              color: isDarkMode ? '#e2e8f0' : '#1e293b'
-            }}>
+          <section style={{ marginBottom: '48px' }}>
+            <Title level={2} style={{ fontSize: '1.5rem', marginBottom: '16px', color: '#f1f5f9' }}>
               Technical Architecture
             </Title>
-            <Card
-              style={{
-                border: 'none',
-                borderRadius: '16px',
-                background: isDarkMode
-                  ? 'linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.7))'
-                  : 'linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7))',
-                padding: '24px'
-              }}
-            >
-              <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '16px'
-              }}>
-                {[
-                  { layer: 'Hardware Layer', desc: 'Industrial IoT devices with fuel flow meter integration and edge computing' },
-                  { layer: 'Communication Layer', desc: 'Real-time data streaming with automatic reconnection and failover' },
-                  { layer: 'Backend Layer', desc: 'Cloud servers with transactional and time-series databases' },
-                  { layer: 'Analytics Layer', desc: 'Pattern analysis engine with anomaly detection algorithms' },
-                  { layer: 'Frontend Layer', desc: 'React admin dashboard with mobile-responsive design' }
-                ].map((item, index) => (
-                  <div
-                    key={index}
-                    style={{
-                      padding: '16px',
-                      borderRadius: '8px',
-                      background: isDarkMode
-                        ? 'rgba(16, 121, 255, 0.1)'
-                        : 'rgba(16, 121, 255, 0.05)',
-                      borderLeft: '4px solid #1079FF'
-                    }}
-                  >
-                    <Title level={5} style={{
-                      margin: 0,
-                      marginBottom: '8px',
-                      color: '#1079FF'
-                    }}>
-                      {item.layer}
-                    </Title>
-                    <Paragraph style={{
-                      margin: 0,
-                      color: isDarkMode ? '#cbd5e1' : '#475569'
-                    }}>
-                      {item.desc}
-                    </Paragraph>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              {[
+                { layer: 'Hardware', desc: 'Industrial IoT devices with fuel flow meter integration' },
+                { layer: 'Communication', desc: 'Real-time data streaming with automatic failover' },
+                { layer: 'Backend', desc: 'Cloud servers with transactional and time-series databases' },
+                { layer: 'Analytics', desc: 'Pattern analysis with anomaly detection algorithms' },
+                { layer: 'Frontend', desc: 'React admin dashboard with mobile-responsive design' }
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  style={{
+                    padding: '16px',
+                    borderRadius: '8px',
+                    background: 'rgba(16, 121, 255, 0.08)',
+                    borderLeft: '3px solid #1079FF'
+                  }}
+                >
+                  <div style={{ fontSize: '14px', fontWeight: 600, color: '#1079FF', marginBottom: '4px' }}>
+                    {item.layer}
                   </div>
-                ))}
-              </div>
-            </Card>
+                  <div style={{ fontSize: '13px', color: '#94a3b8' }}>{item.desc}</div>
+                </div>
+              ))}
+            </div>
           </section>
 
-          {/* Photos Section - Placeholder */}
-          <section style={{ marginBottom: '60px' }}>
-            <Title level={2} style={{
-              fontSize: '2rem',
-              marginBottom: '24px',
-              color: isDarkMode ? '#e2e8f0' : '#1e293b'
-            }}>
+          {/* Photos Placeholder */}
+          <section style={{ marginBottom: '48px' }}>
+            <Title level={2} style={{ fontSize: '1.5rem', marginBottom: '16px', color: '#f1f5f9' }}>
               Project Photos
             </Title>
-            <Card
-              style={{
-                border: '2px dashed',
-                borderColor: isDarkMode ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)',
-                borderRadius: '16px',
-                background: isDarkMode
-                  ? 'rgba(30, 41, 59, 0.3)'
-                  : 'rgba(248, 250, 252, 0.5)',
-                padding: '60px 24px',
-                textAlign: 'center'
-              }}
-            >
-              <RocketOutlined style={{
-                fontSize: '48px',
-                color: isDarkMode ? '#64748b' : '#94a3b8',
-                marginBottom: '16px'
-              }} />
-              <Paragraph style={{
-                fontSize: '1.1rem',
-                color: isDarkMode ? '#64748b' : '#94a3b8'
-              }}>
-                Hardware installation photos coming soon
-              </Paragraph>
-            </Card>
+            <div style={{
+              border: '2px dashed rgba(255,255,255,0.15)',
+              borderRadius: '12px',
+              padding: '48px 24px',
+              textAlign: 'center'
+            }}>
+              <RocketOutlined style={{ fontSize: '36px', color: '#64748b', marginBottom: '12px' }} />
+              <p style={{ color: '#64748b', margin: 0 }}>Hardware installation photos coming soon</p>
+            </div>
           </section>
 
           {/* CTA */}
-          <Card
-            style={{
-              border: 'none',
-              borderRadius: '16px',
-              background: isDarkMode
-                ? 'linear-gradient(145deg, rgba(16, 121, 255, 0.1), rgba(41, 197, 255, 0.05))'
-                : 'linear-gradient(145deg, rgba(16, 121, 255, 0.05), rgba(41, 197, 255, 0.02))',
-              padding: '40px 24px',
-              textAlign: 'center'
-            }}
-          >
-            <Title level={3} style={{
-              marginBottom: '16px',
-              color: isDarkMode ? '#e2e8f0' : '#1e293b'
-            }}>
+          <div style={{
+            padding: '32px 24px',
+            background: 'rgba(16, 121, 255, 0.08)',
+            border: '1px solid rgba(16, 121, 255, 0.15)',
+            borderRadius: '12px',
+            textAlign: 'center'
+          }}>
+            <Title level={3} style={{ fontSize: '1.25rem', marginBottom: '8px', color: '#f1f5f9' }}>
               Need a Similar Solution?
             </Title>
-            <Paragraph style={{
-              fontSize: '1.1rem',
-              marginBottom: '32px',
-              color: isDarkMode ? '#94a3b8' : '#64748b',
-              maxWidth: '600px',
-              margin: '0 auto 32px'
-            }}>
-              We can build custom theft prevention and monitoring systems tailored to your specific industrial needs.
+            <Paragraph style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '24px' }}>
+              We build custom monitoring systems tailored to your industrial needs.
             </Paragraph>
-            <Space size="large">
+            <Space size="middle" wrap style={{ justifyContent: 'center' }}>
               <Button
                 type="primary"
                 size="large"
                 onClick={() => router.push('/#contact')}
                 style={{
-                  height: '48px',
-                  paddingLeft: '32px',
-                  paddingRight: '32px',
-                  borderRadius: '12px',
-                  background: 'var(--industrix-gradient)',
+                  height: '44px',
+                  padding: '0 24px',
+                  borderRadius: '8px',
+                  background: 'linear-gradient(135deg, #1079FF, #29C5FF)',
                   border: 'none',
-                  fontWeight: 600,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.5px'
+                  fontWeight: 600
                 }}
               >
                 Get In Touch
@@ -330,22 +206,19 @@ export default function FuelTankMonitoringPage() {
                 size="large"
                 onClick={() => router.push('/')}
                 style={{
-                  height: '48px',
-                  paddingLeft: '32px',
-                  paddingRight: '32px',
-                  borderRadius: '12px',
-                  borderWidth: '2px',
-                  borderColor: '#1079FF',
+                  height: '44px',
+                  padding: '0 24px',
+                  borderRadius: '8px',
+                  border: '2px solid #1079FF',
                   color: '#1079FF',
-                  fontWeight: 600,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.5px'
+                  background: 'transparent',
+                  fontWeight: 600
                 }}
               >
                 View More Projects
               </Button>
             </Space>
-          </Card>
+          </div>
         </div>
       </Content>
       <Footer />
