@@ -1,4 +1,6 @@
-/* Reset and Base Styles */
+/* Industrix - Clean Global Styles */
+/* Mobile-first, 12px base padding, dark mode */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,1029 +9,221 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 14px;
 }
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   font-size: 14px;
+  line-height: 1.6;
+  background: #0f172a;
+  color: #e2e8f0;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f5f9;
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #1079FF, #29C5FF);
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #0c65d1, #22b8f0);
-}
-
-/* Dark mode scrollbar */
-.dark ::-webkit-scrollbar-track {
-  background: #1f2937;
-}
-
-/* Industrix Brand Colors */
+/* Brand Colors */
 :root {
-  --industrix-blue: #1079FF;
-  --industrix-cyan: #29C5FF;
-  --industrix-red: #F62A3A;
-  --industrix-coral: #F85B62;
-  --industrix-gradient: linear-gradient(135deg, #1079FF, #29C5FF);
-  --industrix-gradient-red: linear-gradient(135deg, #F62A3A, #F85B62);
-  --industrix-gradient-soft: linear-gradient(135deg, rgba(16, 121, 255, 0.1), rgba(41, 197, 255, 0.1));
-  --glass-bg: rgba(255, 255, 255, 0.25);
-  --glass-bg-dark: rgba(0, 0, 0, 0.25);
-  --shadow-soft: 0 8px 32px rgba(16, 121, 255, 0.15);
-  --shadow-strong: 0 16px 64px rgba(16, 121, 255, 0.25);
+  --blue: #1079FF;
+  --cyan: #29C5FF;
+  --red: #F62A3A;
+  --bg-dark: #0f172a;
+  --bg-card: #1e293b;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border: rgba(255, 255, 255, 0.1);
+  --gradient-blue: linear-gradient(135deg, #1079FF, #29C5FF);
+  --gradient-red: linear-gradient(135deg, #F62A3A, #F85B62);
+  --padding: 12px;
 }
 
-/* Custom Gradient Backgrounds */
-.gradient-bg {
-  background: var(--industrix-gradient);
-}
-
-.gradient-bg-red {
-  background: var(--industrix-gradient-red);
-}
-
-.gradient-text {
-  background: var(--industrix-gradient);
+/* Gradient Text */
+.text-gradient {
+  background: var(--gradient-blue);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Hero Section Styles */
-.hero-section {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
+/* Section Base */
+section {
+  padding: 48px var(--padding);
 }
 
-.hero-bg-pattern {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    linear-gradient(rgba(16, 121, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(16, 121, 255, 0.03) 1px, transparent 1px);
-  background-size: 20px 20px;
-  opacity: 0.5;
-}
-
-/* Animation Classes */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+@media (min-width: 768px) {
+  section {
+    padding: 64px 24px;
   }
 }
 
-@keyframes fadeInScale {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(16, 121, 255, 0.3); }
-  50% { box-shadow: 0 0 30px rgba(16, 121, 255, 0.6); }
-}
-
-@keyframes textGlow {
-  0%, 100% { 
-    text-shadow: 0 0 20px rgba(16, 121, 255, 0.3), 0 0 40px rgba(16, 121, 255, 0.1);
-    transform: scale(1);
-  }
-  50% { 
-    text-shadow: 0 0 30px rgba(16, 121, 255, 0.6), 0 0 60px rgba(16, 121, 255, 0.2);
-    transform: scale(1.02);
-  }
-}
-
-.animate-fadeInUp {
-  animation: fadeInUp 0.6s ease-out forwards;
-}
-
-.animate-fadeInScale {
-  animation: fadeInScale 0.8s ease-out forwards;
-}
-
-.animate-slideInLeft {
-  animation: slideInLeft 0.8s ease-out forwards;
-}
-
-.animate-slideInRight {
-  animation: slideInRight 0.8s ease-out forwards;
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-.animate-pulse {
-  animation: pulse 2s ease-in-out infinite;
-}
-
-.animate-glow {
-  animation: glow 2s ease-in-out infinite alternate;
-}
-
-.animate-gradient {
-  background: linear-gradient(-45deg, #1079FF, #29C5FF, #F62A3A, #F85B62);
-  background-size: 400% 400%;
-  animation: gradientShift 3s ease infinite;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.animate-gradient-delayed {
-  background: linear-gradient(-45deg, #F62A3A, #FFFFFF, #F85B62, #FFFFFF);
-  background-size: 400% 400%;
-  animation: gradientShift 3s ease infinite 1.5s;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Custom Ant Design Overrides */
-.ant-card {
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.ant-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-strong);
-  border-color: rgba(16, 121, 255, 0.2);
-}
-
-.ant-btn {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 12px;
-  font-weight: 600;
-}
-
-.ant-btn:hover {
-  transform: translateY(-2px);
-}
-
-.ant-btn-primary {
-  box-shadow: var(--shadow-soft);
-}
-
-.ant-btn-primary:hover {
-  box-shadow: var(--shadow-strong);
-}
-
-/* Feature Card Styles */
-.feature-card {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  border-radius: 16px;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  position: relative;
-}
-
-.feature-card::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 0;
-  background: var(--industrix-gradient);
-  transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 0 0 20px 20px;
-}
-
-.feature-card:hover::before {
-  height: 6px;
-}
-
-.feature-card:hover {
-  transform: translateY(-8px) scale(1.01);
-  box-shadow: var(--shadow-strong);
-}
-
-.feature-icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--industrix-gradient);
-  color: white;
-  font-size: 24px;
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  line-height: 1.3;
   margin-bottom: 12px;
 }
 
-/* Solution Card Specific Styles */
-.solution-card {
-  position: relative;
-  overflow: hidden;
+p {
+  color: var(--text-secondary);
+  margin-bottom: 12px;
 }
 
-.solution-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 0;
-  transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 0 0 24px 24px;
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: var(--padding);
 }
 
-.solution-card[data-gradient="blue"]::after {
-  background: var(--industrix-gradient);
-}
-
-.solution-card[data-gradient="red"]::after {
-  background: var(--industrix-gradient-red);
-}
-
-.solution-card:hover::after {
-  height: 6px;
-}
-
-.feature-icon-red {
-  background: var(--industrix-gradient-red);
-}
-
-/* Section Styles */
-.section-padding {
-  padding: 48px 0;
-}
-
-/* Contact section reduced padding */
-#contact.section-padding,
-section#contact.section-padding {
-  padding: 40px 0;
-}
-
-.section-title {
-  font-size: 2rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 0.8rem;
-}
-
-.section-subtitle {
-  font-size: 1.1rem;
-  color: #6b7280;
-  text-align: center;
-  margin-bottom: 2.5rem;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .section-title {
-    font-size: 1.8rem;
-  }
-
-  .section-subtitle {
-    font-size: 1rem;
-  }
-
-  .section-padding {
-    padding: 50px 0;
-  }
-}
-
-/* Custom Button Styles */
-.btn-gradient {
-  background: var(--industrix-gradient);
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
   border: none;
-  color: white;
-  font-weight: 600;
-  transition: all 0.3s ease;
+  transition: opacity 0.2s;
 }
 
-.btn-gradient:hover {
-  background: linear-gradient(135deg, #0c65d1, #22b8f0);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(16, 121, 255, 0.3);
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn-primary {
+  background: var(--gradient-blue);
+  color: white;
 }
 
 .btn-outline {
-  border: 2px solid var(--industrix-blue);
-  color: var(--industrix-blue);
   background: transparent;
+  border: 2px solid var(--blue);
+  color: var(--blue);
+}
+
+/* Ant Design Overrides - Minimal */
+.ant-btn {
+  border-radius: 8px;
   font-weight: 600;
-  transition: all 0.3s ease;
 }
 
-.btn-outline:hover {
-  background: var(--industrix-blue);
-  color: white;
-  transform: translateY(-2px);
+.ant-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
 }
 
-/* Loading Spinner */
-.loading-spinner {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #f3f3f3;
-  border-top: 2px solid var(--industrix-blue);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+.ant-card-body {
+  padding: var(--padding);
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.ant-input,
+.ant-select-selector {
+  background: rgba(30, 41, 59, 0.8) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+  color: var(--text-primary) !important;
+  font-size: 14px !important;
 }
 
-/* Coming Soon Button Effects */
-@keyframes shimmer {
-  0%, 100% { 
-    box-shadow: 0 0 5px rgba(255,255,255,0.3);
-  }
-  50% { 
-    box-shadow: 0 0 20px rgba(255,255,255,0.6), 0 0 30px rgba(255,255,255,0.4);
-  }
+.ant-input-affix-wrapper {
+  background: rgba(30, 41, 59, 0.8) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+  padding: 0 11px !important;
 }
 
-@keyframes shimmerMove {
-  0% { 
-    left: -100%; 
-  }
-  100% { 
-    left: 100%; 
-  }
-}
-
-@keyframes pulse {
-  0%, 100% { 
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% { 
-    transform: scale(1.02);
-    opacity: 0.9;
-  }
-}
-
-@keyframes fadeOutScale {
-  0% { 
-    opacity: 1;
-    transform: scale(1);
-  }
-  100% { 
-    opacity: 0.3;
-    transform: scale(0.98);
-  }
-}
-
-@keyframes fadeInScale {
-  0% { 
-    opacity: 0.3;
-    transform: scale(0.98);
-  }
-  100% { 
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Utility Classes */
-.text-gradient {
-  background: var(--industrix-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.full-height {
-  min-height: 100vh;
-}
-
-.center-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.glass-effect {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.footer-link:hover {
-  color: #1079FF !important;
-}
-
-/* Mobile Menu Fixes */
-.ant-menu-item {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: flex-start !important;
-  height: auto !important;
-  line-height: normal !important;
-  padding: 0 !important;
-}
-
-.ant-menu-item:hover {
-  background-color: rgba(16, 121, 255, 0.1) !important;
-}
-
-.ant-menu-item a {
-  display: flex !important;
-  align-items: center !important;
-  width: 100% !important;
-  height: 100% !important;
-  padding: 12px 16px !important;
-}
-
-/* Enhanced Form Styles */
-.ant-form-item-label > label {
-  font-weight: 600;
-  font-size: 16px;
-  transition: color 0.3s ease;
-}
-
-.ant-input, .ant-select-selector, .ant-input-affix-wrapper, .ant-input.ant-input {
-  border-radius: 12px !important;
-  border: 2px solid #e2e8f0 !important;
-  transition: all 0.3s ease !important;
-  font-size: 16px !important;
-  height: 48px !important;
-}
-
-.ant-input:focus, .ant-select-focused .ant-select-selector, .ant-input-affix-wrapper:focus, .ant-input.ant-input:focus {
-  border-color: #1079FF !important;
-  box-shadow: 0 0 0 3px rgba(16, 121, 255, 0.1) !important;
-}
-
-.ant-input:hover, .ant-select:hover .ant-select-selector, .ant-input-affix-wrapper:hover, .ant-input.ant-input:hover {
-  border-color: #1079FF !important;
-}
-
-/* Dark mode form styles */
-[data-theme="dark"] .ant-form-item-label > label {
-  color: #e2e8f0 !important;
-}
-
-[data-theme="dark"] .ant-input, 
-[data-theme="dark"] .ant-select-selector, 
-[data-theme="dark"] .ant-input-affix-wrapper,
-[data-theme="dark"] .ant-input.ant-input {
-  background-color: rgba(30, 41, 59, 0.6) !important;
-  border-color: rgba(71, 85, 105, 0.6) !important;
-  color: #e2e8f0 !important;
-}
-
-[data-theme="dark"] .ant-input::placeholder,
-[data-theme="dark"] .ant-input-affix-wrapper input::placeholder {
-  color: #94a3b8 !important;
-}
-
-[data-theme="dark"] .ant-select-selection-placeholder {
-  color: #94a3b8 !important;
-}
-
-/* Button Enhancement */
-.btn-gradient {
-  background: var(--industrix-gradient) !important;
+.ant-input-affix-wrapper .ant-input {
+  background: transparent !important;
   border: none !important;
-  color: white !important;
-  font-weight: 700 !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.5px !important;
-}
-
-.btn-gradient:hover {
-  background: linear-gradient(135deg, #0c65d1, #22b8f0) !important;
-  transform: translateY(-2px) !important;
-  box-shadow: var(--shadow-strong) !important;
-}
-
-.btn-outline {
-  border: 2px solid var(--industrix-blue) !important;
-  color: var(--industrix-blue) !important;
-  background: transparent !important;
-  font-weight: 700 !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.5px !important;
-}
-
-.btn-outline:hover {
-  background: var(--industrix-blue) !important;
-  color: white !important;
-  transform: translateY(-2px) !important;
-}
-
-/* Theme Toggle Switch Styles */
-.ant-switch .ant-switch-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Light mode: clean white/light styling */
-.ant-switch:not(.ant-switch-checked) {
-  background-color: rgba(241, 245, 249, 0.8) !important;
-  border: 2px solid rgba(203, 213, 225, 0.5) !important;
-}
-
-.ant-switch:not(.ant-switch-checked):hover {
-  background-color: rgba(241, 245, 249, 1) !important;
-  border-color: rgba(16, 121, 255, 0.3) !important;
-}
-
-.ant-switch:not(.ant-switch-checked) .ant-switch-inner .anticon {
-  color: #64748b !important;
-}
-
-.ant-switch:not(.ant-switch-checked) .ant-switch-handle {
-  background: linear-gradient(135deg, #ffffff, #f8fafc) !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
-}
-
-.ant-switch:not(.ant-switch-checked) .ant-switch-handle::before {
-  background: transparent !important;
   box-shadow: none !important;
 }
 
-/* Dark mode: blue styling */
-.ant-switch.ant-switch-checked {
-  background-color: #1079FF !important;
-  border: 2px solid rgba(16, 121, 255, 0.3) !important;
+.ant-input::placeholder,
+.ant-input-affix-wrapper input::placeholder {
+  color: var(--text-muted) !important;
 }
 
-.ant-switch.ant-switch-checked:hover {
-  background-color: #0c65d1 !important;
+.ant-input:focus,
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-focused,
+.ant-select-focused .ant-select-selector {
+  border-color: var(--blue) !important;
+  box-shadow: 0 0 0 2px rgba(16, 121, 255, 0.2) !important;
 }
 
-.ant-switch.ant-switch-checked .ant-switch-inner .anticon {
-  color: #ffffff !important;
+.ant-select-dropdown {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
 }
 
-.ant-switch.ant-switch-checked .ant-switch-handle {
-  background: linear-gradient(135deg, #1e293b, #0f172a) !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+.ant-select-item {
+  color: var(--text-primary) !important;
 }
 
-.ant-switch.ant-switch-checked .ant-switch-handle::before {
-  background: transparent !important;
-  box-shadow: none !important;
+.ant-select-item-option-selected {
+  background: rgba(16, 121, 255, 0.2) !important;
 }
 
-/* Mobile Optimizations */
-@media (max-width: 1023px) {
-  /* Prevent zoom completely */
-  * {
-    touch-action: manipulation !important;
-  }
+.ant-form-item-label > label {
+  color: var(--text-primary) !important;
+  font-weight: 500;
+  font-size: 14px;
+}
 
-  html {
-    overflow-x: hidden !important;
-    overflow-y: auto !important;
-    width: 100% !important;
-    max-width: 100vw !important;
-    position: relative !important;
-  }
+.ant-form-item {
+  margin-bottom: 16px;
+}
 
-  body {
-    overflow-x: hidden !important;
-    overflow-y: auto !important;
-    max-width: 100vw !important;
-    width: 100% !important;
-    position: relative !important;
-    -webkit-text-size-adjust: 100% !important;
-    -ms-text-size-adjust: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
 
-  /* Nuclear option: force everything */
-  * {
-    max-width: 100vw !important;
-  }
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
 
-  *:not(html):not(body) {
-    max-width: 100% !important;
-  }
+::-webkit-scrollbar-thumb {
+  background: var(--blue);
+  border-radius: 3px;
+}
 
-  /* Remove all horizontal scroll containers */
-  *::-webkit-scrollbar-horizontal {
-    display: none !important;
-    height: 0 !important;
-  }
-
-  /* Prevent horizontal scroll for all containers */
-  .ant-layout,
-  .ant-layout-content,
-  section,
-  div,
-  main {
-    overflow-x: hidden !important;
-  }
-
-  /* Ensure no element causes horizontal scroll */
-  * {
-    box-sizing: border-box !important;
-  }
-
-  /* Fix cards with absolute positioned elements */
-  .ant-card {
-    position: relative !important;
-    overflow: hidden !important;
-  }
-
-  /* Hide scrollbars from all cards */
-  .ant-card::-webkit-scrollbar {
-    display: none !important;
-    width: 0 !important;
-    height: 0 !important;
-  }
-
-  .ant-card {
-    scrollbar-width: none !important;
-    -ms-overflow-style: none !important;
-  }
-
-  /* Prevent zoom on form inputs */
+/* Mobile Fixes */
+@media (max-width: 767px) {
   input, select, textarea {
-    font-size: 16px !important;
+    font-size: 16px !important; /* Prevent iOS zoom */
   }
 
-  /* Navbar mobile adjustments */
-  .ant-layout-header {
-    height: 70px !important;
-    line-height: 70px !important;
-    padding: 0 clamp(12px, 3vw, 16px) !important;
-    overflow-x: hidden !important;
-    overflow-y: visible !important;
-    max-width: 100vw !important;
-    width: 100% !important;
-  }
-
-  /* Ensure navbar inner content doesn't overflow */
-  .ant-layout-header > div {
-    max-width: 100% !important;
-    width: 100% !important;
-    overflow-x: hidden !important;
-  }
-
-  /* Hide scrollbars in header specifically */
-  .ant-layout-header::-webkit-scrollbar {
-    display: none !important;
-    width: 0 !important;
-    height: 0 !important;
-  }
-
-  .ant-layout-header {
-    scrollbar-width: none !important;
-    -ms-overflow-style: none !important;
-  }
-  
-  
-  /* Mobile content spacing */
-  .hero-section {
-    padding-top: 100px !important;
-    overflow-x: hidden !important;
-    overflow-y: visible !important;
-    max-width: 100vw !important;
-    width: 100% !important;
-  }
-
-  /* Hide scrollbars in hero section */
-  .hero-section::-webkit-scrollbar {
-    display: none !important;
-    width: 0 !important;
-    height: 0 !important;
-  }
-
-  .hero-section {
-    scrollbar-width: none !important;
-    -ms-overflow-style: none !important;
-  }
-
-  /* Ensure hero section children don't overflow */
-  .hero-section > *,
-  .hero-section > * > * {
-    max-width: 100% !important;
-    overflow-x: hidden !important;
-  }
-
-  /* Target specific hero section elements */
-  #home,
-  section[id="home"] {
-    overflow-x: hidden !important;
-    max-width: 100vw !important;
-  }
-
-  /* Hide all scrollbars in hero/home section */
-  #home::-webkit-scrollbar,
-  section[id="home"]::-webkit-scrollbar {
-    display: none !important;
-  }
-
-  /* Hide scrollbars from all child elements in hero section */
-  .hero-section *::-webkit-scrollbar,
-  #home *::-webkit-scrollbar,
-  section[id="home"] *::-webkit-scrollbar {
-    display: none !important;
-    width: 0 !important;
-    height: 0 !important;
-  }
-
-  .hero-section *,
-  #home *,
-  section[id="home"] * {
-    scrollbar-width: none !important;
-    -ms-overflow-style: none !important;
-  }
-
-  /* Hide scrollbars on About section */
-  #about,
-  section[id="about"] {
-    overflow-x: hidden !important;
-    overflow-y: visible !important;
-    max-width: 100vw !important;
-  }
-
-  /* Hide horizontal scrollbars only, allow vertical */
-  #about::-webkit-scrollbar-horizontal,
-  section[id="about"]::-webkit-scrollbar-horizontal {
-    display: none !important;
-    height: 0 !important;
-  }
-
-  #about::-webkit-scrollbar-track-piece:horizontal,
-  section[id="about"]::-webkit-scrollbar-track-piece:horizontal {
-    display: none !important;
-  }
-
-  /* Mobile card padding */
-  .ant-card-body {
-    padding: 16px !important;
-  }
-  
-  /* Mobile typography adjustments */
-  .section-title {
-    font-size: clamp(1.8rem, 6vw, 2.5rem) !important;
-  }
-  
-  /* Mobile navbar logo */
-  .animate-slideInLeft span {
-    font-size: 20px !important;
-  }
-  
-  /* Ensure all rows and columns stay within viewport */
   .ant-row {
-    max-width: 100% !important;
-    width: 100% !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
 
   .ant-col {
-    max-width: 100% !important;
-    width: 100% !important;
-    padding-left: clamp(12px, 3vw, 16px) !important;
-    padding-right: clamp(12px, 3vw, 16px) !important;
+    padding-left: var(--padding) !important;
+    padding-right: var(--padding) !important;
   }
+}
 
-  /* Fix container widths */
-  .hero-bg-pattern {
-    max-width: 100% !important;
-    width: 100% !important;
-    overflow: hidden !important;
-  }
+/* Hide scrollbar on cards */
+.ant-card,
+.ant-card-body {
+  overflow: visible;
+}
 
-  /* Ensure cards don't exceed viewport */
-  .ant-card {
-    max-width: 100% !important;
-    width: 100% !important;
-    margin: 0 !important;
-  }
-
-  /* Fix space components */
-  .ant-space {
-    max-width: 100% !important;
-    width: 100% !important;
-    flex-wrap: wrap !important;
-  }
-
-  /* Ensure buttons don't cause overflow */
-  .btn-gradient,
-  .btn-outline,
-  .ant-btn {
-    max-width: 100% !important;
-    word-break: break-word !important;
-  }
-
-  /* Fix all sections and containers */
-  section,
-  header,
-  footer,
-  main {
-    max-width: 100vw !important;
-    width: 100% !important;
-  }
-
-  /* Ensure all child divs respect viewport */
-  section > div,
-  main > div {
-    max-width: 100% !important;
-    width: 100% !important;
-  }
-
-  /* Fix SVG and images */
-  svg,
-  img {
-    max-width: 100% !important;
-    height: auto !important;
-  }
-
-  /* Prevent Typography components from overflowing */
-  .ant-typography,
-  h1, h2, h3, h4, h5, h6,
-  p, span {
-    max-width: 100% !important;
-    word-wrap: break-word !important;
-    overflow-wrap: break-word !important;
-  }
-
-  /* Mobile project section adjustments */
-  .section-padding {
-    padding: 32px 0 !important;
-  }
-
-  /* Contact section further reduced on mobile */
-  #contact.section-padding,
-  section#contact.section-padding {
-    padding: 24px 0 !important;
-  }
-
-  /* Fix card scrolling bug on mobile - prevent internal scrollbars */
-  .ant-card,
-  .ant-card-body,
-  .ant-card-cover {
-    overflow: visible !important;
-    -webkit-overflow-scrolling: auto !important;
-    overscroll-behavior: none !important;
-  }
-
-  /* Reduce gap between scrolling cards on mobile */
-  .projects-scroll-container > div {
-    gap: 16px !important;
-  }
-
-  /* Mobile hero section text spacing */
-  #home {
-    padding-top: 80px;
-  }
-
-  /* Mobile earth animation container */
-  svg {
-    max-width: 100% !important;
-    height: auto !important;
-  }
-
-  /* Improve mobile card padding inside project cards */
-  .ant-card {
-    padding: 16px !important;
-  }
-
-  /* Mobile row gutters */
-  .ant-row {
-    row-gap: 24px !important;
-  }
-
-  /* Improved mobile animation performance */
-  * {
-    -webkit-tap-highlight-color: transparent !important;
-  }
-
-  /* Better mobile readability */
-  body {
-    line-height: 1.6 !important;
-  }
-
-  /* Reduce animation intensity on mobile for better performance */
-  .animate-fadeInUp,
-  .animate-slideInLeft,
-  .animate-slideInRight,
-  .animate-fadeInScale {
-    animation-duration: 0.4s !important;
-  }
-
-  /* Smoother scrolling on mobile - but not for cards */
-  html, body {
-    -webkit-overflow-scrolling: touch !important;
-  }
-
-  /* Ensure cards never show internal scrollbars */
-  .ant-card,
-  .ant-card-body {
-    overflow: visible !important;
-    -webkit-overflow-scrolling: auto !important;
-  }
-
-  /* Better mobile card spacing */
-  .ant-card {
-    margin-bottom: 16px !important;
-  }
-
-  /* Mobile Space component gaps */
-  .ant-space-horizontal {
-    gap: 12px !important;
-  }
-
-  .ant-space-vertical {
-    gap: 16px !important;
-  }
-
-  /* Better mobile title spacing */
-  h1, h2, h3, h4, h5, h6 {
-    margin-top: 0 !important;
-    margin-bottom: clamp(12px, 3vw, 24px) !important;
-  }
-
-  /* Mobile paragraph spacing */
-  p {
-    margin-bottom: clamp(12px, 3vw, 16px) !important;
-  }
+/* Footer link hover */
+.footer-link:hover {
+  color: var(--blue) !important;
 }

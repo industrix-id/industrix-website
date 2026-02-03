@@ -1,232 +1,173 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Layout, Menu, Button, Space, Drawer } from 'antd'
-import { MenuOutlined, SunOutlined, MoonOutlined } from '@ant-design/icons'
+import { Button, Drawer } from 'antd'
+import { MenuOutlined, CloseOutlined } from '@ant-design/icons'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useTheme } from '../app/theme/ThemeProvider'
 
-const { Header } = Layout
+const navItems = [
+  { label: 'Home', href: '/#home' },
+  { label: 'About', href: '/#about' },
+  { label: 'Projects', href: '/#projects' },
+  { label: 'Contact', href: '/#contact' }
+]
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const { isDarkMode, toggleTheme } = useTheme()
-
-  const mobileMenuItems = [
-    { key: 'home', label: 'Home', href: '/', isExternal: true },
-    { key: 'about', label: 'About', href: '/#about', isExternal: true },
-    { key: 'solutions', label: 'Solutions', href: '/#solutions', isExternal: true },
-    { key: 'projects', label: 'Projects', href: '/#projects', isExternal: true },
-    { key: 'careers', label: 'Careers', href: '/careers', isExternal: true },
-  ]
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <Header 
+    <header
       style={{
         position: 'fixed',
         top: 0,
-        width: '100%',
+        left: 0,
+        right: 0,
         zIndex: 1000,
-        padding: '0 16px',
-        background: isDarkMode ? 'rgba(20, 20, 20, 0.95)' : 'rgba(255, 255, 255, 0.95)',
-        backdropFilter: 'blur(20px)',
-        borderBottom: `1px solid ${isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(16, 121, 255, 0.1)'}`,
-        boxShadow: isDarkMode 
-          ? '0 4px 32px rgba(0, 0, 0, 0.3)' 
-          : '0 4px 32px rgba(16, 121, 255, 0.1)',
-        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-      }}
-      className="animate-slideInUp"
-    >
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'space-between', 
+        padding: '0 12px',
+        height: '64px',
+        display: 'flex',
         alignItems: 'center',
-        height: '100%',
-        width: '100%'
-      }}>
-        {/* Logo - Clickable to go back to home */}
-        <Link href="/" style={{ textDecoration: 'none' }}>
-          <div 
-            style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: '0px',
-              cursor: 'pointer',
-              padding: '8px',
-              borderRadius: '12px',
-              transition: 'all 0.3s ease'
-            }} 
-            className="animate-slideInLeft"
-            onMouseEnter={(e) => {
-              const target = e.currentTarget as HTMLElement
-              target.style.background = isDarkMode 
-                ? 'rgba(16, 121, 255, 0.1)' 
-                : 'rgba(16, 121, 255, 0.05)'
-              target.style.transform = 'scale(1.02)'
-            }}
-            onMouseLeave={(e) => {
-              const target = e.currentTarget as HTMLElement
-              target.style.background = 'transparent'
-              target.style.transform = 'scale(1)'
-            }}
-          >
-            <div style={{
-              padding: '8px'
-            }}>
-              <Image
-                src="/Logo.svg"
-                alt="Industrix Logo"
-                width={40}
-                height={40}
-                style={{ display: 'block', filter: 'drop-shadow(0 2px 4px rgba(16, 121, 255, 0.3))' }}
-              />
-            </div>
-            <span style={{ 
-              fontSize: '24px', 
-              fontWeight: 800,
-              background: 'var(--industrix-gradient)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              letterSpacing: '-0.5px'
-            }}>
-              Industrix
-            </span>
-          </div>
-        </Link>
-
-        {/* Theme Toggle & Contact Button */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(16px, 4vw, 32px)' }} className="animate-slideInRight">
-          <Space size="large">
-            <Button
-              type="text"
-              onClick={toggleTheme}
-              style={{
-                width: '44px',
-                height: '44px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRadius: '12px',
-                transition: 'all 0.3s ease',
-              }}
-              icon={
-                isDarkMode ? (
-                  <SunOutlined style={{ fontSize: '20px', color: '#fbbf24' }} />
-                ) : (
-                  <MoonOutlined style={{ fontSize: '20px', color: '#1079FF' }} />
-                )
-              }
-            />
-            
-            <Button 
-              type="primary"
-              className="btn-gradient desktop-only"
-              onClick={() => {
-                window.location.href = '/#contact'
-              }}
-              style={{
-                borderRadius: '12px',
-                height: '44px',
-                paddingLeft: '24px',
-                paddingRight: '24px',
-                fontWeight: 600,
-                textTransform: 'uppercase',
-                letterSpacing: '0.5px',
-                fontSize: '14px',
-                boxShadow: 'var(--shadow-soft)'
-              }}
-            >
-              Contact Us
-            </Button>
-
-            {/* Mobile Menu Button */}
-            <Button
-              type="text"
-              icon={<MenuOutlined />}
-              onClick={() => setIsMenuOpen(true)}
-              className="mobile-only"
-              style={{
-                color: isDarkMode ? '#fff' : '#000',
-                background: 'transparent',
-                border: 'none',
-                fontSize: '18px'
-              }}
-            />
-          </Space>
-        </div>
-      </div>
-
-      {/* Mobile Drawer */}
-      <Drawer
-        title="Menu"
-        placement="right"
-        onClose={() => setIsMenuOpen(false)}
-        open={isMenuOpen}
-        width={280}
+        background: 'rgba(15, 23, 42, 0.95)',
+        backdropFilter: 'blur(12px)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
+      }}
+    >
+      <div
         style={{
-          background: isDarkMode ? '#1f1f1f' : '#fff',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          width: '100%',
+          maxWidth: '1200px',
+          margin: '0 auto'
         }}
       >
-        <Menu
-          mode="vertical"
-          style={{
-            background: 'transparent',
-            border: 'none',
-            fontSize: '16px',
-          }}
-          items={mobileMenuItems.map(item => ({
-            key: item.key,
-            label: (
-              <a 
+        {/* Logo */}
+        <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <Image src="/Logo.svg" alt="Industrix" width={32} height={32} />
+          <span
+            style={{
+              fontSize: '20px',
+              fontWeight: 700,
+              background: 'linear-gradient(135deg, #1079FF, #29C5FF)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent'
+            }}
+          >
+            Industrix
+          </span>
+        </Link>
+
+        {/* Desktop Nav */}
+        <nav style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
+          <div className="desktop-nav" style={{ display: 'flex', gap: '24px' }}>
+            {navItems.map((item) => (
+              <a
+                key={item.label}
                 href={item.href}
-                onClick={(e) => {
-                  if (item.isExternal) {
-                    // For external links like /careers, let the default behavior happen
-                    setIsMenuOpen(false)
-                  } else {
-                    // For internal scroll links, prevent default and scroll
-                    e.preventDefault()
-                    const element = document.querySelector(item.href)
-                    element?.scrollIntoView({ behavior: 'smooth' })
-                    setIsMenuOpen(false)
-                  }
-                }}
-                style={{ 
-                  color: isDarkMode ? '#fff' : '#000',
+                style={{
+                  color: '#94a3b8',
                   textDecoration: 'none',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'flex-start',
-                  padding: '12px 16px',
-                  fontWeight: 400,
-                  width: '100%',
-                  minHeight: '44px'
+                  fontSize: '14px',
+                  fontWeight: 500
                 }}
               >
                 {item.label}
               </a>
-            ),
-          }))}
-        />
-        
-        <div style={{ marginTop: '32px' }}>
-          <Button 
+            ))}
+          </div>
+
+          <Button
             type="primary"
-            className="btn-gradient"
-            block
-            size="large"
-            onClick={() => {
-              window.location.href = '/#contact'
-              setIsMenuOpen(false)
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="desktop-nav"
+            style={{
+              height: '40px',
+              padding: '0 20px',
+              borderRadius: '8px',
+              background: 'linear-gradient(135deg, #1079FF, #29C5FF)',
+              border: 'none',
+              fontWeight: 600,
+              fontSize: '13px'
             }}
           >
-            Contact Us
+            Get a Demo
+          </Button>
+
+          {/* Mobile Menu Button */}
+          <Button
+            type="text"
+            icon={<MenuOutlined style={{ fontSize: '20px' }} />}
+            onClick={() => setIsOpen(true)}
+            className="mobile-nav"
+            style={{ color: '#e2e8f0', padding: '8px' }}
+          />
+        </nav>
+      </div>
+
+      {/* Mobile Drawer */}
+      <Drawer
+        title={null}
+        placement="right"
+        onClose={() => setIsOpen(false)}
+        open={isOpen}
+        width={280}
+        closeIcon={<CloseOutlined style={{ color: '#e2e8f0' }} />}
+        styles={{
+          header: { background: '#1e293b', borderBottom: '1px solid rgba(255,255,255,0.08)' },
+          body: { background: '#1e293b', padding: '24px 16px' }
+        }}
+      >
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          {navItems.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              onClick={() => setIsOpen(false)}
+              style={{
+                color: '#e2e8f0',
+                textDecoration: 'none',
+                fontSize: '16px',
+                padding: '12px',
+                borderRadius: '8px',
+                background: 'rgba(255,255,255,0.05)'
+              }}
+            >
+              {item.label}
+            </a>
+          ))}
+          <Button
+            type="primary"
+            block
+            onClick={() => {
+              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+              setIsOpen(false)
+            }}
+            style={{
+              marginTop: '16px',
+              height: '44px',
+              borderRadius: '8px',
+              background: 'linear-gradient(135deg, #1079FF, #29C5FF)',
+              border: 'none',
+              fontWeight: 600
+            }}
+          >
+            Get a Demo
           </Button>
         </div>
       </Drawer>
-    </Header>
+
+      <style jsx global>{`
+        @media (max-width: 768px) {
+          .desktop-nav { display: none !important; }
+          .mobile-nav { display: block !important; }
+        }
+        @media (min-width: 769px) {
+          .desktop-nav { display: flex !important; }
+          .mobile-nav { display: none !important; }
+        }
+      `}</style>
+    </header>
   )
 }
