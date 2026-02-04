@@ -184,6 +184,15 @@ p {
   background: rgba(16, 121, 255, 0.2) !important;
 }
 
+.ant-select-selection-item,
+.ant-select-selection-placeholder {
+  color: var(--text-primary) !important;
+}
+
+.ant-select-selection-placeholder {
+  color: var(--text-muted) !important;
+}
+
 .ant-form-item-label > label {
   color: var(--text-primary) !important;
   font-weight: 500;
