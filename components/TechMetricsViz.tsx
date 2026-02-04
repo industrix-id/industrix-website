@@ -48,6 +48,7 @@ export default function TechMetricsViz() {
           ? 'linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.7))'
           : 'linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7))',
         backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
         border: 'none',
         borderRadius: '16px',
         overflow: 'hidden'

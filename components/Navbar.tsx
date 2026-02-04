@@ -30,6 +30,7 @@ export default function Navbar() {
         alignItems: 'center',
         background: 'rgba(15, 23, 42, 0.95)',
         backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
         borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
       }}
     >
@@ -84,7 +85,7 @@ export default function Navbar() {
             className="desktop-nav"
             style={{
               height: '40px',
-              padding: '0 20px',
+              padding: '0 24px',
               borderRadius: '8px',
               background: 'linear-gradient(135deg, #1079FF, #29C5FF)',
               border: 'none',

@@ -48,7 +48,7 @@ export default function AcemarkPage() {
                 Back
               </Button>
               <div style={{
-                padding: '6px 14px',
+                padding: '6px 12px',
                 borderRadius: '16px',
                 background: 'rgba(34, 197, 94, 0.15)',
                 color: '#22c55e',
@@ -183,7 +183,7 @@ export default function AcemarkPage() {
               <Title level={3} style={{ fontSize: '1.25rem', marginBottom: '8px', color: '#f1f5f9' }}>
                 Website is Live
               </Title>
-              <Paragraph style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '20px' }}>
+              <Paragraph style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '24px' }}>
                 The AceMark website is now deployed and serving clients worldwide.
               </Paragraph>
               <Button

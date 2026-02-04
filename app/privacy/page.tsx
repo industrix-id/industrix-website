@@ -21,7 +21,7 @@ export default function PrivacyPolicyPage() {
           background: isDarkMode 
             ? 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)' 
             : 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
-          padding: '80px 0 60px',
+          padding: '64px 0 48px',
           textAlign: 'center'
         }}>
           <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 24px' }}>
@@ -49,7 +49,7 @@ export default function PrivacyPolicyPage() {
 
         {/* Privacy Policy Content */}
         <section style={{ 
-          padding: '80px 0',
+          padding: '64px 0',
           background: isDarkMode ? '#1f1f1f' : '#ffffff'
         }}>
           <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 24px' }}>
@@ -60,6 +60,7 @@ export default function PrivacyPolicyPage() {
                 ? 'linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.7))'
                 : 'linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7))',
               backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
               boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
               padding: '32px'
             }}>

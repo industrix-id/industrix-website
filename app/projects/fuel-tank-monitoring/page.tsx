@@ -31,7 +31,7 @@ export default function FuelTankMonitoringPage() {
         {/* Hero Section */}
         <div style={{
           background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
-          padding: '28px 12px 20px'
+          padding: '32px 12px 24px'
         }}>
           <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px', flexWrap: 'wrap' }}>
@@ -48,7 +48,7 @@ export default function FuelTankMonitoringPage() {
                 Back
               </Button>
               <div style={{
-                padding: '6px 14px',
+                padding: '6px 12px',
                 borderRadius: '16px',
                 background: 'rgba(34, 197, 94, 0.15)',
                 color: '#22c55e',
@@ -85,12 +85,12 @@ export default function FuelTankMonitoringPage() {
         </div>
 
         {/* Main Content */}
-        <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '20px 12px' }}>
+        <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '24px 12px' }}>
           {/* Problem & Solution - Side by Side on Desktop */}
-          <Row gutter={[16, 12]} style={{ marginBottom: '20px' }}>
+          <Row gutter={[16, 12]} style={{ marginBottom: '24px' }}>
             <Col xs={24} md={12}>
               <div style={{
-                padding: '14px 16px',
+                padding: '16px',
                 background: 'rgba(246, 42, 58, 0.06)',
                 border: '1px solid rgba(246, 42, 58, 0.15)',
                 borderRadius: '10px',
@@ -98,7 +98,7 @@ export default function FuelTankMonitoringPage() {
               }}>
                 <div style={{
                   display: 'inline-block',
-                  padding: '3px 8px',
+                  padding: '4px 8px',
                   background: 'rgba(246, 42, 58, 0.15)',
                   borderRadius: '4px',
                   marginBottom: '8px'
@@ -115,7 +115,7 @@ export default function FuelTankMonitoringPage() {
             </Col>
             <Col xs={24} md={12}>
               <div style={{
-                padding: '14px 16px',
+                padding: '16px',
                 background: 'rgba(34, 197, 94, 0.06)',
                 border: '1px solid rgba(34, 197, 94, 0.15)',
                 borderRadius: '10px',
@@ -123,7 +123,7 @@ export default function FuelTankMonitoringPage() {
               }}>
                 <div style={{
                   display: 'inline-block',
-                  padding: '3px 8px',
+                  padding: '4px 8px',
                   background: 'rgba(34, 197, 94, 0.15)',
                   borderRadius: '4px',
                   marginBottom: '8px'
@@ -141,7 +141,7 @@ export default function FuelTankMonitoringPage() {
           </Row>
 
           {/* Key Features */}
-          <section style={{ marginBottom: '20px' }}>
+          <section style={{ marginBottom: '24px' }}>
             <Title level={2} style={{ fontSize: '1rem', marginBottom: '12px', color: '#f1f5f9' }}>
               Key Features
             </Title>
@@ -165,7 +165,7 @@ export default function FuelTankMonitoringPage() {
           </section>
 
           {/* Operator Interface */}
-          <section style={{ marginBottom: '20px' }}>
+          <section style={{ marginBottom: '24px' }}>
             <Title level={2} style={{ fontSize: '1rem', marginBottom: '12px', color: '#f1f5f9' }}>
               Operator Interface
             </Title>
@@ -240,7 +240,7 @@ export default function FuelTankMonitoringPage() {
           </section>
 
           {/* Deployment Photos */}
-          <section style={{ marginBottom: '20px' }}>
+          <section style={{ marginBottom: '24px' }}>
             <Title level={2} style={{ fontSize: '1rem', marginBottom: '12px', color: '#f1f5f9' }}>
               Deployment Photos
             </Title>
@@ -278,9 +278,9 @@ export default function FuelTankMonitoringPage() {
                 </div>
               </Col>
               <Col xs={12} sm={6}>
-                <div onClick={() => setLightboxImage('/ftm1.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
+                <div onClick={() => setLightboxImage('/ftm5.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
                   <Image
-                    src="/ftm1.jpeg"
+                    src="/ftm5.jpeg"
                     alt="Control box interior"
                     width={500}
                     height={350}
@@ -306,9 +306,9 @@ export default function FuelTankMonitoringPage() {
                 </div>
               </Col>
               <Col xs={12} sm={6}>
-                <div onClick={() => setLightboxImage('/ftm3.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
+                <div onClick={() => setLightboxImage('/deployment-8.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
                   <Image
-                    src="/ftm3.jpeg"
+                    src="/deployment-8.jpeg"
                     alt="Completed system"
                     width={500}
                     height={350}
@@ -323,7 +323,7 @@ export default function FuelTankMonitoringPage() {
           </section>
 
           {/* What's Next */}
-          <section style={{ marginBottom: '20px' }}>
+          <section style={{ marginBottom: '24px' }}>
             <Title level={2} style={{ fontSize: '1rem', marginBottom: '12px', color: '#f1f5f9' }}>
               What&apos;s Next
             </Title>
@@ -333,45 +333,32 @@ export default function FuelTankMonitoringPage() {
               border: '1px solid rgba(34, 197, 94, 0.2)',
               borderRadius: '10px'
             }}>
-              <Row gutter={[16, 16]} align="middle">
-                <Col xs={24} md={12}>
-                  <div onClick={() => setLightboxImage('/3D_PCB.png')} style={{ borderRadius: '8px', overflow: 'hidden', cursor: 'zoom-in' }}>
-                    <Image
-                      src="/3D_PCB.png"
-                      alt="Next generation PCB design"
-                      width={600}
-                      height={450}
-                      style={{ width: '100%', height: 'auto' }}
-                    />
-                  </div>
-                </Col>
-                <Col xs={24} md={12}>
-                  <div style={{
-                    padding: '4px 10px',
-                    background: 'rgba(34, 197, 94, 0.15)',
-                    borderRadius: '4px',
-                    display: 'inline-block',
-                    marginBottom: '10px'
-                  }}>
-                    <span style={{ fontSize: '11px', fontWeight: 600, color: '#22c55e', textTransform: 'uppercase' }}>
-                      In Development
-                    </span>
-                  </div>
-                  <Title level={3} style={{ fontSize: '1.1rem', marginBottom: '8px', color: '#f1f5f9' }}>
-                    Next-Gen Custom PCB
-                  </Title>
-                  <Paragraph style={{ fontSize: '13px', color: '#94a3b8', marginBottom: '10px' }}>
-                    Custom PCB replacing off-the-shelf components:
-                  </Paragraph>
-                  <ul style={{ margin: 0, paddingLeft: '18px', color: '#cbd5e1', fontSize: '12px', lineHeight: 1.7 }}>
-                    <li>4-channel relay with LED indicators</li>
-                    <li>ADS1115 ADC for precision sensing</li>
-                    <li>RS485 industrial communication</li>
-                    <li>Dual current sensors</li>
-                    <li>Redundant power supplies</li>
-                  </ul>
-                </Col>
-              </Row>
+              <div>
+                <div style={{
+                  padding: '4px 12px',
+                  background: 'rgba(34, 197, 94, 0.15)',
+                  borderRadius: '4px',
+                  display: 'inline-block',
+                  marginBottom: '10px'
+                }}>
+                  <span style={{ fontSize: '11px', fontWeight: 600, color: '#22c55e', textTransform: 'uppercase' }}>
+                    In Development
+                  </span>
+                </div>
+                <Title level={3} style={{ fontSize: '1.1rem', marginBottom: '8px', color: '#f1f5f9' }}>
+                  Next-Gen Custom PCB
+                </Title>
+                <Paragraph style={{ fontSize: '13px', color: '#94a3b8', marginBottom: '10px' }}>
+                  Custom PCB replacing off-the-shelf components:
+                </Paragraph>
+                <ul style={{ margin: 0, paddingLeft: '18px', color: '#cbd5e1', fontSize: '12px', lineHeight: 1.7 }}>
+                  <li>4-channel relay with LED indicators</li>
+                  <li>ADS1115 ADC for precision sensing</li>
+                  <li>RS485 industrial communication</li>
+                  <li>Dual current sensors</li>
+                  <li>Redundant power supplies</li>
+                </ul>
+              </div>
             </div>
           </section>
 
@@ -395,7 +382,7 @@ export default function FuelTankMonitoringPage() {
                 onClick={() => router.push('/#contact')}
                 style={{
                   height: '36px',
-                  padding: '0 20px',
+                  padding: '0 24px',
                   borderRadius: '6px',
                   background: 'linear-gradient(135deg, #1079FF, #29C5FF)',
                   border: 'none',
@@ -409,7 +396,7 @@ export default function FuelTankMonitoringPage() {
                 onClick={() => router.push('/')}
                 style={{
                   height: '36px',
-                  padding: '0 20px',
+                  padding: '0 24px',
                   borderRadius: '6px',
                   border: '1px solid #1079FF',
                   color: '#1079FF',
@@ -475,6 +462,7 @@ export default function FuelTankMonitoringPage() {
             alt="Full size preview"
             width={1200}
             height={800}
+            onClick={(e) => e.stopPropagation()}
             style={{
               maxWidth: '90vw',
               maxHeight: '90vh',

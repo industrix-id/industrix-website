@@ -12,7 +12,7 @@ export default function HeroSection() {
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
-        padding: '80px 12px 48px',
+        padding: '64px 12px 48px',
         background: 'radial-gradient(circle at 30% 30%, rgba(16, 121, 255, 0.08) 0%, transparent 50%)'
       }}
     >
@@ -21,7 +21,7 @@ export default function HeroSection() {
         <div
           style={{
             display: 'inline-block',
-            padding: '6px 14px',
+            padding: '6px 12px',
             borderRadius: '20px',
             background: 'rgba(16, 121, 255, 0.1)',
             border: '1px solid rgba(16, 121, 255, 0.3)',
@@ -40,7 +40,7 @@ export default function HeroSection() {
             fontSize: 'clamp(2rem, 7vw, 3.5rem)',
             fontWeight: 800,
             lineHeight: 1.15,
-            marginBottom: '20px',
+            marginBottom: '24px',
             color: '#f1f5f9'
           }}
         >
@@ -72,7 +72,7 @@ export default function HeroSection() {
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             style={{
               height: '48px',
-              padding: '0 28px',
+              padding: '0 24px',
               fontSize: '15px',
               fontWeight: 600,
               borderRadius: '8px',
@@ -87,7 +87,7 @@ export default function HeroSection() {
             onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
             style={{
               height: '48px',
-              padding: '0 28px',
+              padding: '0 24px',
               fontSize: '15px',
               fontWeight: 600,
               borderRadius: '8px',

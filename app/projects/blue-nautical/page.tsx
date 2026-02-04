@@ -46,7 +46,7 @@ export default function BlueNauticalPage() {
                 Back
               </Button>
               <div style={{
-                padding: '6px 14px',
+                padding: '6px 12px',
                 borderRadius: '16px',
                 background: 'rgba(245, 158, 11, 0.15)',
                 color: '#f59e0b',

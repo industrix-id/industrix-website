@@ -98,7 +98,7 @@ export default function ProjectsSection() {
                 style={{
                   background: '#1e293b',
                   borderRadius: '12px',
-                  padding: '20px',
+                  padding: '24px',
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
@@ -121,7 +121,7 @@ export default function ProjectsSection() {
                 <div
                   style={{
                     display: 'inline-block',
-                    padding: '4px 10px',
+                    padding: '4px 12px',
                     borderRadius: '10px',
                     background: `${project.statusColor}20`,
                     color: project.statusColor,
@@ -215,7 +215,7 @@ export default function ProjectsSection() {
           style={{
             textAlign: 'center',
             marginTop: '40px',
-            padding: '32px 20px',
+            padding: '32px 24px',
             background: 'rgba(16, 121, 255, 0.05)',
             border: '1px solid rgba(16, 121, 255, 0.15)',
             borderRadius: '12px'
@@ -224,7 +224,7 @@ export default function ProjectsSection() {
           <h3 style={{ fontSize: '18px', marginBottom: '8px', color: '#f1f5f9' }}>
             Stop Diesel Theft. Optimize Your Fleet.
           </h3>
-          <p style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '20px' }}>
+          <p style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '24px' }}>
             Our system adapts to palm oil, construction, or industrial facilities.
           </p>
           <Button

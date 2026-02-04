@@ -449,7 +449,7 @@ export default function CareersPage() {
           background: isDarkMode 
             ? 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)' 
             : 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
-          padding: '80px 0',
+          padding: '64px 0',
           textAlign: 'center'
         }}>
           <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 24px' }}>
@@ -490,7 +490,7 @@ export default function CareersPage() {
         </section>
 
         {/* Why Join Us */}
-        <section style={{ padding: '80px 0', background: isDarkMode ? '#1f1f1f' : '#ffffff' }}>
+        <section style={{ padding: '64px 0', background: isDarkMode ? '#1f1f1f' : '#ffffff' }}>
           <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
             <div style={{ textAlign: 'center', marginBottom: '64px' }}>
               <Title level={2} style={{ marginBottom: '16px' }}>
@@ -557,7 +557,7 @@ export default function CareersPage() {
 
         {/* Open Positions */}
         <section id="open-positions" style={{ 
-          padding: '80px 0',
+          padding: '64px 0',
           background: isDarkMode ? '#0f172a' : '#f8fafc'
         }}>
           <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
@@ -592,7 +592,7 @@ export default function CareersPage() {
                     }}
                     hoverable
                   >
-                    <div style={{ marginBottom: '20px' }}>
+                    <div style={{ marginBottom: '24px' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
                         <Title level={4} style={{ margin: 0, flex: 1 }}>
                           {job.title}
@@ -614,7 +614,7 @@ export default function CareersPage() {
                         fontSize: '14px',
                         lineHeight: 1.6,
                         opacity: 0.8,
-                        marginBottom: '20px'
+                        marginBottom: '24px'
                       }}>
                         {job.description}
                       </Paragraph>
@@ -645,7 +645,7 @@ export default function CareersPage() {
 
         {/* Call to Action */}
         <section style={{ 
-          padding: '80px 0',
+          padding: '64px 0',
           background: 'linear-gradient(135deg, #1079FF 0%, #29C5FF 100%)',
           color: 'white',
           textAlign: 'center'
@@ -704,7 +704,7 @@ export default function CareersPage() {
       >
         {selectedJob && (
           <div style={{ maxHeight: '60vh', overflowY: 'auto' }}>
-            <Space wrap style={{ marginBottom: '20px' }}>
+            <Space wrap style={{ marginBottom: '24px' }}>
               <Tag icon={<EnvironmentOutlined />}>{selectedJob.location}</Tag>
               <Tag icon={<ClockCircleOutlined />}>{selectedJob.type}</Tag>
               <Tag>{selectedJob.department}</Tag>
@@ -716,21 +716,21 @@ export default function CareersPage() {
             </Paragraph>
 
             <Title level={5}>Requirements:</Title>
-            <ul style={{ paddingLeft: '20px', marginBottom: '20px' }}>
+            <ul style={{ paddingLeft: '24px', marginBottom: '24px' }}>
               {selectedJob.requirements.map((req, index) => (
                 <li key={index} style={{ marginBottom: '8px' }}>{req}</li>
               ))}
             </ul>
 
             <Title level={5}>Responsibilities:</Title>
-            <ul style={{ paddingLeft: '20px', marginBottom: '20px' }}>
+            <ul style={{ paddingLeft: '24px', marginBottom: '24px' }}>
               {selectedJob.responsibilities.map((resp, index) => (
                 <li key={index} style={{ marginBottom: '8px' }}>{resp}</li>
               ))}
             </ul>
 
             <Title level={5}>Benefits:</Title>
-            <ul style={{ paddingLeft: '20px' }}>
+            <ul style={{ paddingLeft: '24px' }}>
               {selectedJob.benefits.map((benefit, index) => (
                 <li key={index} style={{ marginBottom: '8px' }}>{benefit}</li>
               ))}

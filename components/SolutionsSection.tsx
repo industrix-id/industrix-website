@@ -148,6 +148,7 @@ export default function SolutionsSection() {
                       ? 'linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.7))'
                       : 'linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7))',
                     backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
                     position: 'relative',
                     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
                   }}
@@ -185,7 +186,7 @@ export default function SolutionsSection() {
                   <Paragraph style={{ 
                     fontSize: '14px', 
                     lineHeight: 1.6, 
-                    marginBottom: '20px',
+                    marginBottom: '24px',
                     textAlign: 'center',
                     color: isDarkMode ? '#cbd5e1' : '#64748b'
                   }}>

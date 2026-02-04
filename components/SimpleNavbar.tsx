@@ -19,6 +19,7 @@ export default function SimpleNavbar() {
         alignItems: 'center',
         background: 'rgba(15, 23, 42, 0.95)',
         backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
         borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
       }}
     >

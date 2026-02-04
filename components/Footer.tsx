@@ -10,7 +10,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer style={{ background: '#1a1a1a', padding: '48px 12px 24px' }}>
+    <footer style={{ background: '#1a1a1a', padding: '48px 12px 32px' }}>
       <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
         <Row gutter={[24, 32]}>
           {/* Logo & Description */}
@@ -86,7 +86,7 @@ export default function Footer() {
           style={{
             borderTop: '1px solid #333',
             marginTop: '32px',
-            paddingTop: '20px',
+            paddingTop: '24px',
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',

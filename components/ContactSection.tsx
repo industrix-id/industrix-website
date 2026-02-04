@@ -199,7 +199,7 @@ export default function ContactSection() {
                   size="large"
                   style={{
                     height: '44px',
-                    padding: '0 28px',
+                    padding: '0 24px',
                     borderRadius: '8px',
                     background: 'linear-gradient(135deg, #1079FF, #29C5FF)',
                     border: 'none',
