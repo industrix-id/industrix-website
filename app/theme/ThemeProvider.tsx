@@ -24,17 +24,18 @@ interface ThemeProviderProps {
 }
 
 export default function ThemeProvider({ children }: ThemeProviderProps) {
-  const [isDarkMode, setIsDarkMode] = useState(false)
+  // Default to dark mode to match CSS (body background is #0f172a)
+  const [isDarkMode, setIsDarkMode] = useState(true)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    // Check for saved theme preference or default to light mode
+    setMounted(true)
+    // Check for saved theme preference
     const savedTheme = localStorage.getItem('theme')
     if (savedTheme) {
       setIsDarkMode(savedTheme === 'dark')
-    } else {
-      // Always default to light mode instead of system preference
-      setIsDarkMode(false)
     }
+    // Default stays as dark mode to match the dark-themed CSS
   }, [])
 
   const toggleTheme = () => {
@@ -72,6 +73,21 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
         borderRadius: 8,
       },
     },
+  }
+
+  // Prevent flash of unstyled content during hydration
+  if (!mounted) {
+    return (
+      <div style={{ visibility: 'hidden' }}>
+        <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
+          <AntdRegistry>
+            <ConfigProvider theme={antdTheme}>
+              {children}
+            </ConfigProvider>
+          </AntdRegistry>
+        </ThemeContext.Provider>
+      </div>
+    )
   }
 
   return (
