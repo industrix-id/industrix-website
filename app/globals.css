@@ -142,6 +142,14 @@ p {
   border: 1px solid var(--border) !important;
   border-radius: 8px !important;
   padding: 0 11px !important;
+  height: 44px !important;
+}
+
+.ant-select-lg .ant-select-selector {
+  height: 44px !important;
+  padding: 0 11px !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
 .ant-input-affix-wrapper .ant-input {

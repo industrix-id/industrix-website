@@ -153,12 +153,12 @@ export default function ContactSection() {
                 <Row gutter={[12, 0]}>
                   <Col xs={24} sm={12}>
                     <Form.Item name="name" label="Full Name" rules={[{ required: true, message: 'Required' }]}>
-                      <Input prefix={<UserOutlined style={{ color: '#64748b' }} />} placeholder="John Doe" size="large" style={{ width: '100%' }} />
+                      <Input prefix={<UserOutlined style={{ color: '#64748b' }} />} placeholder="John Doe" size="large" style={{ width: '100%', height: '44px' }} />
                     </Form.Item>
                   </Col>
                   <Col xs={24} sm={12}>
                     <Form.Item name="email" label="Email" rules={[{ required: true, message: 'Required' }, { type: 'email', message: 'Invalid' }]}>
-                      <Input prefix={<MailOutlined style={{ color: '#64748b' }} />} placeholder="john@company.com" size="large" style={{ width: '100%' }} />
+                      <Input prefix={<MailOutlined style={{ color: '#64748b' }} />} placeholder="john@company.com" size="large" style={{ width: '100%', height: '44px' }} />
                     </Form.Item>
                   </Col>
                 </Row>
@@ -166,18 +166,18 @@ export default function ContactSection() {
                 <Row gutter={[12, 0]}>
                   <Col xs={24} sm={12}>
                     <Form.Item name="phone" label="Phone (Optional)">
-                      <Input prefix={<PhoneOutlined style={{ color: '#64748b' }} />} placeholder="+62 812 3456 7890" size="large" style={{ width: '100%' }} />
+                      <Input prefix={<PhoneOutlined style={{ color: '#64748b' }} />} placeholder="+62 812 3456 7890" size="large" style={{ width: '100%', height: '44px' }} />
                     </Form.Item>
                   </Col>
                   <Col xs={24} sm={12}>
                     <Form.Item name="company" label="Company" rules={[{ required: true, message: 'Required' }]}>
-                      <Input prefix={<BankOutlined style={{ color: '#64748b' }} />} placeholder="Your company" size="large" style={{ width: '100%' }} />
+                      <Input prefix={<BankOutlined style={{ color: '#64748b' }} />} placeholder="Your company" size="large" style={{ width: '100%', height: '44px' }} />
                     </Form.Item>
                   </Col>
                 </Row>
 
                 <Form.Item name="industry" label="Industry" rules={[{ required: true, message: 'Required' }]}>
-                  <Select placeholder="Select your industry" size="large" style={{ width: '100%' }}>
+                  <Select placeholder="Select your industry" size="large" style={{ width: '100%', height: '44px' }}>
                     <Select.Option value="palm-oil">Palm Oil / Agriculture</Select.Option>
                     <Select.Option value="mining">Mining</Select.Option>
                     <Select.Option value="construction">Construction</Select.Option>
