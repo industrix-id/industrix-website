@@ -113,6 +113,11 @@ p {
 }
 
 /* Ant Design Overrides - Minimal */
+.ant-layout,
+.ant-layout-content {
+  background: var(--bg-dark) !important;
+}
+
 .ant-btn {
   border-radius: 8px;
   font-weight: 600;

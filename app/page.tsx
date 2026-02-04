@@ -13,7 +13,7 @@ const { Content } = Layout
 
 export default function Home() {
   return (
-    <Layout>
+    <Layout style={{ background: '#0f172a' }}>
       <Navbar />
       <Content>
         <div id="home">
