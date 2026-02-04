@@ -5,6 +5,7 @@ import { Layout } from 'antd'
 import HeroSection from '@/components/HeroSection'
 import CaseStudiesSection from '@/components/ProjectsSection'
 import AboutSection from '@/components/AboutSection'
+import PricingSection from '@/components/PricingSection'
 import ContactSection from '@/components/ContactSection'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
@@ -21,6 +22,9 @@ export default function Home() {
         </div>
         <div id="about">
           <AboutSection />
+        </div>
+        <div id="pricing">
+          <PricingSection />
         </div>
         <div id="projects">
           <CaseStudiesSection />
