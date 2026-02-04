@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { Layout, Typography, Row, Col, Button, Space } from 'antd'
-import { ArrowLeftOutlined, CheckCircleOutlined, CloseOutlined } from '@ant-design/icons'
+import { ArrowLeftOutlined, CheckCircleOutlined, CloseOutlined, FolderOpenOutlined, FolderOutlined } from '@ant-design/icons'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import SimpleNavbar from '@/components/SimpleNavbar'
@@ -14,6 +14,7 @@ const { Title, Paragraph } = Typography
 export default function FuelTankMonitoringPage() {
   const router = useRouter()
   const [lightboxImage, setLightboxImage] = useState<string | null>(null)
+  const [openFolder, setOpenFolder] = useState<string | null>(null)
 
   const features = [
     'Credit-based fuel dispensing with automatic pump control',
@@ -164,162 +165,168 @@ export default function FuelTankMonitoringPage() {
             </Row>
           </section>
 
-          {/* Operator Interface */}
-          <section style={{ marginBottom: '24px' }}>
-            <Title level={2} style={{ fontSize: '1rem', marginBottom: '12px', color: '#f1f5f9' }}>
-              Operator Interface
-            </Title>
-
-            {/* Main screenshot */}
-            <div onClick={() => setLightboxImage('/5.jpeg')} style={{ marginBottom: '10px', borderRadius: '10px', overflow: 'hidden', cursor: 'zoom-in' }}>
-              <Image
-                src="/5.jpeg"
-                alt="Dispensing active state"
-                width={1000}
-                height={600}
-                style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
-              />
-              <div style={{ padding: '10px 14px', background: '#1e293b' }}>
-                <p style={{ margin: 0, fontSize: '13px', color: '#94a3b8' }}>
-                  Live dispensing view with real-time flow rate, session volume, and tank level
-                </p>
+          {/* Operator Interface - Folder */}
+          <section style={{ marginBottom: '16px' }}>
+            <div
+              onClick={() => setOpenFolder(openFolder === 'operator' ? null : 'operator')}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px',
+                padding: '16px',
+                background: '#1e293b',
+                borderRadius: openFolder === 'operator' ? '10px 10px 0 0' : '10px',
+                cursor: 'pointer',
+                border: '1px solid rgba(255,255,255,0.08)',
+                borderBottom: openFolder === 'operator' ? 'none' : '1px solid rgba(255,255,255,0.08)'
+              }}
+            >
+              {openFolder === 'operator' ? (
+                <FolderOpenOutlined style={{ fontSize: '24px', color: '#1079FF' }} />
+              ) : (
+                <FolderOutlined style={{ fontSize: '24px', color: '#1079FF' }} />
+              )}
+              <div style={{ flex: 1 }}>
+                <Title level={4} style={{ margin: 0, fontSize: '15px', color: '#f1f5f9' }}>
+                  Operator Interface Screenshots
+                </Title>
+                <p style={{ margin: 0, fontSize: '12px', color: '#64748b' }}>7 images - Tap to {openFolder === 'operator' ? 'close' : 'open'}</p>
               </div>
+              <span style={{ color: '#64748b', fontSize: '20px' }}>{openFolder === 'operator' ? '−' : '+'}</span>
             </div>
 
-            {/* Screenshot grid */}
-            <Row gutter={[10, 10]}>
-              <Col xs={12} sm={8}>
-                <div onClick={() => setLightboxImage('/3.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
-                  <Image src="/3.jpeg" alt="RFID login" width={400} height={250} style={{ width: '100%', height: '140px', objectFit: 'cover' }} />
-                  <div style={{ padding: '8px 10px' }}>
-                    <p style={{ margin: 0, fontSize: '11px', color: '#94a3b8' }}>RFID Login</p>
+            {openFolder === 'operator' && (
+              <div style={{
+                padding: '16px',
+                background: 'rgba(30, 41, 59, 0.5)',
+                borderRadius: '0 0 10px 10px',
+                border: '1px solid rgba(255,255,255,0.08)',
+                borderTop: 'none'
+              }}>
+                {/* Main screenshot */}
+                <div onClick={() => setLightboxImage('/5.jpeg')} style={{ marginBottom: '12px', borderRadius: '8px', overflow: 'hidden', cursor: 'zoom-in' }}>
+                  <Image src="/5.jpeg" alt="Fuel dispensing in progress" width={1000} height={600} style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
+                  <div style={{ padding: '10px 12px', background: '#1e293b' }}>
+                    <p style={{ margin: 0, fontSize: '12px', color: '#94a3b8' }}>Fuel dispensing in progress - showing live flow rate & volume</p>
                   </div>
                 </div>
-              </Col>
-              <Col xs={12} sm={8}>
-                <div onClick={() => setLightboxImage('/6.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
-                  <Image src="/6.jpeg" alt="Idle state" width={400} height={250} style={{ width: '100%', height: '140px', objectFit: 'cover' }} />
-                  <div style={{ padding: '8px 10px' }}>
-                    <p style={{ margin: 0, fontSize: '11px', color: '#94a3b8' }}>Idle State</p>
-                  </div>
-                </div>
-              </Col>
-              <Col xs={12} sm={8}>
-                <div onClick={() => setLightboxImage('/7.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
-                  <Image src="/7.jpeg" alt="Paused state" width={400} height={250} style={{ width: '100%', height: '140px', objectFit: 'cover' }} />
-                  <div style={{ padding: '8px 10px' }}>
-                    <p style={{ margin: 0, fontSize: '11px', color: '#94a3b8' }}>Paused</p>
-                  </div>
-                </div>
-              </Col>
-              <Col xs={12} sm={8}>
-                <div onClick={() => setLightboxImage('/2.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
-                  <Image src="/2.jpeg" alt="Supervisor approval" width={400} height={250} style={{ width: '100%', height: '140px', objectFit: 'cover' }} />
-                  <div style={{ padding: '8px 10px' }}>
-                    <p style={{ margin: 0, fontSize: '11px', color: '#94a3b8' }}>Supervisor OTP</p>
-                  </div>
-                </div>
-              </Col>
-              <Col xs={12} sm={8}>
-                <div onClick={() => setLightboxImage('/4.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
-                  <Image src="/4.jpeg" alt="Approval failed" width={400} height={250} style={{ width: '100%', height: '140px', objectFit: 'cover' }} />
-                  <div style={{ padding: '8px 10px' }}>
-                    <p style={{ margin: 0, fontSize: '11px', color: '#94a3b8' }}>Auth Failed</p>
-                  </div>
-                </div>
-              </Col>
-              <Col xs={12} sm={8}>
-                <div onClick={() => setLightboxImage('/9.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
-                  <Image src="/9.jpeg" alt="Session summary" width={400} height={250} style={{ width: '100%', height: '140px', objectFit: 'cover' }} />
-                  <div style={{ padding: '8px 10px' }}>
-                    <p style={{ margin: 0, fontSize: '11px', color: '#94a3b8' }}>Session Summary</p>
-                  </div>
-                </div>
-              </Col>
-            </Row>
+
+                <Row gutter={[8, 8]}>
+                  <Col xs={12} sm={8}>
+                    <div onClick={() => setLightboxImage('/3.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
+                      <Image src="/3.jpeg" alt="RFID card scan" width={400} height={250} style={{ width: '100%', height: '120px', objectFit: 'cover' }} />
+                      <div style={{ padding: '8px' }}><p style={{ margin: 0, fontSize: '11px', color: '#94a3b8' }}>RFID Card Scan</p></div>
+                    </div>
+                  </Col>
+                  <Col xs={12} sm={8}>
+                    <div onClick={() => setLightboxImage('/6.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
+                      <Image src="/6.jpeg" alt="System idle" width={400} height={250} style={{ width: '100%', height: '120px', objectFit: 'cover' }} />
+                      <div style={{ padding: '8px' }}><p style={{ margin: 0, fontSize: '11px', color: '#94a3b8' }}>System Idle</p></div>
+                    </div>
+                  </Col>
+                  <Col xs={12} sm={8}>
+                    <div onClick={() => setLightboxImage('/7.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
+                      <Image src="/7.jpeg" alt="Dispensing paused" width={400} height={250} style={{ width: '100%', height: '120px', objectFit: 'cover' }} />
+                      <div style={{ padding: '8px' }}><p style={{ margin: 0, fontSize: '11px', color: '#94a3b8' }}>Dispensing Paused</p></div>
+                    </div>
+                  </Col>
+                  <Col xs={12} sm={8}>
+                    <div onClick={() => setLightboxImage('/2.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
+                      <Image src="/2.jpeg" alt="Supervisor OTP entry" width={400} height={250} style={{ width: '100%', height: '120px', objectFit: 'cover' }} />
+                      <div style={{ padding: '8px' }}><p style={{ margin: 0, fontSize: '11px', color: '#94a3b8' }}>Supervisor OTP</p></div>
+                    </div>
+                  </Col>
+                  <Col xs={12} sm={8}>
+                    <div onClick={() => setLightboxImage('/4.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
+                      <Image src="/4.jpeg" alt="Authentication failed" width={400} height={250} style={{ width: '100%', height: '120px', objectFit: 'cover' }} />
+                      <div style={{ padding: '8px' }}><p style={{ margin: 0, fontSize: '11px', color: '#94a3b8' }}>Auth Failed</p></div>
+                    </div>
+                  </Col>
+                  <Col xs={12} sm={8}>
+                    <div onClick={() => setLightboxImage('/9.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
+                      <Image src="/9.jpeg" alt="Session complete summary" width={400} height={250} style={{ width: '100%', height: '120px', objectFit: 'cover' }} />
+                      <div style={{ padding: '8px' }}><p style={{ margin: 0, fontSize: '11px', color: '#94a3b8' }}>Session Complete</p></div>
+                    </div>
+                  </Col>
+                </Row>
+              </div>
+            )}
           </section>
 
-          {/* Deployment Photos */}
+          {/* Deployment Photos - Folder */}
           <section style={{ marginBottom: '24px' }}>
-            <Title level={2} style={{ fontSize: '1rem', marginBottom: '12px', color: '#f1f5f9' }}>
-              Deployment Photos
-            </Title>
-
-            {/* Featured Image */}
-            <div onClick={() => setLightboxImage('/deployment-1.jpeg')} style={{ marginBottom: '10px', borderRadius: '10px', overflow: 'hidden', cursor: 'zoom-in' }}>
-              <Image
-                src="/deployment-1.jpeg"
-                alt="Team installing IoT control system"
-                width={1000}
-                height={600}
-                style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
-              />
-              <div style={{ padding: '8px 12px', background: '#1e293b' }}>
-                <p style={{ margin: 0, fontSize: '12px', color: '#94a3b8' }}>
-                  Team installing IoT fuel monitoring system at client site
-                </p>
+            <div
+              onClick={() => setOpenFolder(openFolder === 'deployment' ? null : 'deployment')}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px',
+                padding: '16px',
+                background: '#1e293b',
+                borderRadius: openFolder === 'deployment' ? '10px 10px 0 0' : '10px',
+                cursor: 'pointer',
+                border: '1px solid rgba(255,255,255,0.08)',
+                borderBottom: openFolder === 'deployment' ? 'none' : '1px solid rgba(255,255,255,0.08)'
+              }}
+            >
+              {openFolder === 'deployment' ? (
+                <FolderOpenOutlined style={{ fontSize: '24px', color: '#22c55e' }} />
+              ) : (
+                <FolderOutlined style={{ fontSize: '24px', color: '#22c55e' }} />
+              )}
+              <div style={{ flex: 1 }}>
+                <Title level={4} style={{ margin: 0, fontSize: '15px', color: '#f1f5f9' }}>
+                  Deployment & Hardware Photos
+                </Title>
+                <p style={{ margin: 0, fontSize: '12px', color: '#64748b' }}>5 images - Tap to {openFolder === 'deployment' ? 'close' : 'open'}</p>
               </div>
+              <span style={{ color: '#64748b', fontSize: '20px' }}>{openFolder === 'deployment' ? '−' : '+'}</span>
             </div>
 
-            {/* Photo Grid */}
-            <Row gutter={[8, 8]}>
-              <Col xs={12} sm={6}>
-                <div onClick={() => setLightboxImage('/deployment-3.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
-                  <Image
-                    src="/deployment-3.jpeg"
-                    alt="Hardware installation"
-                    width={500}
-                    height={350}
-                    style={{ width: '100%', height: '100px', objectFit: 'cover' }}
-                  />
-                  <div style={{ padding: '6px 8px' }}>
-                    <p style={{ margin: 0, fontSize: '10px', color: '#94a3b8' }}>Installation</p>
+            {openFolder === 'deployment' && (
+              <div style={{
+                padding: '16px',
+                background: 'rgba(30, 41, 59, 0.5)',
+                borderRadius: '0 0 10px 10px',
+                border: '1px solid rgba(255,255,255,0.08)',
+                borderTop: 'none'
+              }}>
+                {/* Featured Image */}
+                <div onClick={() => setLightboxImage('/deployment-1.jpeg')} style={{ marginBottom: '12px', borderRadius: '8px', overflow: 'hidden', cursor: 'zoom-in' }}>
+                  <Image src="/deployment-1.jpeg" alt="On-site installation" width={1000} height={600} style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
+                  <div style={{ padding: '10px 12px', background: '#1e293b' }}>
+                    <p style={{ margin: 0, fontSize: '12px', color: '#94a3b8' }}>Team installing fuel monitoring system at plantation site</p>
                   </div>
                 </div>
-              </Col>
-              <Col xs={12} sm={6}>
-                <div onClick={() => setLightboxImage('/ftm5.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
-                  <Image
-                    src="/ftm5.jpeg"
-                    alt="Control box interior"
-                    width={500}
-                    height={350}
-                    style={{ width: '100%', height: '100px', objectFit: 'cover' }}
-                  />
-                  <div style={{ padding: '6px 8px' }}>
-                    <p style={{ margin: 0, fontSize: '10px', color: '#94a3b8' }}>Control Box</p>
-                  </div>
-                </div>
-              </Col>
-              <Col xs={12} sm={6}>
-                <div onClick={() => setLightboxImage('/ftm2.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
-                  <Image
-                    src="/ftm2.jpeg"
-                    alt="Components assembly"
-                    width={500}
-                    height={350}
-                    style={{ width: '100%', height: '100px', objectFit: 'cover' }}
-                  />
-                  <div style={{ padding: '6px 8px' }}>
-                    <p style={{ margin: 0, fontSize: '10px', color: '#94a3b8' }}>Assembly</p>
-                  </div>
-                </div>
-              </Col>
-              <Col xs={12} sm={6}>
-                <div onClick={() => setLightboxImage('/deployment-8.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
-                  <Image
-                    src="/deployment-8.jpeg"
-                    alt="Completed system"
-                    width={500}
-                    height={350}
-                    style={{ width: '100%', height: '100px', objectFit: 'cover' }}
-                  />
-                  <div style={{ padding: '6px 8px' }}>
-                    <p style={{ margin: 0, fontSize: '10px', color: '#94a3b8' }}>Wiring</p>
-                  </div>
-                </div>
-              </Col>
-            </Row>
+
+                <Row gutter={[8, 8]}>
+                  <Col xs={12} sm={6}>
+                    <div onClick={() => setLightboxImage('/deployment-3.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
+                      <Image src="/deployment-3.jpeg" alt="Hardware setup" width={500} height={350} style={{ width: '100%', height: '100px', objectFit: 'cover' }} />
+                      <div style={{ padding: '6px 8px' }}><p style={{ margin: 0, fontSize: '10px', color: '#94a3b8' }}>Hardware Setup</p></div>
+                    </div>
+                  </Col>
+                  <Col xs={12} sm={6}>
+                    <div onClick={() => setLightboxImage('/ftm5.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
+                      <Image src="/ftm5.jpeg" alt="Control panel" width={500} height={350} style={{ width: '100%', height: '100px', objectFit: 'cover' }} />
+                      <div style={{ padding: '6px 8px' }}><p style={{ margin: 0, fontSize: '10px', color: '#94a3b8' }}>Control Panel</p></div>
+                    </div>
+                  </Col>
+                  <Col xs={12} sm={6}>
+                    <div onClick={() => setLightboxImage('/ftm2.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
+                      <Image src="/ftm2.jpeg" alt="Component wiring" width={500} height={350} style={{ width: '100%', height: '100px', objectFit: 'cover' }} />
+                      <div style={{ padding: '6px 8px' }}><p style={{ margin: 0, fontSize: '10px', color: '#94a3b8' }}>Component Wiring</p></div>
+                    </div>
+                  </Col>
+                  <Col xs={12} sm={6}>
+                    <div onClick={() => setLightboxImage('/deployment-8.jpeg')} style={{ borderRadius: '8px', overflow: 'hidden', background: '#1e293b', cursor: 'zoom-in' }}>
+                      <Image src="/deployment-8.jpeg" alt="Final assembly" width={500} height={350} style={{ width: '100%', height: '100px', objectFit: 'cover' }} />
+                      <div style={{ padding: '6px 8px' }}><p style={{ margin: 0, fontSize: '10px', color: '#94a3b8' }}>Final Assembly</p></div>
+                    </div>
+                  </Col>
+                </Row>
+              </div>
+            )}
           </section>
 
           {/* What's Next */}
@@ -416,61 +423,118 @@ export default function FuelTankMonitoringPage() {
       {/* Lightbox Modal */}
       {lightboxImage && (
         <div
-          onClick={(e) => {
-            if (e.target === e.currentTarget) {
-              setLightboxImage(null)
-            }
-          }}
           style={{
             position: 'fixed',
             top: 0,
             left: 0,
             right: 0,
             bottom: 0,
-            background: 'rgba(0, 0, 0, 0.9)',
+            background: 'rgba(0, 0, 0, 0.95)',
             zIndex: 9999,
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer',
-            padding: '20px'
+            justifyContent: 'center'
           }}
         >
+          {/* Left tap zone to close */}
+          <div
+            onClick={() => setLightboxImage(null)}
+            style={{
+              position: 'absolute',
+              left: 0,
+              top: 0,
+              bottom: 0,
+              width: '15%',
+              minWidth: '50px',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 1
+            }}
+          >
+            <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '12px', writingMode: 'vertical-rl', textOrientation: 'mixed' }}>TAP TO CLOSE</span>
+          </div>
+
+          {/* Right tap zone to close */}
+          <div
+            onClick={() => setLightboxImage(null)}
+            style={{
+              position: 'absolute',
+              right: 0,
+              top: 0,
+              bottom: 0,
+              width: '15%',
+              minWidth: '50px',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 1
+            }}
+          >
+            <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '12px', writingMode: 'vertical-rl', textOrientation: 'mixed' }}>TAP TO CLOSE</span>
+          </div>
+
+          {/* Close button */}
           <button
             onClick={() => setLightboxImage(null)}
             style={{
               position: 'absolute',
-              top: '20px',
-              right: '20px',
-              background: 'rgba(255,255,255,0.1)',
+              top: '16px',
+              right: '16px',
+              background: 'rgba(255,255,255,0.15)',
               border: 'none',
               borderRadius: '50%',
-              width: '40px',
-              height: '40px',
+              width: '44px',
+              height: '44px',
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               color: '#fff',
-              fontSize: '18px'
+              fontSize: '18px',
+              zIndex: 2
             }}
           >
             <CloseOutlined />
           </button>
-          <Image
-            src={lightboxImage}
-            alt="Full size preview"
-            width={1200}
-            height={800}
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              maxWidth: '90vw',
-              maxHeight: '90vh',
-              objectFit: 'contain',
-              borderRadius: '8px',
-              cursor: 'default'
-            }}
-          />
+
+          {/* Image container */}
+          <div style={{
+            maxWidth: '70%',
+            maxHeight: '90vh',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 1
+          }}>
+            <Image
+              src={lightboxImage}
+              alt="Full size preview"
+              width={1200}
+              height={800}
+              style={{
+                maxWidth: '100%',
+                maxHeight: '85vh',
+                objectFit: 'contain',
+                borderRadius: '8px'
+              }}
+            />
+          </div>
+
+          {/* Bottom hint */}
+          <div style={{
+            position: 'absolute',
+            bottom: '20px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            color: 'rgba(255,255,255,0.4)',
+            fontSize: '12px',
+            textAlign: 'center'
+          }}>
+            Tap sides or X to close
+          </div>
         </div>
       )}
     </Layout>
