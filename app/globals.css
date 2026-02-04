@@ -206,14 +206,22 @@ p {
     font-size: 16px !important; /* Prevent iOS zoom */
   }
 
-  .ant-row {
+  /* Only apply to grid layout sections, not forms */
+  section.home-section > .ant-row {
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
 
-  .ant-col {
+  section.home-section > .ant-row > .ant-col {
     padding-left: var(--padding) !important;
     padding-right: var(--padding) !important;
+  }
+
+  /* Ensure form inputs are full width */
+  .ant-form .ant-input,
+  .ant-form .ant-select,
+  .ant-form .ant-input-affix-wrapper {
+    width: 100% !important;
   }
 }
 
