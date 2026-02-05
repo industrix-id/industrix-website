@@ -75,7 +75,7 @@ export default function Footer() {
               </div>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', color: '#a1a1aa', fontSize: '13px' }}>
                 <EnvironmentOutlined style={{ color: '#1079FF', marginTop: '2px' }} />
-                Jakarta, Indonesia
+                <span>Jl. Taman Palem Mutiara No.3 Blok A5, RT.7/RW.14, Cengkareng Tim., Kec. Cengkareng, Jakarta Barat 11730</span>
               </div>
             </div>
           </Col>

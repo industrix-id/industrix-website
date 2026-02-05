@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Row, Col, Button } from 'antd'
-import { RocketOutlined, SettingOutlined, GlobalOutlined, ArrowRightOutlined } from '@ant-design/icons'
+import { RocketOutlined, GlobalOutlined, ShoppingOutlined, ArrowRightOutlined, CodeOutlined } from '@ant-design/icons'
 import { useRouter } from 'next/navigation'
 
 interface Project {
@@ -17,37 +17,25 @@ interface Project {
   link?: string
 }
 
-const projects: Project[] = [
-  {
-    id: 'fuel-tank-monitoring',
-    title: 'Palm Oil Diesel Tracking',
-    description: 'Real-time diesel monitoring for palm oil plantation contractors with IoT sensors and cloud dashboards.',
-    icon: <RocketOutlined />,
-    status: 'In Production',
-    statusColor: '#22c55e',
-    gradient: 'linear-gradient(135deg, #1079FF, #29C5FF)',
-    features: [
-      'IoT fuel dispensing stations',
-      'Real-time theft detection',
-      'Cloud dashboard for operations',
-      'Usage analytics & reports'
-    ]
-  },
-  {
-    id: 'commerce-inventory',
-    title: 'Commerce & Inventory System',
-    description: 'Inventory tracking and commerce management for multi-location operations.',
-    icon: <SettingOutlined />,
-    status: 'In Development',
-    statusColor: '#8b5cf6',
-    gradient: 'linear-gradient(135deg, #F62A3A, #F85B62)',
-    features: [
-      'Multi-location tracking',
-      'Real-time stock monitoring',
-      'Automated reorder alerts',
-      'Sales analytics'
-    ]
-  },
+// Core product
+const coreProduct: Project = {
+  id: 'fuel-tank-monitoring',
+  title: 'Palm Oil Diesel Tracking',
+  description: 'Real-time diesel monitoring for palm oil plantation contractors with IoT sensors and cloud dashboards.',
+  icon: <RocketOutlined />,
+  status: 'In Production',
+  statusColor: '#22c55e',
+  gradient: 'linear-gradient(135deg, #1079FF, #29C5FF)',
+  features: [
+    'IoT fuel dispensing stations',
+    'Real-time theft detection',
+    'Cloud dashboard for operations',
+    'Usage analytics & reports'
+  ]
+}
+
+// Custom development projects for clients
+const clientProjects: Project[] = [
   {
     id: 'acemark',
     title: 'AceMark IP Law Firm',
@@ -55,13 +43,29 @@ const projects: Project[] = [
     icon: <GlobalOutlined />,
     status: 'Deployed',
     statusColor: '#22c55e',
-    gradient: 'linear-gradient(135deg, #1079FF, #29C5FF)',
+    gradient: 'linear-gradient(135deg, #8b5cf6, #a78bfa)',
     link: 'https://www.acemark-ip.com/en',
     features: [
       'Professional design',
       'Multi-language (ID/EN/JP/CN)',
       'Service showcase',
       'SEO optimized'
+    ]
+  },
+  {
+    id: 'kis',
+    title: 'PT. Kreasi Inti Sukses',
+    description: 'Product catalog and company profile with CMS backend and 8-language support.',
+    icon: <ShoppingOutlined />,
+    status: 'Deployed',
+    statusColor: '#22c55e',
+    gradient: 'linear-gradient(135deg, #f59e0b, #fbbf24)',
+    link: 'https://payload-kis.vercel.app/en',
+    features: [
+      'Payload CMS backend',
+      '8-language support',
+      'Product catalog',
+      'Admin dashboard'
     ]
   }
 ]
@@ -72,7 +76,7 @@ export default function ProjectsSection() {
   const handleClick = (project: Project) => {
     if (project.link) {
       window.open(project.link, '_blank', 'noopener,noreferrer')
-    } else if (project.id !== 'commerce-inventory') {
+    } else if (project.id === 'fuel-tank-monitoring') {
       router.push(`/projects/${project.id}`)
     }
   }
@@ -90,10 +94,141 @@ export default function ProjectsSection() {
           </p>
         </div>
 
-        {/* Projects Grid */}
+        {/* Core Product - Featured */}
+        <div
+          style={{
+            background: '#1e293b',
+            borderRadius: '16px',
+            padding: '32px',
+            marginBottom: '48px',
+            border: '2px solid #1079FF',
+            position: 'relative',
+            overflow: 'hidden'
+          }}
+        >
+          {/* Featured badge */}
+          <div style={{
+            position: 'absolute',
+            top: '16px',
+            right: '16px',
+            padding: '6px 12px',
+            borderRadius: '8px',
+            background: 'linear-gradient(135deg, #1079FF, #29C5FF)',
+            fontSize: '11px',
+            fontWeight: 700,
+            color: 'white',
+            textTransform: 'uppercase'
+          }}>
+            Core Product
+          </div>
+
+          <Row gutter={[24, 24]} align="middle">
+            <Col xs={24} md={14}>
+              {/* Status */}
+              <div
+                style={{
+                  display: 'inline-block',
+                  padding: '4px 12px',
+                  borderRadius: '10px',
+                  background: `${coreProduct.statusColor}20`,
+                  color: coreProduct.statusColor,
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  textTransform: 'uppercase',
+                  marginBottom: '16px'
+                }}
+              >
+                {coreProduct.status}
+              </div>
+
+              <h3 style={{ fontSize: '24px', marginBottom: '12px', color: '#f1f5f9' }}>
+                {coreProduct.title}
+              </h3>
+              <p style={{ fontSize: '15px', color: '#94a3b8', lineHeight: 1.6, marginBottom: '20px' }}>
+                {coreProduct.description}
+              </p>
+
+              <Button
+                type="primary"
+                size="large"
+                onClick={() => handleClick(coreProduct)}
+                style={{
+                  height: '44px',
+                  padding: '0 24px',
+                  borderRadius: '8px',
+                  background: 'linear-gradient(135deg, #1079FF, #29C5FF)',
+                  border: 'none',
+                  fontWeight: 600
+                }}
+              >
+                View Details <ArrowRightOutlined style={{ marginLeft: '6px' }} />
+              </Button>
+            </Col>
+            <Col xs={24} md={10}>
+              <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
+                {coreProduct.features.map((feature, idx) => (
+                  <li
+                    key={idx}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '10px',
+                      fontSize: '14px',
+                      color: '#cbd5e1',
+                      marginBottom: '12px',
+                      padding: '10px 14px',
+                      background: 'rgba(16, 121, 255, 0.1)',
+                      borderRadius: '8px'
+                    }}
+                  >
+                    <span style={{
+                      width: '6px',
+                      height: '6px',
+                      borderRadius: '50%',
+                      background: '#1079FF',
+                      flexShrink: 0
+                    }} />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </Col>
+          </Row>
+        </div>
+
+        {/* Custom Development Section */}
+        <div style={{ marginBottom: '24px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+            <div
+              style={{
+                width: '36px',
+                height: '36px',
+                borderRadius: '8px',
+                background: 'linear-gradient(135deg, #8b5cf6, #a78bfa)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'white',
+                fontSize: '16px'
+              }}
+            >
+              <CodeOutlined />
+            </div>
+            <div>
+              <h3 style={{ fontSize: '18px', margin: 0, color: '#f1f5f9' }}>
+                Custom Development
+              </h3>
+              <p style={{ fontSize: '13px', color: '#64748b', margin: 0 }}>
+                We also build custom solutions for clients who trust our technical team
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Client Projects Grid */}
         <Row gutter={[16, 16]}>
-          {projects.map((project) => (
-            <Col xs={24} md={8} key={project.id}>
+          {clientProjects.map((project) => (
+            <Col xs={24} md={12} key={project.id}>
               <div
                 style={{
                   background: '#1e293b',
@@ -191,19 +326,19 @@ export default function ProjectsSection() {
                 <Button
                   type="primary"
                   onClick={() => handleClick(project)}
-                  disabled={project.id === 'commerce-inventory'}
+                  disabled={!project.link}
                   style={{
                     width: '100%',
                     height: '40px',
                     borderRadius: '8px',
-                    background: project.id === 'commerce-inventory' ? '#334155' : project.gradient,
+                    background: project.link ? project.gradient : '#334155',
                     border: 'none',
                     fontWeight: 600,
                     fontSize: '13px'
                   }}
                 >
-                  {project.link ? 'Visit Website' : project.id === 'commerce-inventory' ? 'Coming Soon' : 'View Details'}
-                  {project.id !== 'commerce-inventory' && <ArrowRightOutlined style={{ marginLeft: '6px' }} />}
+                  {project.link ? 'Visit Website' : 'Coming Soon'}
+                  {project.link && <ArrowRightOutlined style={{ marginLeft: '6px' }} />}
                 </Button>
               </div>
             </Col>

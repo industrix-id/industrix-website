@@ -26,7 +26,7 @@ interface ContactFormData {
 const contactInfo = [
   { icon: <MailOutlined />, label: 'Email', value: 'carlos@industrix.id', href: 'mailto:carlos@industrix.id' },
   { icon: <PhoneOutlined />, label: 'Phone', value: '+62 815-3003-886', href: 'tel:+628153003886' },
-  { icon: <EnvironmentOutlined />, label: 'Location', value: 'Jakarta, Indonesia', href: null }
+  { icon: <EnvironmentOutlined />, label: 'Location', value: 'Jl. Taman Palem Mutiara No.3 Blok A5, Cengkareng, Jakarta Barat 11730', href: 'https://maps.google.com/?q=Jl.+Taman+Palem+Mutiara+No.3+Blok+A5+Jakarta' }
 ]
 
 export default function ContactSection() {
