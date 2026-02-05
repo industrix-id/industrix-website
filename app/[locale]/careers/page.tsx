@@ -15,7 +15,7 @@ import emailjs from '@emailjs/browser'
 // Removed Uploadcare - using GitHub instead
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import { useTheme } from '../theme/ThemeProvider'
+import { useTheme } from '@/app/theme/ThemeProvider'
 
 const { Content } = Layout
 const { Title, Paragraph } = Typography

@@ -1,0 +1,271 @@
+{
+  "metadata": {
+    "title": "Industrix - Digitalisasi Operasi Diesel",
+    "description": "Monitoring diesel real-time dan pelacakan BBM untuk operasi alat berat. Sensor IoT, deteksi pencurian, dan dashboard cloud untuk perkebunan, konstruksi, pertambangan, dan kehutanan."
+  },
+  "nav": {
+    "home": "Beranda",
+    "about": "Tentang",
+    "howItWorks": "Cara Kerja",
+    "pricing": "Harga",
+    "projects": "Proyek",
+    "contact": "Kontak",
+    "getDemo": "Minta Demo"
+  },
+  "hero": {
+    "badge": "Terbukti di Lapangan",
+    "title": "Digitalisasi",
+    "titleHighlight": "Operasi Diesel Anda",
+    "description": "Monitoring BBM real-time, pencegahan pencurian, dan visibilitas operasional lengkap untuk alat berat. Dari sensor IoT hingga dashboard cloud, terbukti di perkebunan Indonesia.",
+    "cta": "Minta Demo",
+    "ctaSecondary": "Lihat Cara Kerja"
+  },
+  "about": {
+    "title": "Digitalisasi",
+    "titleHighlight": "Operasi Diesel",
+    "description": "Kami mendigitalisasi jejak diesel untuk operasi alat berat, terbukti di perkebunan kelapa sawit Indonesia dengan roadmap untuk aplikasi global.",
+    "capabilities": {
+      "iotPump": {
+        "title": "Sistem Pompa IoT",
+        "description": "Kit mini fuel station dengan pompa, flow meter, probe tangki, dan akses tap RFID untuk manajemen BBM lengkap"
+      },
+      "accessControl": {
+        "title": "Kontrol Akses Pengguna",
+        "description": "Kontrol akses berbasis RFID dengan izin peran, autentikasi multi-faktor, dan pelacakan aktivitas operator"
+      },
+      "monitoring": {
+        "title": "Monitoring Real-time",
+        "description": "Dashboard cloud menampilkan level BBM live, tingkat konsumsi, tren historis, dan laporan efisiensi"
+      },
+      "theft": {
+        "title": "Deteksi Pencurian",
+        "description": "Alert otomatis untuk penurunan BBM mencurigakan, percobaan akses tidak sah, dan anomali operasional"
+      }
+    },
+    "platform": {
+      "title": "Satu Platform,",
+      "titleHighlight": "Berbagai Industri",
+      "description": "Jika Anda mengoperasikan excavator, truk, atau genset — kami bisa membantu."
+    },
+    "values": {
+      "worksAnywhere": {
+        "title": "Bekerja di Mana Saja",
+        "description": "Dibuat untuk lokasi terpencil dengan infrastruktur terbatas"
+      },
+      "fullStack": {
+        "title": "Layanan Lengkap",
+        "description": "Sensor, cloud, dashboard, dan support dari satu tim"
+      }
+    }
+  },
+  "howItWorks": {
+    "title": "Bagaimana",
+    "titleHighlight": "Cara Kerjanya",
+    "description": "Dari konsultasi hingga operasional — kami menangani semuanya. Anda cukup fokus pada bisnis inti.",
+    "forLabel": "Untuk:",
+    "customers": {
+      "palmOil": "Perkebunan Kelapa Sawit",
+      "mining": "Pertambangan",
+      "construction": "Konstruksi",
+      "logistics": "Logistik & Fleet"
+    },
+    "steps": {
+      "consultation": {
+        "title": "Konsultasi & Survey",
+        "description": "Tim kami mengunjungi lokasi Anda untuk memahami kebutuhan operasional, jumlah unit alat berat, dan infrastruktur yang tersedia."
+      },
+      "installation": {
+        "title": "Instalasi Hardware",
+        "description": "Kami memasang sensor IoT, flow meter, dan sistem RFID pada tangki dan pompa BBM Anda. Proses instalasi 1-3 hari per lokasi."
+      },
+      "cloud": {
+        "title": "Koneksi ke Cloud",
+        "description": "Semua sensor terhubung ke platform cloud kami. Data dikirim secara real-time melalui jaringan seluler atau WiFi."
+      },
+      "dashboard": {
+        "title": "Akses Dashboard",
+        "description": "Tim Anda mendapat akses ke dashboard web dan mobile app untuk monitoring level BBM, konsumsi, dan laporan harian."
+      },
+      "support": {
+        "title": "Support Berkelanjutan",
+        "description": "Langganan bulanan mencakup maintenance, update software, dan dukungan teknis untuk memastikan sistem berjalan optimal."
+      }
+    },
+    "serviceModel": {
+      "label": "Model Layanan:",
+      "description": "Pembayaran satu kali untuk hardware & instalasi, kemudian langganan bulanan untuk akses dashboard, cloud storage, dan support teknis."
+    }
+  },
+  "pricing": {
+    "title": "Harga",
+    "titleHighlight": "Transparan",
+    "description": "Setup hardware satu kali + langganan bulanan. Tanpa biaya tersembunyi.",
+    "tiers": {
+      "basic": {
+        "name": "Monitoring Dasar",
+        "description": "Pelacakan BBM esensial untuk operasi kecil"
+      },
+      "advanced": {
+        "name": "Analitik Lanjutan",
+        "description": "Monitoring lengkap dengan pencegahan pencurian"
+      },
+      "enterprise": {
+        "name": "Paket Enterprise",
+        "description": "Solusi penuh untuk operasi skala besar"
+      }
+    },
+    "features": {
+      "basic": [
+        "Paket hardware IoT (pompa, flow meter, probe tangki)",
+        "Monitoring level BBM real-time",
+        "Dashboard cloud dasar",
+        "Alert mobile app",
+        "Dukungan email"
+      ],
+      "advanced": [
+        "Semua fitur Basic",
+        "Sistem kontrol akses RFID",
+        "Analitik konsumsi & laporan",
+        "Alert deteksi pencurian otomatis",
+        "Akses dashboard multi-user",
+        "Dukungan prioritas"
+      ],
+      "enterprise": [
+        "Semua fitur Advanced",
+        "Lokasi tak terbatas",
+        "Integrasi API",
+        "Laporan & dashboard kustom",
+        "Account manager dedicated",
+        "Training on-site",
+        "Jaminan SLA"
+      ]
+    },
+    "labels": {
+      "mostPopular": "Paling Populer",
+      "hardwareSetup": "Hardware & Setup",
+      "oneTime": "sekali bayar",
+      "monthlySubscription": "Langganan Bulanan",
+      "perMonth": "/bulan",
+      "customQuote": "Penawaran Khusus",
+      "custom": "Kustom",
+      "getQuote": "Minta Penawaran"
+    },
+    "note": "* Harga final disesuaikan dengan kebutuhan lokasi dan jumlah unit. Hubungi kami untuk penawaran khusus."
+  },
+  "projects": {
+    "title": "Terbukti",
+    "titleHighlight": "di Lapangan",
+    "description": "Sistem pelacakan diesel kami sudah di-deploy dan berjalan di operasi kelapa sawit.",
+    "coreProduct": "Produk Utama",
+    "viewDetails": "Lihat Detail",
+    "customDev": {
+      "title": "Pengembangan Kustom",
+      "description": "Kami juga membangun solusi kustom untuk klien yang mempercayai tim teknis kami"
+    },
+    "status": {
+      "inProduction": "Sedang Produksi",
+      "deployed": "Sudah Deploy",
+      "inDevelopment": "Dalam Pengembangan"
+    },
+    "visitWebsite": "Kunjungi Website",
+    "comingSoon": "Segera Hadir",
+    "cta": {
+      "title": "Hentikan Pencurian Diesel. Optimalkan Fleet Anda.",
+      "description": "Sistem kami dapat disesuaikan untuk kelapa sawit, konstruksi, atau fasilitas industri.",
+      "button": "Diskusikan Kebutuhan Anda"
+    },
+    "items": {
+      "fuelTracking": {
+        "title": "Pelacakan Diesel Kelapa Sawit",
+        "description": "Monitoring diesel real-time untuk kontraktor perkebunan kelapa sawit dengan sensor IoT dan dashboard cloud.",
+        "features": [
+          "Stasiun pengisian BBM IoT",
+          "Deteksi pencurian real-time",
+          "Dashboard cloud untuk operasi",
+          "Analitik & laporan penggunaan"
+        ]
+      },
+      "acemark": {
+        "title": "AceMark IP Law Firm",
+        "description": "Website korporat untuk firma hukum IP terkemuka di Indonesia dengan dukungan multi-bahasa.",
+        "features": [
+          "Desain profesional",
+          "Multi-bahasa (ID/EN/JP/CN)",
+          "Showcase layanan",
+          "SEO optimized"
+        ]
+      },
+      "kis": {
+        "title": "PT. Kreasi Inti Sukses",
+        "description": "Katalog produk dan profil perusahaan dengan backend CMS dan dukungan 8 bahasa.",
+        "features": [
+          "Backend Payload CMS",
+          "Dukungan 8 bahasa",
+          "Katalog produk",
+          "Dashboard admin"
+        ]
+      }
+    }
+  },
+  "contact": {
+    "title": "Mari",
+    "titleHighlight": "Bekerja Sama",
+    "description": "Siap mendigitalisasi operasi diesel Anda? Hubungi kami.",
+    "info": {
+      "title": "Informasi Kontak",
+      "subtitle": "Hubungi langsung atau isi formulir."
+    },
+    "labels": {
+      "email": "Email",
+      "phone": "Telepon",
+      "location": "Lokasi"
+    },
+    "form": {
+      "fullName": "Nama Lengkap",
+      "email": "Email",
+      "phone": "Telepon (Opsional)",
+      "company": "Perusahaan",
+      "industry": "Industri",
+      "message": "Pesan",
+      "submit": "Kirim Pesan",
+      "placeholders": {
+        "name": "Budi Santoso",
+        "email": "budi@perusahaan.com",
+        "phone": "+62 812 3456 7890",
+        "company": "Perusahaan Anda",
+        "industry": "Pilih industri Anda",
+        "message": "Ceritakan tentang operasi Anda..."
+      },
+      "industries": {
+        "palmOil": "Kelapa Sawit / Pertanian",
+        "mining": "Pertambangan",
+        "construction": "Konstruksi",
+        "logistics": "Logistik / Fleet",
+        "manufacturing": "Manufaktur",
+        "other": "Lainnya"
+      },
+      "required": "Wajib diisi",
+      "invalid": "Tidak valid"
+    },
+    "messages": {
+      "success": "Pesan terkirim! Kami akan merespons dalam 24 jam.",
+      "error": "Terjadi kesalahan. Silakan coba lagi."
+    }
+  },
+  "footer": {
+    "description": "Transformasi operasi industri Anda dengan solusi digital pintar untuk pelacakan peralatan dan monitoring sumber daya.",
+    "company": "Perusahaan",
+    "solutions": "Solusi",
+    "links": {
+      "aboutUs": "Tentang Kami",
+      "projects": "Proyek",
+      "contact": "Kontak",
+      "fuelMonitoring": "Monitoring BBM",
+      "iotSensors": "Sensor IoT",
+      "analytics": "Analitik"
+    },
+    "privacy": "Privasi",
+    "terms": "Ketentuan",
+    "copyright": "PT. Teknologi Solusi Industri"
+  }
+}

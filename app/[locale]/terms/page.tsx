@@ -4,7 +4,7 @@ import React from 'react'
 import { Layout, Typography, Card } from 'antd'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import { useTheme } from '../theme/ThemeProvider'
+import { useTheme } from '@/app/theme/ThemeProvider'
 
 const { Content } = Layout
 const { Title, Paragraph } = Typography

@@ -11,6 +11,7 @@ import {
   BankOutlined
 } from '@ant-design/icons'
 import emailjs from '@emailjs/browser'
+import { useTranslations } from 'next-intl'
 
 const { TextArea } = Input
 
@@ -23,15 +24,25 @@ interface ContactFormData {
   message: string
 }
 
-const contactInfo = [
-  { icon: <MailOutlined />, label: 'Email', value: 'carlos@industrix.id', href: 'mailto:carlos@industrix.id' },
-  { icon: <PhoneOutlined />, label: 'Phone', value: '+62 815-3003-886', href: 'tel:+628153003886' },
-  { icon: <EnvironmentOutlined />, label: 'Location', value: 'Jl. Taman Palem Mutiara No.3 Blok A5, Cengkareng, Jakarta Barat 11730', href: 'https://maps.google.com/?q=Jl.+Taman+Palem+Mutiara+No.3+Blok+A5+Jakarta' }
-]
-
 export default function ContactSection() {
   const [form] = Form.useForm()
   const [loading, setLoading] = useState(false)
+  const t = useTranslations('contact')
+
+  const contactInfo = [
+    { icon: <MailOutlined />, label: t('labels.email'), value: 'carlos@industrix.id', href: 'mailto:carlos@industrix.id' },
+    { icon: <PhoneOutlined />, label: t('labels.phone'), value: '+62 815-3003-886', href: 'tel:+628153003886' },
+    { icon: <EnvironmentOutlined />, label: t('labels.location'), value: 'Jl. Taman Palem Mutiara No.3 Blok A5, Cengkareng, Jakarta Barat 11730', href: 'https://maps.google.com/?q=Jl.+Taman+Palem+Mutiara+No.3+Blok+A5+Jakarta' }
+  ]
+
+  const industries = [
+    { value: 'palm-oil', label: t('form.industries.palmOil') },
+    { value: 'mining', label: t('form.industries.mining') },
+    { value: 'construction', label: t('form.industries.construction') },
+    { value: 'logistics', label: t('form.industries.logistics') },
+    { value: 'manufacturing', label: t('form.industries.manufacturing') },
+    { value: 'other', label: t('form.industries.other') }
+  ]
 
   useEffect(() => {
     emailjs.init('uLHUv1UdTBP0eJ57R')
@@ -51,7 +62,6 @@ export default function ContactSection() {
       })
 
       if (result.status === 200) {
-        // Send confirmation email
         try {
           await emailjs.send('service_q60i136', 'template_mu9wwrp', {
             to_email: values.email,
@@ -60,11 +70,11 @@ export default function ContactSection() {
           })
         } catch { /* silent */ }
 
-        message.success('Message sent! We\'ll respond within 24 hours.')
+        message.success(t('messages.success'))
         form.resetFields()
       }
     } catch {
-      message.error('Something went wrong. Please try again.')
+      message.error(t('messages.error'))
     } finally {
       setLoading(false)
     }
@@ -76,10 +86,10 @@ export default function ContactSection() {
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '32px' }}>
           <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2rem)', marginBottom: '8px' }}>
-            Let&apos;s <span className="text-gradient">Work Together</span>
+            {t('title')} <span className="text-gradient">{t('titleHighlight')}</span>
           </h2>
           <p style={{ fontSize: '14px', color: '#94a3b8' }}>
-            Ready to digitalize your diesel operations? Get in touch.
+            {t('description')}
           </p>
         </div>
 
@@ -95,10 +105,10 @@ export default function ContactSection() {
               }}
             >
               <h4 style={{ color: '#fff', marginBottom: '8px', fontSize: '16px' }}>
-                Contact Information
+                {t('info.title')}
               </h4>
               <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '13px', marginBottom: '24px' }}>
-                Reach out directly or fill out the form.
+                {t('info.subtitle')}
               </p>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
@@ -108,7 +118,7 @@ export default function ContactSection() {
                     href={item.href || undefined}
                     style={{
                       display: 'flex',
-                      alignItems: 'center',
+                      alignItems: 'flex-start',
                       gap: '12px',
                       color: '#fff',
                       textDecoration: 'none',
@@ -124,14 +134,15 @@ export default function ContactSection() {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        fontSize: '14px'
+                        fontSize: '14px',
+                        flexShrink: 0
                       }}
                     >
                       {item.icon}
                     </div>
                     <div>
                       <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.6)' }}>{item.label}</div>
-                      <div style={{ fontSize: '14px' }}>{item.value}</div>
+                      <div style={{ fontSize: '13px' }}>{item.value}</div>
                     </div>
                   </a>
                 ))}
@@ -152,43 +163,40 @@ export default function ContactSection() {
               <Form form={form} layout="vertical" onFinish={handleSubmit} requiredMark={false}>
                 <Row gutter={[12, 0]}>
                   <Col xs={24} sm={12}>
-                    <Form.Item name="name" label="Full Name" rules={[{ required: true, message: 'Required' }]}>
-                      <Input prefix={<UserOutlined style={{ color: '#64748b' }} />} placeholder="John Doe" size="large" style={{ width: '100%', height: '44px' }} />
+                    <Form.Item name="name" label={t('form.fullName')} rules={[{ required: true, message: t('form.required') }]}>
+                      <Input prefix={<UserOutlined style={{ color: '#64748b' }} />} placeholder={t('form.placeholders.name')} size="large" style={{ width: '100%', height: '44px' }} />
                     </Form.Item>
                   </Col>
                   <Col xs={24} sm={12}>
-                    <Form.Item name="email" label="Email" rules={[{ required: true, message: 'Required' }, { type: 'email', message: 'Invalid' }]}>
-                      <Input prefix={<MailOutlined style={{ color: '#64748b' }} />} placeholder="john@company.com" size="large" style={{ width: '100%', height: '44px' }} />
+                    <Form.Item name="email" label={t('form.email')} rules={[{ required: true, message: t('form.required') }, { type: 'email', message: t('form.invalid') }]}>
+                      <Input prefix={<MailOutlined style={{ color: '#64748b' }} />} placeholder={t('form.placeholders.email')} size="large" style={{ width: '100%', height: '44px' }} />
                     </Form.Item>
                   </Col>
                 </Row>
 
                 <Row gutter={[12, 0]}>
                   <Col xs={24} sm={12}>
-                    <Form.Item name="phone" label="Phone (Optional)">
-                      <Input prefix={<PhoneOutlined style={{ color: '#64748b' }} />} placeholder="+62 812 3456 7890" size="large" style={{ width: '100%', height: '44px' }} />
+                    <Form.Item name="phone" label={t('form.phone')}>
+                      <Input prefix={<PhoneOutlined style={{ color: '#64748b' }} />} placeholder={t('form.placeholders.phone')} size="large" style={{ width: '100%', height: '44px' }} />
                     </Form.Item>
                   </Col>
                   <Col xs={24} sm={12}>
-                    <Form.Item name="company" label="Company" rules={[{ required: true, message: 'Required' }]}>
-                      <Input prefix={<BankOutlined style={{ color: '#64748b' }} />} placeholder="Your company" size="large" style={{ width: '100%', height: '44px' }} />
+                    <Form.Item name="company" label={t('form.company')} rules={[{ required: true, message: t('form.required') }]}>
+                      <Input prefix={<BankOutlined style={{ color: '#64748b' }} />} placeholder={t('form.placeholders.company')} size="large" style={{ width: '100%', height: '44px' }} />
                     </Form.Item>
                   </Col>
                 </Row>
 
-                <Form.Item name="industry" label="Industry" rules={[{ required: true, message: 'Required' }]}>
-                  <Select placeholder="Select your industry" size="large" style={{ width: '100%', height: '44px' }}>
-                    <Select.Option value="palm-oil">Palm Oil / Agriculture</Select.Option>
-                    <Select.Option value="mining">Mining</Select.Option>
-                    <Select.Option value="construction">Construction</Select.Option>
-                    <Select.Option value="logistics">Logistics / Fleet</Select.Option>
-                    <Select.Option value="manufacturing">Manufacturing</Select.Option>
-                    <Select.Option value="other">Other</Select.Option>
+                <Form.Item name="industry" label={t('form.industry')} rules={[{ required: true, message: t('form.required') }]}>
+                  <Select placeholder={t('form.placeholders.industry')} size="large" style={{ width: '100%', height: '44px' }}>
+                    {industries.map((ind) => (
+                      <Select.Option key={ind.value} value={ind.value}>{ind.label}</Select.Option>
+                    ))}
                   </Select>
                 </Form.Item>
 
-                <Form.Item name="message" label="Message" rules={[{ required: true, message: 'Required' }]}>
-                  <TextArea placeholder="Tell us about your operations..." rows={4} style={{ resize: 'none', width: '100%' }} />
+                <Form.Item name="message" label={t('form.message')} rules={[{ required: true, message: t('form.required') }]}>
+                  <TextArea placeholder={t('form.placeholders.message')} rows={4} style={{ resize: 'none', width: '100%' }} />
                 </Form.Item>
 
                 <Button
@@ -206,7 +214,7 @@ export default function ContactSection() {
                     fontWeight: 600
                   }}
                 >
-                  Send Message
+                  {t('form.submit')}
                 </Button>
               </Form>
             </div>

@@ -1,0 +1,271 @@
+{
+  "metadata": {
+    "title": "Industrix - Diesel Operations Digitalization",
+    "description": "Real-time diesel monitoring and fuel tracking for heavy equipment operations. IoT sensors, theft detection, and cloud dashboards for plantations, construction, mining, and forestry."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "howItWorks": "How It Works",
+    "pricing": "Pricing",
+    "projects": "Projects",
+    "contact": "Contact",
+    "getDemo": "Get a Demo"
+  },
+  "hero": {
+    "badge": "Proven in Production",
+    "title": "Digitalize Your",
+    "titleHighlight": "Diesel Operations",
+    "description": "Real-time fuel monitoring, theft prevention, and complete operational visibility for heavy equipment. From IoT sensors to cloud dashboards, proven in Indonesian plantations.",
+    "cta": "Get a Demo",
+    "ctaSecondary": "See How It Works"
+  },
+  "about": {
+    "title": "Diesel Operations",
+    "titleHighlight": "Digitalization",
+    "description": "We digitalize diesel footprints for heavy equipment operations, proven in Indonesian palm oil plantations with a roadmap for global application.",
+    "capabilities": {
+      "iotPump": {
+        "title": "IoT Fuel Pump System",
+        "description": "Mini fuel station kits with pumps, flow meters, tank probes, and RFID tap access for complete fuel management"
+      },
+      "accessControl": {
+        "title": "User Access Control",
+        "description": "RFID-based access control with role permissions, multi-factor authentication, and operator activity tracking"
+      },
+      "monitoring": {
+        "title": "Real-time Monitoring",
+        "description": "Cloud dashboards showing live fuel levels, consumption rates, historical trends, and efficiency reports"
+      },
+      "theft": {
+        "title": "Theft Detection",
+        "description": "Automated alerts for suspicious fuel drops, unauthorized access attempts, and operational anomalies"
+      }
+    },
+    "platform": {
+      "title": "One Platform,",
+      "titleHighlight": "Multiple Industries",
+      "description": "If you run excavators, trucks, or generators — we can help."
+    },
+    "values": {
+      "worksAnywhere": {
+        "title": "Works Anywhere",
+        "description": "Built for remote sites with limited infrastructure"
+      },
+      "fullStack": {
+        "title": "Full Stack Delivery",
+        "description": "Sensors, cloud, dashboards, and support from one team"
+      }
+    }
+  },
+  "howItWorks": {
+    "title": "How",
+    "titleHighlight": "It Works",
+    "description": "From consultation to operation — we handle everything. You just focus on your core business.",
+    "forLabel": "For:",
+    "customers": {
+      "palmOil": "Palm Oil Plantations",
+      "mining": "Mining",
+      "construction": "Construction",
+      "logistics": "Logistics & Fleet"
+    },
+    "steps": {
+      "consultation": {
+        "title": "Consultation & Survey",
+        "description": "Our team visits your site to understand operational needs, number of heavy equipment units, and available infrastructure."
+      },
+      "installation": {
+        "title": "Hardware Installation",
+        "description": "We install IoT sensors, flow meters, and RFID systems on your fuel tanks and pumps. Installation takes 1-3 days per location."
+      },
+      "cloud": {
+        "title": "Cloud Connection",
+        "description": "All sensors connect to our cloud platform. Data is transmitted in real-time via cellular network or WiFi."
+      },
+      "dashboard": {
+        "title": "Dashboard Access",
+        "description": "Your team gets access to web dashboard and mobile app for monitoring fuel levels, consumption, and daily reports."
+      },
+      "support": {
+        "title": "Ongoing Support",
+        "description": "Monthly subscription includes maintenance, software updates, and technical support to ensure optimal system performance."
+      }
+    },
+    "serviceModel": {
+      "label": "Service Model:",
+      "description": "One-time payment for hardware & installation, then monthly subscription for dashboard access, cloud storage, and technical support."
+    }
+  },
+  "pricing": {
+    "title": "Transparent",
+    "titleHighlight": "Pricing",
+    "description": "One-time hardware setup + monthly subscription. No hidden fees.",
+    "tiers": {
+      "basic": {
+        "name": "Basic Monitoring",
+        "description": "Essential fuel tracking for small operations"
+      },
+      "advanced": {
+        "name": "Advanced Analytics",
+        "description": "Complete monitoring with theft prevention"
+      },
+      "enterprise": {
+        "name": "Enterprise Suite",
+        "description": "Full solution for large-scale operations"
+      }
+    },
+    "features": {
+      "basic": [
+        "IoT hardware package (pump, flow meter, tank probe)",
+        "Real-time fuel level monitoring",
+        "Basic cloud dashboard",
+        "Mobile app alerts",
+        "Email support"
+      ],
+      "advanced": [
+        "Everything in Basic",
+        "RFID access control system",
+        "Consumption analytics & reports",
+        "Automated theft detection alerts",
+        "Multi-user dashboard access",
+        "Priority support"
+      ],
+      "enterprise": [
+        "Everything in Advanced",
+        "Unlimited locations",
+        "API integration",
+        "Custom reports & dashboards",
+        "Dedicated account manager",
+        "On-site training",
+        "SLA guarantee"
+      ]
+    },
+    "labels": {
+      "mostPopular": "Most Popular",
+      "hardwareSetup": "Hardware & Setup",
+      "oneTime": "one-time",
+      "monthlySubscription": "Monthly Subscription",
+      "perMonth": "/month",
+      "customQuote": "Custom Quote",
+      "custom": "Custom",
+      "getQuote": "Get a Quote"
+    },
+    "note": "* Final pricing adjusted based on location needs and number of units. Contact us for a custom quote."
+  },
+  "projects": {
+    "title": "Proven",
+    "titleHighlight": "in Production",
+    "description": "Our diesel tracking system is deployed and running today in palm oil operations.",
+    "coreProduct": "Core Product",
+    "viewDetails": "View Details",
+    "customDev": {
+      "title": "Custom Development",
+      "description": "We also build custom solutions for clients who trust our technical team"
+    },
+    "status": {
+      "inProduction": "In Production",
+      "deployed": "Deployed",
+      "inDevelopment": "In Development"
+    },
+    "visitWebsite": "Visit Website",
+    "comingSoon": "Coming Soon",
+    "cta": {
+      "title": "Stop Diesel Theft. Optimize Your Fleet.",
+      "description": "Our system adapts to palm oil, construction, or industrial facilities.",
+      "button": "Discuss Your Needs"
+    },
+    "items": {
+      "fuelTracking": {
+        "title": "Palm Oil Diesel Tracking",
+        "description": "Real-time diesel monitoring for palm oil plantation contractors with IoT sensors and cloud dashboards.",
+        "features": [
+          "IoT fuel dispensing stations",
+          "Real-time theft detection",
+          "Cloud dashboard for operations",
+          "Usage analytics & reports"
+        ]
+      },
+      "acemark": {
+        "title": "AceMark IP Law Firm",
+        "description": "Corporate website for Indonesia's leading IP law firm with multi-language support.",
+        "features": [
+          "Professional design",
+          "Multi-language (ID/EN/JP/CN)",
+          "Service showcase",
+          "SEO optimized"
+        ]
+      },
+      "kis": {
+        "title": "PT. Kreasi Inti Sukses",
+        "description": "Product catalog and company profile with CMS backend and 8-language support.",
+        "features": [
+          "Payload CMS backend",
+          "8-language support",
+          "Product catalog",
+          "Admin dashboard"
+        ]
+      }
+    }
+  },
+  "contact": {
+    "title": "Let's",
+    "titleHighlight": "Work Together",
+    "description": "Ready to digitalize your diesel operations? Get in touch.",
+    "info": {
+      "title": "Contact Information",
+      "subtitle": "Reach out directly or fill out the form."
+    },
+    "labels": {
+      "email": "Email",
+      "phone": "Phone",
+      "location": "Location"
+    },
+    "form": {
+      "fullName": "Full Name",
+      "email": "Email",
+      "phone": "Phone (Optional)",
+      "company": "Company",
+      "industry": "Industry",
+      "message": "Message",
+      "submit": "Send Message",
+      "placeholders": {
+        "name": "John Doe",
+        "email": "john@company.com",
+        "phone": "+62 812 3456 7890",
+        "company": "Your company",
+        "industry": "Select your industry",
+        "message": "Tell us about your operations..."
+      },
+      "industries": {
+        "palmOil": "Palm Oil / Agriculture",
+        "mining": "Mining",
+        "construction": "Construction",
+        "logistics": "Logistics / Fleet",
+        "manufacturing": "Manufacturing",
+        "other": "Other"
+      },
+      "required": "Required",
+      "invalid": "Invalid"
+    },
+    "messages": {
+      "success": "Message sent! We'll respond within 24 hours.",
+      "error": "Something went wrong. Please try again."
+    }
+  },
+  "footer": {
+    "description": "Transform your industrial operations with smart digital solutions for equipment tracking and resource monitoring.",
+    "company": "Company",
+    "solutions": "Solutions",
+    "links": {
+      "aboutUs": "About Us",
+      "projects": "Projects",
+      "contact": "Contact",
+      "fuelMonitoring": "Fuel Monitoring",
+      "iotSensors": "IoT Sensors",
+      "analytics": "Analytics"
+    },
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "copyright": "PT. Teknologi Solusi Industri"
+  }
+}

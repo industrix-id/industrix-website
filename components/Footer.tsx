@@ -5,9 +5,12 @@ import { Row, Col } from 'antd'
 import { MailOutlined, PhoneOutlined, EnvironmentOutlined } from '@ant-design/icons'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useTranslations, useLocale } from 'next-intl'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
+  const t = useTranslations('footer')
+  const locale = useLocale()
 
   return (
     <footer style={{ background: '#1a1a1a', padding: '48px 12px 32px' }}>
@@ -20,18 +23,18 @@ export default function Footer() {
               <span style={{ fontSize: '20px', fontWeight: 700, color: '#fff' }}>Industrix</span>
             </div>
             <p style={{ fontSize: '13px', color: '#a1a1aa', lineHeight: 1.6 }}>
-              Transform your industrial operations with smart digital solutions for equipment tracking and resource monitoring.
+              {t('description')}
             </p>
           </Col>
 
           {/* Quick Links */}
           <Col xs={12} md={4}>
-            <h5 style={{ color: '#fff', fontSize: '14px', marginBottom: '16px' }}>Company</h5>
+            <h5 style={{ color: '#fff', fontSize: '14px', marginBottom: '16px' }}>{t('company')}</h5>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {[
-                { label: 'About Us', href: '/#about' },
-                { label: 'Projects', href: '/#projects' },
-                { label: 'Contact', href: '/#contact' }
+                { label: t('links.aboutUs'), href: `/${locale}#about` },
+                { label: t('links.projects'), href: `/${locale}#projects` },
+                { label: t('links.contact'), href: `/${locale}#contact` }
               ].map((link) => (
                 <Link
                   key={link.label}
@@ -46,16 +49,20 @@ export default function Footer() {
           </Col>
 
           <Col xs={12} md={4}>
-            <h5 style={{ color: '#fff', fontSize: '14px', marginBottom: '16px' }}>Solutions</h5>
+            <h5 style={{ color: '#fff', fontSize: '14px', marginBottom: '16px' }}>{t('solutions')}</h5>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              {['Fuel Monitoring', 'IoT Sensors', 'Analytics'].map((link) => (
+              {[
+                { label: t('links.fuelMonitoring'), href: `/${locale}#about` },
+                { label: t('links.iotSensors'), href: `/${locale}#about` },
+                { label: t('links.analytics'), href: `/${locale}#about` }
+              ].map((link) => (
                 <Link
-                  key={link}
-                  href="/#about"
+                  key={link.label}
+                  href={link.href}
                   style={{ color: '#a1a1aa', fontSize: '13px', textDecoration: 'none' }}
                   className="footer-link"
                 >
-                  {link}
+                  {link.label}
                 </Link>
               ))}
             </div>
@@ -95,19 +102,23 @@ export default function Footer() {
           }}
         >
           <span style={{ color: '#a1a1aa', fontSize: '12px' }}>
-            © {currentYear} PT. Teknologi Solusi Industri
+            © {currentYear} {t('copyright')}
           </span>
           <div style={{ display: 'flex', gap: '20px' }}>
-            {['Privacy', 'Terms'].map((link) => (
-              <Link
-                key={link}
-                href={`/${link.toLowerCase()}`}
-                style={{ color: '#a1a1aa', fontSize: '12px', textDecoration: 'none' }}
-                className="footer-link"
-              >
-                {link}
-              </Link>
-            ))}
+            <Link
+              href={`/${locale}/privacy`}
+              style={{ color: '#a1a1aa', fontSize: '12px', textDecoration: 'none' }}
+              className="footer-link"
+            >
+              {t('privacy')}
+            </Link>
+            <Link
+              href={`/${locale}/terms`}
+              style={{ color: '#a1a1aa', fontSize: '12px', textDecoration: 'none' }}
+              className="footer-link"
+            >
+              {t('terms')}
+            </Link>
           </div>
         </div>
       </div>

@@ -10,54 +10,57 @@ import {
   GlobalOutlined,
   CheckCircleOutlined
 } from '@ant-design/icons'
-
-const capabilities = [
-  {
-    icon: <ApiOutlined />,
-    title: 'IoT Fuel Pump System',
-    description: 'Mini fuel station kits with pumps, flow meters, tank probes, and RFID tap access for complete fuel management'
-  },
-  {
-    icon: <UserOutlined />,
-    title: 'User Access Control',
-    description: 'RFID-based access control with role permissions, multi-factor authentication, and operator activity tracking'
-  },
-  {
-    icon: <DatabaseOutlined />,
-    title: 'Real-time Monitoring',
-    description: 'Cloud dashboards showing live fuel levels, consumption rates, historical trends, and efficiency reports'
-  },
-  {
-    icon: <SafetyOutlined />,
-    title: 'Theft Detection',
-    description: 'Automated alerts for suspicious fuel drops, unauthorized access attempts, and operational anomalies'
-  }
-]
-
-const values = [
-  {
-    icon: <GlobalOutlined />,
-    title: 'Works Anywhere',
-    description: 'Built for remote sites with limited infrastructure'
-  },
-  {
-    icon: <CheckCircleOutlined />,
-    title: 'Full Stack Delivery',
-    description: 'Sensors, cloud, dashboards, and support from one team'
-  }
-]
+import { useTranslations } from 'next-intl'
 
 export default function AboutSection() {
+  const t = useTranslations('about')
+
+  const capabilities = [
+    {
+      icon: <ApiOutlined />,
+      title: t('capabilities.iotPump.title'),
+      description: t('capabilities.iotPump.description')
+    },
+    {
+      icon: <UserOutlined />,
+      title: t('capabilities.accessControl.title'),
+      description: t('capabilities.accessControl.description')
+    },
+    {
+      icon: <DatabaseOutlined />,
+      title: t('capabilities.monitoring.title'),
+      description: t('capabilities.monitoring.description')
+    },
+    {
+      icon: <SafetyOutlined />,
+      title: t('capabilities.theft.title'),
+      description: t('capabilities.theft.description')
+    }
+  ]
+
+  const values = [
+    {
+      icon: <GlobalOutlined />,
+      title: t('values.worksAnywhere.title'),
+      description: t('values.worksAnywhere.description')
+    },
+    {
+      icon: <CheckCircleOutlined />,
+      title: t('values.fullStack.title'),
+      description: t('values.fullStack.description')
+    }
+  ]
+
   return (
     <section id="about" className="home-section" style={{ background: '#0f172a' }}>
       <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
           <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2rem)', marginBottom: '12px' }}>
-            Diesel Operations <span className="text-gradient">Digitalization</span>
+            {t('title')} <span className="text-gradient">{t('titleHighlight')}</span>
           </h2>
           <p style={{ fontSize: '15px', maxWidth: '600px', margin: '0 auto', color: '#94a3b8' }}>
-            We digitalize diesel footprints for heavy equipment operations, proven in Indonesian palm oil plantations with a roadmap for global application.
+            {t('description')}
           </p>
         </div>
 
@@ -101,10 +104,10 @@ export default function AboutSection() {
         {/* Why Industrix */}
         <div style={{ textAlign: 'center', marginBottom: '24px' }}>
           <h3 style={{ fontSize: 'clamp(1.25rem, 3vw, 1.5rem)', marginBottom: '8px' }}>
-            One Platform, <span className="text-gradient">Multiple Industries</span>
+            {t('platform.title')} <span className="text-gradient">{t('platform.titleHighlight')}</span>
           </h3>
           <p style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '24px' }}>
-            If you run excavators, trucks, or generators — we can help.
+            {t('platform.description')}
           </p>
         </div>
 

@@ -3,8 +3,11 @@
 import React from 'react'
 import { Button, Space } from 'antd'
 import { ArrowRightOutlined } from '@ant-design/icons'
+import { useTranslations } from 'next-intl'
 
 export default function HeroSection() {
+  const t = useTranslations('hero')
+
   return (
     <section
       id="home"
@@ -31,7 +34,7 @@ export default function HeroSection() {
             marginBottom: '24px'
           }}
         >
-          Proven in Production
+          {t('badge')}
         </div>
 
         {/* Headline */}
@@ -44,8 +47,8 @@ export default function HeroSection() {
             color: '#f1f5f9'
           }}
         >
-          Digitalize Your{' '}
-          <span className="text-gradient">Diesel Operations</span>
+          {t('title')}{' '}
+          <span className="text-gradient">{t('titleHighlight')}</span>
         </h1>
 
         {/* Subtext */}
@@ -58,9 +61,7 @@ export default function HeroSection() {
             margin: '0 auto 32px'
           }}
         >
-          Real-time fuel monitoring, theft prevention, and complete operational
-          visibility for heavy equipment. From IoT sensors to cloud dashboards,
-          proven in Indonesian plantations.
+          {t('description')}
         </p>
 
         {/* Buttons */}
@@ -80,11 +81,11 @@ export default function HeroSection() {
               border: 'none'
             }}
           >
-            Get a Demo
+            {t('cta')}
           </Button>
           <Button
             size="large"
-            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
             style={{
               height: '48px',
               padding: '0 24px',
@@ -96,7 +97,7 @@ export default function HeroSection() {
               background: 'transparent'
             }}
           >
-            See How It Works
+            {t('ctaSecondary')}
           </Button>
         </Space>
       </div>

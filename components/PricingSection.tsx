@@ -3,79 +3,60 @@
 import React from 'react'
 import { Row, Col, Button } from 'antd'
 import { CheckCircleOutlined, RocketOutlined, ThunderboltOutlined, CrownOutlined } from '@ant-design/icons'
-
-const pricingTiers = [
-  {
-    name: 'Basic Monitoring',
-    icon: <RocketOutlined />,
-    description: 'Essential fuel tracking for small operations',
-    setupPrice: '36.900.000',
-    monthlyPrice: '300.000',
-    gradient: 'linear-gradient(135deg, #64748b, #94a3b8)',
-    features: [
-      'IoT hardware package (pump, flow meter, tank probe)',
-      'Real-time fuel level monitoring',
-      'Basic cloud dashboard',
-      'Mobile app alerts',
-      'Email support'
-    ],
-    popular: false
-  },
-  {
-    name: 'Advanced Analytics',
-    icon: <ThunderboltOutlined />,
-    description: 'Complete monitoring with theft prevention',
-    setupPrice: '49.900.000',
-    monthlyPrice: '500.000',
-    gradient: 'linear-gradient(135deg, #1079FF, #29C5FF)',
-    features: [
-      'Everything in Basic',
-      'RFID access control system',
-      'Consumption analytics & reports',
-      'Automated theft detection alerts',
-      'Multi-user dashboard access',
-      'Priority support'
-    ],
-    popular: true
-  },
-  {
-    name: 'Enterprise Suite',
-    icon: <CrownOutlined />,
-    description: 'Full solution for large-scale operations',
-    setupPrice: 'Custom',
-    monthlyPrice: 'Custom',
-    gradient: 'linear-gradient(135deg, #22c55e, #4ade80)',
-    features: [
-      'Everything in Advanced',
-      'Unlimited locations',
-      'API integration',
-      'Custom reports & dashboards',
-      'Dedicated account manager',
-      'On-site training',
-      'SLA guarantee'
-    ],
-    popular: false
-  }
-]
+import { useTranslations } from 'next-intl'
 
 export default function PricingSection() {
+  const t = useTranslations('pricing')
+
+  const pricingTiers = [
+    {
+      key: 'basic',
+      icon: <RocketOutlined />,
+      setupPrice: '36.900.000',
+      monthlyPrice: '300.000',
+      gradient: 'linear-gradient(135deg, #64748b, #94a3b8)',
+      popular: false
+    },
+    {
+      key: 'advanced',
+      icon: <ThunderboltOutlined />,
+      setupPrice: '49.900.000',
+      monthlyPrice: '500.000',
+      gradient: 'linear-gradient(135deg, #1079FF, #29C5FF)',
+      popular: true
+    },
+    {
+      key: 'enterprise',
+      icon: <CrownOutlined />,
+      setupPrice: 'Custom',
+      monthlyPrice: 'Custom',
+      gradient: 'linear-gradient(135deg, #22c55e, #4ade80)',
+      popular: false
+    }
+  ]
+
+  const getFeatures = (key: string): string[] => {
+    const features = t.raw(`features.${key}`)
+    return Array.isArray(features) ? features : []
+  }
+
   return (
     <section id="pricing" className="home-section" style={{ background: '#0f172a' }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
           <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2rem)', marginBottom: '12px' }}>
-            <span className="text-gradient">Transparent</span> Pricing
+            <span className="text-gradient">{t('titleHighlight')}</span> {t('title')}
           </h2>
           <p style={{ fontSize: '15px', color: '#94a3b8', maxWidth: '500px', margin: '0 auto' }}>
-            One-time hardware setup + monthly subscription. No hidden fees.
+            {t('description')}
           </p>
         </div>
 
         {/* Pricing Cards */}
         <Row gutter={[16, 16]} justify="center">
           {pricingTiers.map((tier) => (
-            <Col xs={24} md={8} key={tier.name}>
+            <Col xs={24} md={8} key={tier.key}>
               <div
                 style={{
                   background: '#1e293b',
@@ -103,7 +84,7 @@ export default function PricingSection() {
                     color: 'white',
                     textTransform: 'uppercase'
                   }}>
-                    Most Popular
+                    {t('labels.mostPopular')}
                   </div>
                 )}
 
@@ -127,19 +108,19 @@ export default function PricingSection() {
 
                 {/* Tier Name & Description */}
                 <h3 style={{ fontSize: '18px', marginBottom: '4px', color: '#f1f5f9' }}>
-                  {tier.name}
+                  {t(`tiers.${tier.key}.name`)}
                 </h3>
                 <p style={{ fontSize: '13px', color: '#64748b', marginBottom: '20px' }}>
-                  {tier.description}
+                  {t(`tiers.${tier.key}.description`)}
                 </p>
 
                 {/* Pricing */}
                 <div style={{ marginBottom: '20px' }}>
                   <div style={{ marginBottom: '8px' }}>
-                    <span style={{ fontSize: '12px', color: '#64748b' }}>Hardware & Setup</span>
+                    <span style={{ fontSize: '12px', color: '#64748b' }}>{t('labels.hardwareSetup')}</span>
                     <div style={{ fontSize: '24px', fontWeight: 700, color: '#f1f5f9' }}>
                       {tier.setupPrice === 'Custom' ? (
-                        <span>Custom Quote</span>
+                        <span>{t('labels.customQuote')}</span>
                       ) : (
                         <>
                           <span style={{ fontSize: '14px', fontWeight: 400 }}>Rp </span>
@@ -148,7 +129,7 @@ export default function PricingSection() {
                       )}
                     </div>
                     {tier.setupPrice !== 'Custom' && (
-                      <span style={{ fontSize: '11px', color: '#64748b' }}>one-time</span>
+                      <span style={{ fontSize: '11px', color: '#64748b' }}>{t('labels.oneTime')}</span>
                     )}
                   </div>
                   <div style={{
@@ -157,15 +138,15 @@ export default function PricingSection() {
                     borderRadius: '8px',
                     marginTop: '12px'
                   }}>
-                    <span style={{ fontSize: '12px', color: '#64748b' }}>Monthly Subscription</span>
+                    <span style={{ fontSize: '12px', color: '#64748b' }}>{t('labels.monthlySubscription')}</span>
                     <div style={{ fontSize: '20px', fontWeight: 700, color: '#1079FF' }}>
                       {tier.monthlyPrice === 'Custom' ? (
-                        <span>Custom</span>
+                        <span>{t('labels.custom')}</span>
                       ) : (
                         <>
                           <span style={{ fontSize: '12px', fontWeight: 400 }}>Rp </span>
                           {tier.monthlyPrice}
-                          <span style={{ fontSize: '12px', fontWeight: 400, color: '#64748b' }}>/bulan</span>
+                          <span style={{ fontSize: '12px', fontWeight: 400, color: '#64748b' }}>{t('labels.perMonth')}</span>
                         </>
                       )}
                     </div>
@@ -174,7 +155,7 @@ export default function PricingSection() {
 
                 {/* Features */}
                 <ul style={{ margin: '0 0 20px 0', padding: 0, listStyle: 'none', flex: 1 }}>
-                  {tier.features.map((feature, idx) => (
+                  {getFeatures(tier.key).map((feature, idx) => (
                     <li
                       key={idx}
                       style={{
@@ -206,7 +187,7 @@ export default function PricingSection() {
                     fontWeight: 600
                   }}
                 >
-                  Get a Quote
+                  {t('labels.getQuote')}
                 </Button>
               </div>
             </Col>
@@ -220,7 +201,7 @@ export default function PricingSection() {
           fontSize: '13px',
           color: '#64748b'
         }}>
-          * Harga final disesuaikan dengan kebutuhan lokasi dan jumlah unit. Hubungi kami untuk penawaran khusus.
+          {t('note')}
         </p>
       </div>
     </section>

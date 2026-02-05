@@ -1,10 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
-import ThemeProvider from './theme/ThemeProvider'
-import ErrorBoundary from '@/components/ErrorBoundary'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000'),
@@ -12,7 +7,7 @@ export const metadata: Metadata = {
     default: 'Industrix - Diesel Operations Digitalization',
     template: '%s | Industrix'
   },
-  description: 'Real-time diesel monitoring and fuel tracking for heavy equipment operations. IoT sensors, theft detection, and cloud dashboards for plantations, construction, mining, and forestry. Proven in Indonesian palm oil operations.',
+  description: 'Real-time diesel monitoring and fuel tracking for heavy equipment operations. IoT sensors, theft detection, and cloud dashboards for plantations, construction, mining, and forestry.',
   keywords: ['diesel tracking', 'fuel monitoring', 'theft prevention', 'palm oil', 'construction', 'heavy equipment', 'IoT sensors', 'fleet management', 'Indonesia', 'mining', 'forestry', 'agriculture', 'industrial IoT'],
   authors: [{ name: 'Industrix' }],
   creator: 'Industrix',
@@ -27,7 +22,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000',
     title: 'Industrix - Diesel Operations Digitalization',
-    description: 'Real-time diesel monitoring and fuel tracking for heavy equipment. IoT sensors, theft detection, and operational visibility for palm oil, construction, mining, and forestry operations.',
+    description: 'Real-time diesel monitoring and fuel tracking for heavy equipment. IoT sensors, theft detection, and operational visibility.',
     siteName: 'Industrix',
     images: [
       {
@@ -41,7 +36,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Industrix - Diesel Operations Digitalization',
-    description: 'Real-time diesel monitoring and fuel tracking for heavy equipment. IoT sensors, theft detection, and operational visibility for palm oil, construction, mining, and forestry operations.',
+    description: 'Real-time diesel monitoring and fuel tracking for heavy equipment.',
     images: ['/og-image.jpg'],
   },
   robots: {
@@ -62,18 +57,5 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-      </head>
-      <body className={inter.className}>
-        <ErrorBoundary>
-          <ThemeProvider>
-            {children}
-          </ThemeProvider>
-        </ErrorBoundary>
-      </body>
-    </html>
-  )
+  return children
 }

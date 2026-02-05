@@ -4,81 +4,43 @@ import React from 'react'
 import { Row, Col, Button } from 'antd'
 import { RocketOutlined, GlobalOutlined, ShoppingOutlined, ArrowRightOutlined, CodeOutlined } from '@ant-design/icons'
 import { useRouter } from 'next/navigation'
-
-interface Project {
-  id: string
-  title: string
-  description: string
-  icon: React.ReactNode
-  status: string
-  statusColor: string
-  gradient: string
-  features: string[]
-  link?: string
-}
-
-// Core product
-const coreProduct: Project = {
-  id: 'fuel-tank-monitoring',
-  title: 'Palm Oil Diesel Tracking',
-  description: 'Real-time diesel monitoring for palm oil plantation contractors with IoT sensors and cloud dashboards.',
-  icon: <RocketOutlined />,
-  status: 'In Production',
-  statusColor: '#22c55e',
-  gradient: 'linear-gradient(135deg, #1079FF, #29C5FF)',
-  features: [
-    'IoT fuel dispensing stations',
-    'Real-time theft detection',
-    'Cloud dashboard for operations',
-    'Usage analytics & reports'
-  ]
-}
-
-// Custom development projects for clients
-const clientProjects: Project[] = [
-  {
-    id: 'acemark',
-    title: 'AceMark IP Law Firm',
-    description: 'Corporate website for Indonesia\'s leading IP law firm with multi-language support.',
-    icon: <GlobalOutlined />,
-    status: 'Deployed',
-    statusColor: '#22c55e',
-    gradient: 'linear-gradient(135deg, #8b5cf6, #a78bfa)',
-    link: 'https://www.acemark-ip.com/en',
-    features: [
-      'Professional design',
-      'Multi-language (ID/EN/JP/CN)',
-      'Service showcase',
-      'SEO optimized'
-    ]
-  },
-  {
-    id: 'kis',
-    title: 'PT. Kreasi Inti Sukses',
-    description: 'Product catalog and company profile with CMS backend and 8-language support.',
-    icon: <ShoppingOutlined />,
-    status: 'Deployed',
-    statusColor: '#22c55e',
-    gradient: 'linear-gradient(135deg, #f59e0b, #fbbf24)',
-    link: 'https://payload-kis.vercel.app/en',
-    features: [
-      'Payload CMS backend',
-      '8-language support',
-      'Product catalog',
-      'Admin dashboard'
-    ]
-  }
-]
+import { useTranslations, useLocale } from 'next-intl'
 
 export default function ProjectsSection() {
   const router = useRouter()
+  const t = useTranslations('projects')
+  const locale = useLocale()
 
-  const handleClick = (project: Project) => {
-    if (project.link) {
-      window.open(project.link, '_blank', 'noopener,noreferrer')
-    } else if (project.id === 'fuel-tank-monitoring') {
-      router.push(`/projects/${project.id}`)
+  const coreProduct = {
+    id: 'fuel-tank-monitoring',
+    icon: <RocketOutlined />,
+    status: t('status.inProduction'),
+    statusColor: '#22c55e',
+    gradient: 'linear-gradient(135deg, #1079FF, #29C5FF)'
+  }
+
+  const clientProjects = [
+    {
+      id: 'acemark',
+      icon: <GlobalOutlined />,
+      status: t('status.deployed'),
+      statusColor: '#22c55e',
+      gradient: 'linear-gradient(135deg, #8b5cf6, #a78bfa)',
+      link: 'https://www.acemark-ip.com/en'
+    },
+    {
+      id: 'kis',
+      icon: <ShoppingOutlined />,
+      status: t('status.deployed'),
+      statusColor: '#22c55e',
+      gradient: 'linear-gradient(135deg, #f59e0b, #fbbf24)',
+      link: 'https://payload-kis.vercel.app/en'
     }
+  ]
+
+  const getFeatures = (key: string): string[] => {
+    const features = t.raw(`items.${key}.features`)
+    return Array.isArray(features) ? features : []
   }
 
   return (
@@ -87,10 +49,10 @@ export default function ProjectsSection() {
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
           <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2rem)', marginBottom: '12px' }}>
-            <span className="text-gradient">Proven</span> in Production
+            <span className="text-gradient">{t('title')}</span> {t('titleHighlight')}
           </h2>
           <p style={{ fontSize: '15px', color: '#94a3b8', maxWidth: '500px', margin: '0 auto' }}>
-            Our diesel tracking system is deployed and running today in palm oil operations.
+            {t('description')}
           </p>
         </div>
 
@@ -119,7 +81,7 @@ export default function ProjectsSection() {
             color: 'white',
             textTransform: 'uppercase'
           }}>
-            Core Product
+            {t('coreProduct')}
           </div>
 
           <Row gutter={[24, 24]} align="middle">
@@ -142,16 +104,16 @@ export default function ProjectsSection() {
               </div>
 
               <h3 style={{ fontSize: '24px', marginBottom: '12px', color: '#f1f5f9' }}>
-                {coreProduct.title}
+                {t('items.fuelTracking.title')}
               </h3>
               <p style={{ fontSize: '15px', color: '#94a3b8', lineHeight: 1.6, marginBottom: '20px' }}>
-                {coreProduct.description}
+                {t('items.fuelTracking.description')}
               </p>
 
               <Button
                 type="primary"
                 size="large"
-                onClick={() => handleClick(coreProduct)}
+                onClick={() => router.push(`/${locale}/projects/${coreProduct.id}`)}
                 style={{
                   height: '44px',
                   padding: '0 24px',
@@ -161,12 +123,12 @@ export default function ProjectsSection() {
                   fontWeight: 600
                 }}
               >
-                View Details <ArrowRightOutlined style={{ marginLeft: '6px' }} />
+                {t('viewDetails')} <ArrowRightOutlined style={{ marginLeft: '6px' }} />
               </Button>
             </Col>
             <Col xs={24} md={10}>
               <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
-                {coreProduct.features.map((feature, idx) => (
+                {getFeatures('fuelTracking').map((feature, idx) => (
                   <li
                     key={idx}
                     style={{
@@ -216,10 +178,10 @@ export default function ProjectsSection() {
             </div>
             <div>
               <h3 style={{ fontSize: '18px', margin: 0, color: '#f1f5f9' }}>
-                Custom Development
+                {t('customDev.title')}
               </h3>
               <p style={{ fontSize: '13px', color: '#64748b', margin: 0 }}>
-                We also build custom solutions for clients who trust our technical team
+                {t('customDev.description')}
               </p>
             </div>
           </div>
@@ -290,15 +252,15 @@ export default function ProjectsSection() {
 
                 {/* Title & Description */}
                 <h3 style={{ fontSize: '16px', marginBottom: '8px', color: '#f1f5f9' }}>
-                  {project.title}
+                  {t(`items.${project.id}.title`)}
                 </h3>
                 <p style={{ fontSize: '13px', color: '#94a3b8', lineHeight: 1.5, marginBottom: '16px' }}>
-                  {project.description}
+                  {t(`items.${project.id}.description`)}
                 </p>
 
                 {/* Features */}
                 <ul style={{ margin: '0 0 16px 0', padding: 0, listStyle: 'none', flex: 1 }}>
-                  {project.features.map((feature, idx) => (
+                  {getFeatures(project.id).map((feature, idx) => (
                     <li
                       key={idx}
                       style={{
@@ -325,20 +287,18 @@ export default function ProjectsSection() {
                 {/* Button */}
                 <Button
                   type="primary"
-                  onClick={() => handleClick(project)}
-                  disabled={!project.link}
+                  onClick={() => window.open(project.link, '_blank', 'noopener,noreferrer')}
                   style={{
                     width: '100%',
                     height: '40px',
                     borderRadius: '8px',
-                    background: project.link ? project.gradient : '#334155',
+                    background: project.gradient,
                     border: 'none',
                     fontWeight: 600,
                     fontSize: '13px'
                   }}
                 >
-                  {project.link ? 'Visit Website' : 'Coming Soon'}
-                  {project.link && <ArrowRightOutlined style={{ marginLeft: '6px' }} />}
+                  {t('visitWebsite')} <ArrowRightOutlined style={{ marginLeft: '6px' }} />
                 </Button>
               </div>
             </Col>
@@ -357,10 +317,10 @@ export default function ProjectsSection() {
           }}
         >
           <h3 style={{ fontSize: '18px', marginBottom: '8px', color: '#f1f5f9' }}>
-            Stop Diesel Theft. Optimize Your Fleet.
+            {t('cta.title')}
           </h3>
           <p style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '24px' }}>
-            Our system adapts to palm oil, construction, or industrial facilities.
+            {t('cta.description')}
           </p>
           <Button
             type="primary"
@@ -375,7 +335,7 @@ export default function ProjectsSection() {
               fontWeight: 600
             }}
           >
-            Discuss Your Needs
+            {t('cta.button')}
           </Button>
         </div>
       </div>

@@ -5,18 +5,22 @@ import { Button, Drawer } from 'antd'
 import { MenuOutlined, CloseOutlined } from '@ant-design/icons'
 import Image from 'next/image'
 import Link from 'next/link'
-
-const navItems = [
-  { label: 'Home', href: '/#home' },
-  { label: 'About', href: '/#about' },
-  { label: 'How It Works', href: '/#how-it-works' },
-  { label: 'Pricing', href: '/#pricing' },
-  { label: 'Projects', href: '/#projects' },
-  { label: 'Contact', href: '/#contact' }
-]
+import { useTranslations, useLocale } from 'next-intl'
+import LanguageSwitcher from './LanguageSwitcher'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const t = useTranslations('nav')
+  const locale = useLocale()
+
+  const navItems = [
+    { label: t('home'), href: `/${locale}#home` },
+    { label: t('about'), href: `/${locale}#about` },
+    { label: t('howItWorks'), href: `/${locale}#how-it-works` },
+    { label: t('pricing'), href: `/${locale}#pricing` },
+    { label: t('projects'), href: `/${locale}#projects` },
+    { label: t('contact'), href: `/${locale}#contact` }
+  ]
 
   return (
     <header
@@ -47,7 +51,7 @@ export default function Navbar() {
         }}
       >
         {/* Logo */}
-        <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <Link href={`/${locale}`} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
           <Image src="/Logo.svg" alt="Industrix" width={32} height={32} />
           <span
             style={{
@@ -63,8 +67,8 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
-          <div className="desktop-nav" style={{ display: 'flex', gap: '24px' }}>
+        <nav style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+          <div className="desktop-nav" style={{ display: 'flex', gap: '20px' }}>
             {navItems.map((item) => (
               <a
                 key={item.label}
@@ -81,13 +85,17 @@ export default function Navbar() {
             ))}
           </div>
 
+          <div className="desktop-nav">
+            <LanguageSwitcher />
+          </div>
+
           <Button
             type="primary"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             className="desktop-nav"
             style={{
               height: '40px',
-              padding: '0 24px',
+              padding: '0 20px',
               borderRadius: '8px',
               background: 'linear-gradient(135deg, #1079FF, #29C5FF)',
               border: 'none',
@@ -95,7 +103,7 @@ export default function Navbar() {
               fontSize: '13px'
             }}
           >
-            Get a Demo
+            {t('getDemo')}
           </Button>
 
           {/* Mobile Menu Button */}
@@ -140,6 +148,11 @@ export default function Navbar() {
               {item.label}
             </a>
           ))}
+
+          <div style={{ padding: '12px', marginTop: '8px' }}>
+            <LanguageSwitcher />
+          </div>
+
           <Button
             type="primary"
             block
@@ -148,7 +161,7 @@ export default function Navbar() {
               setIsOpen(false)
             }}
             style={{
-              marginTop: '16px',
+              marginTop: '8px',
               height: '44px',
               borderRadius: '8px',
               background: 'linear-gradient(135deg, #1079FF, #29C5FF)',
@@ -156,7 +169,7 @@ export default function Navbar() {
               fontWeight: 600
             }}
           >
-            Get a Demo
+            {t('getDemo')}
           </Button>
         </div>
       </Drawer>
