@@ -97,17 +97,13 @@
     }
   },
   "pricing": {
-    "title": "Harga",
-    "titleHighlight": "Transparan",
-    "description": "Setup hardware satu kali + langganan bulanan. Tanpa biaya tersembunyi.",
+    "title": "",
+    "titleHighlight": "Harga",
+    "description": "Harga untuk solusi Fuel Tank Monitoring (FTM). Untuk pengembangan kustom dan solusi lainnya, hubungi kami untuk penawaran.",
     "tiers": {
-      "basic": {
-        "name": "Monitoring Dasar",
-        "description": "Pelacakan BBM esensial untuk operasi kecil"
-      },
-      "advanced": {
-        "name": "Analitik Lanjutan",
-        "description": "Monitoring lengkap dengan pencegahan pencurian"
+      "professional": {
+        "name": "Professional",
+        "description": "Monitoring BBM lengkap dengan analitik & pencegahan pencurian"
       },
       "enterprise": {
         "name": "Paket Enterprise",
@@ -115,23 +111,19 @@
       }
     },
     "features": {
-      "basic": [
-        "Paket hardware IoT (pompa, flow meter, probe tangki)",
+      "professional": [
+        "Hardware industrial-grade (flow meter, pompa, filter pompa, pressure sensor)",
         "Monitoring level BBM real-time",
-        "Dashboard cloud dasar",
-        "Alert mobile app",
-        "Dukungan email"
-      ],
-      "advanced": [
-        "Semua fitur Basic",
-        "Sistem kontrol akses RFID",
-        "Analitik konsumsi & laporan",
+        "Dashboard + Analitik + Laporan",
+        "Kontrol akses RFID termasuk",
+        "Kontrol akses pengguna detail",
+        "Pembatasan kuota harian per pengguna",
         "Alert deteksi pencurian otomatis",
         "Akses dashboard multi-user",
-        "Dukungan prioritas"
+        "Dukungan email & prioritas"
       ],
       "enterprise": [
-        "Semua fitur Advanced",
+        "Semua fitur Professional",
         "Lokasi tak terbatas",
         "Integrasi API",
         "Laporan & dashboard kustom",
@@ -145,12 +137,14 @@
       "hardwareSetup": "Hardware & Setup",
       "oneTime": "sekali bayar",
       "monthlySubscription": "Langganan Bulanan",
-      "perMonth": "/bulan",
+      "perMonth": "/perangkat/bulan",
+      "requestQuote": "Minta Penawaran",
+      "dependsOnQuantity": "tergantung jumlah unit",
       "customQuote": "Penawaran Khusus",
       "custom": "Kustom",
       "getQuote": "Minta Penawaran"
     },
-    "note": "* Harga final disesuaikan dengan kebutuhan lokasi dan jumlah unit. Hubungi kami untuk penawaran khusus."
+    "note": "* Biaya setup hardware bervariasi tergantung jumlah dan lokasi. Hubungi kami untuk penawaran khusus."
   },
   "projects": {
     "title": "Terbukti",
@@ -186,23 +180,23 @@
         ]
       },
       "acemark": {
-        "title": "AceMark IP Law Firm",
+        "title": "Acemark IP Law Firm",
         "description": "Website korporat untuk firma hukum IP terkemuka di Indonesia dengan dukungan multi-bahasa.",
         "features": [
           "Desain profesional",
           "Multi-bahasa (ID/EN/JP/CN)",
-          "Showcase layanan",
-          "SEO optimized"
+          "Backend CMS",
+          "Real SEO optimized"
         ]
       },
       "kis": {
         "title": "PT. Kreasi Inti Sukses",
         "description": "Katalog produk dan profil perusahaan dengan backend CMS dan dukungan 8 bahasa.",
         "features": [
-          "Backend Payload CMS",
+          "Backend CMS dengan live preview",
           "Dukungan 8 bahasa",
           "Katalog produk",
-          "Dashboard admin"
+          "Real SEO optimized"
         ]
       }
     }
@@ -210,7 +204,7 @@
   "contact": {
     "title": "Mari",
     "titleHighlight": "Bekerja Sama",
-    "description": "Siap mendigitalisasi operasi diesel Anda? Hubungi kami.",
+    "description": "Siap mendigitalisasi operasi Anda? Hubungi kami.",
     "info": {
       "title": "Informasi Kontak",
       "subtitle": "Hubungi langsung atau isi formulir."

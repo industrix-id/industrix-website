@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Layout, Typography, Card } from 'antd'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -11,6 +11,10 @@ const { Title, Paragraph } = Typography
 
 export default function PrivacyPolicyPage() {
   const { isDarkMode } = useTheme()
+
+  useEffect(() => {
+    document.title = 'Privacy Policy | Industrix'
+  }, [])
 
   return (
     <Layout>
@@ -25,16 +29,13 @@ export default function PrivacyPolicyPage() {
           textAlign: 'center'
         }}>
           <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 24px' }}>
-            <Title level={1} style={{ 
-              fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+            <h1 className="text-gradient" style={{
+              fontSize: 'clamp(2rem, 5vw, 3rem)',
               marginBottom: '24px',
-              background: 'var(--industrix-gradient)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
+              fontWeight: 700
             }}>
               Privacy Policy
-            </Title>
+            </h1>
             
             <Paragraph style={{ 
               fontSize: '18px',
@@ -52,18 +53,19 @@ export default function PrivacyPolicyPage() {
           padding: '64px 0',
           background: isDarkMode ? '#1f1f1f' : '#ffffff'
         }}>
-          <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 24px' }}>
-            <Card style={{
-              border: 'none',
-              borderRadius: '16px',
-              background: isDarkMode 
-                ? 'linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.7))'
-                : 'linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7))',
-              backdropFilter: 'blur(20px)',
-              WebkitBackdropFilter: 'blur(20px)',
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
-              padding: '32px'
-            }}>
+          <div className="legal-page-container">
+            <Card
+              className="legal-page-card"
+              style={{
+                border: 'none',
+                borderRadius: '16px',
+                background: isDarkMode
+                  ? 'linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.7))'
+                  : 'linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7))',
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)',
+                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
+              }}>
               <div style={{ lineHeight: 1.7 }}>
                 <Title level={3}>1. Information We Collect</Title>
                 <Paragraph>

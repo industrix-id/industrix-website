@@ -97,17 +97,13 @@
     }
   },
   "pricing": {
-    "title": "Transparent",
+    "title": "",
     "titleHighlight": "Pricing",
-    "description": "One-time hardware setup + monthly subscription. No hidden fees.",
+    "description": "Pricing for Fuel Tank Monitoring (FTM) solution. For custom development and other solutions, contact us for a quote.",
     "tiers": {
-      "basic": {
-        "name": "Basic Monitoring",
-        "description": "Essential fuel tracking for small operations"
-      },
-      "advanced": {
-        "name": "Advanced Analytics",
-        "description": "Complete monitoring with theft prevention"
+      "professional": {
+        "name": "Professional",
+        "description": "Complete fuel monitoring with analytics & theft prevention"
       },
       "enterprise": {
         "name": "Enterprise Suite",
@@ -115,23 +111,19 @@
       }
     },
     "features": {
-      "basic": [
-        "IoT hardware package (pump, flow meter, tank probe)",
+      "professional": [
+        "Industrial-grade hardware (flow meter, pump, pump filter, pressure sensor)",
         "Real-time fuel level monitoring",
-        "Basic cloud dashboard",
-        "Mobile app alerts",
-        "Email support"
-      ],
-      "advanced": [
-        "Everything in Basic",
-        "RFID access control system",
-        "Consumption analytics & reports",
+        "Dashboard + Analytics + Reports",
+        "RFID access control included",
+        "Fine-grained user access control",
+        "Daily quota limiting per user",
         "Automated theft detection alerts",
         "Multi-user dashboard access",
-        "Priority support"
+        "Email & priority support"
       ],
       "enterprise": [
-        "Everything in Advanced",
+        "Everything in Professional",
         "Unlimited locations",
         "API integration",
         "Custom reports & dashboards",
@@ -145,12 +137,14 @@
       "hardwareSetup": "Hardware & Setup",
       "oneTime": "one-time",
       "monthlySubscription": "Monthly Subscription",
-      "perMonth": "/month",
+      "perMonth": "/device/month",
+      "requestQuote": "Request Quote",
+      "dependsOnQuantity": "depends on quantity",
       "customQuote": "Custom Quote",
       "custom": "Custom",
       "getQuote": "Get a Quote"
     },
-    "note": "* Final pricing adjusted based on location needs and number of units. Contact us for a custom quote."
+    "note": "* Hardware setup fee varies based on quantity and location. Contact us for a custom quote."
   },
   "projects": {
     "title": "Proven",
@@ -186,23 +180,23 @@
         ]
       },
       "acemark": {
-        "title": "AceMark IP Law Firm",
+        "title": "Acemark IP Law Firm",
         "description": "Corporate website for Indonesia's leading IP law firm with multi-language support.",
         "features": [
           "Professional design",
           "Multi-language (ID/EN/JP/CN)",
-          "Service showcase",
-          "SEO optimized"
+          "CMS backend",
+          "Real SEO optimized"
         ]
       },
       "kis": {
         "title": "PT. Kreasi Inti Sukses",
         "description": "Product catalog and company profile with CMS backend and 8-language support.",
         "features": [
-          "Payload CMS backend",
+          "CMS backend with live preview",
           "8-language support",
           "Product catalog",
-          "Admin dashboard"
+          "Real SEO optimized"
         ]
       }
     }
@@ -210,7 +204,7 @@
   "contact": {
     "title": "Let's",
     "titleHighlight": "Work Together",
-    "description": "Ready to digitalize your diesel operations? Get in touch.",
+    "description": "Ready to digitalize your operations? Get in touch.",
     "info": {
       "title": "Contact Information",
       "subtitle": "Reach out directly or fill out the form."

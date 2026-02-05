@@ -175,11 +175,11 @@ export default function Navbar() {
       </Drawer>
 
       <style jsx global>{`
-        @media (max-width: 768px) {
+        @media (max-width: 850px) {
           .desktop-nav { display: none !important; }
           .mobile-nav { display: block !important; }
         }
-        @media (min-width: 769px) {
+        @media (min-width: 851px) {
           .desktop-nav { display: flex !important; }
           .mobile-nav { display: none !important; }
         }

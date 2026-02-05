@@ -258,6 +258,39 @@ p {
   color: var(--blue) !important;
 }
 
+/* Legal Pages (Privacy, Terms) */
+.legal-page-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+@media (min-width: 768px) {
+  .legal-page-container {
+    padding: 0 24px;
+  }
+}
+
+.legal-page-card .ant-card-body {
+  padding: 16px !important;
+}
+
+@media (min-width: 768px) {
+  .legal-page-card .ant-card-body {
+    padding: 32px !important;
+  }
+}
+
+.legal-page-card ul {
+  padding-left: 24px;
+  margin-bottom: 24px;
+}
+
+.legal-page-card li {
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+}
+
 /* Architecture Grid Responsive */
 .arch-grid {
   display: grid;

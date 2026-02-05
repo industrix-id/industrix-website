@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Row, Col, Button } from 'antd'
-import { CheckCircleOutlined, RocketOutlined, ThunderboltOutlined, CrownOutlined } from '@ant-design/icons'
+import { CheckCircleOutlined, ThunderboltOutlined, CrownOutlined } from '@ant-design/icons'
 import { useTranslations } from 'next-intl'
 
 export default function PricingSection() {
@@ -10,28 +10,18 @@ export default function PricingSection() {
 
   const pricingTiers = [
     {
-      key: 'basic',
-      icon: <RocketOutlined />,
-      setupPrice: '36.900.000',
-      monthlyPrice: '300.000',
-      gradient: 'linear-gradient(135deg, #64748b, #94a3b8)',
-      popular: false
-    },
-    {
-      key: 'advanced',
+      key: 'professional',
       icon: <ThunderboltOutlined />,
-      setupPrice: '49.900.000',
+      setupPrice: 'Quote',
       monthlyPrice: '500.000',
-      gradient: 'linear-gradient(135deg, #1079FF, #29C5FF)',
-      popular: true
+      gradient: 'linear-gradient(135deg, #1079FF, #29C5FF)'
     },
     {
       key: 'enterprise',
       icon: <CrownOutlined />,
-      setupPrice: 'Custom',
+      setupPrice: 'Quote',
       monthlyPrice: 'Custom',
-      gradient: 'linear-gradient(135deg, #22c55e, #4ade80)',
-      popular: false
+      gradient: 'linear-gradient(135deg, #22c55e, #4ade80)'
     }
   ]
 
@@ -54,9 +44,9 @@ export default function PricingSection() {
         </div>
 
         {/* Pricing Cards */}
-        <Row gutter={[16, 16]} justify="center">
+        <Row gutter={[24, 24]} justify="center">
           {pricingTiers.map((tier) => (
-            <Col xs={24} md={8} key={tier.key}>
+            <Col xs={24} md={12} lg={10} key={tier.key}>
               <div
                 style={{
                   background: '#1e293b',
@@ -65,28 +55,10 @@ export default function PricingSection() {
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
-                  border: tier.popular ? '2px solid #1079FF' : '1px solid rgba(255,255,255,0.08)',
+                  border: '1px solid rgba(255,255,255,0.1)',
                   position: 'relative'
                 }}
               >
-                {/* Popular badge */}
-                {tier.popular && (
-                  <div style={{
-                    position: 'absolute',
-                    top: '-12px',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    background: 'linear-gradient(135deg, #1079FF, #29C5FF)',
-                    padding: '4px 16px',
-                    borderRadius: '12px',
-                    fontSize: '11px',
-                    fontWeight: 700,
-                    color: 'white',
-                    textTransform: 'uppercase'
-                  }}>
-                    {t('labels.mostPopular')}
-                  </div>
-                )}
 
                 {/* Icon */}
                 <div
@@ -119,8 +91,8 @@ export default function PricingSection() {
                   <div style={{ marginBottom: '8px' }}>
                     <span style={{ fontSize: '12px', color: '#64748b' }}>{t('labels.hardwareSetup')}</span>
                     <div style={{ fontSize: '24px', fontWeight: 700, color: '#f1f5f9' }}>
-                      {tier.setupPrice === 'Custom' ? (
-                        <span>{t('labels.customQuote')}</span>
+                      {(tier.setupPrice === 'Custom' || tier.setupPrice === 'Quote') ? (
+                        <span>{t('labels.requestQuote')}</span>
                       ) : (
                         <>
                           <span style={{ fontSize: '14px', fontWeight: 400 }}>Rp </span>
@@ -128,7 +100,10 @@ export default function PricingSection() {
                         </>
                       )}
                     </div>
-                    {tier.setupPrice !== 'Custom' && (
+                    {tier.setupPrice === 'Quote' && (
+                      <span style={{ fontSize: '11px', color: '#64748b' }}>{t('labels.dependsOnQuantity')}</span>
+                    )}
+                    {tier.setupPrice !== 'Custom' && tier.setupPrice !== 'Quote' && (
                       <span style={{ fontSize: '11px', color: '#64748b' }}>{t('labels.oneTime')}</span>
                     )}
                   </div>
@@ -181,9 +156,9 @@ export default function PricingSection() {
                   style={{
                     height: '44px',
                     borderRadius: '8px',
-                    background: tier.popular ? 'linear-gradient(135deg, #1079FF, #29C5FF)' : 'transparent',
-                    border: tier.popular ? 'none' : '1px solid #1079FF',
-                    color: tier.popular ? 'white' : '#1079FF',
+                    background: 'linear-gradient(135deg, #1079FF, #29C5FF)',
+                    border: 'none',
+                    color: 'white',
                     fontWeight: 600
                   }}
                 >
